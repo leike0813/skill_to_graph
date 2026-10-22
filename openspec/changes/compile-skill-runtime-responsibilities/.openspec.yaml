@@ -1,0 +1,3 @@
+schema: spec-driven
+created: 2026-10-23
+goal: 转换时理解完整 Skill，运行时执行拆解后的局部职责；显式保留跨阶段约束和源允许的修正路径。
