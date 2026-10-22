@@ -1,0 +1,285 @@
+{
+  "digest_slots": {
+    "tldr": {
+      "paragraphs": [
+        "论文提出 Transformer：一个完全基于注意力机制的序列转导架构，抛弃循环与卷积，只用堆叠的自注意力和逐位置全连接层构成编码器与解码器，是作者所知第一个完全依靠自注意力计算输入与输出表示的转导模型。",
+        "问题动机：主流序列转导模型（循环网络、门控循环网络）沿符号位置逐步计算，训练样本内无法并行，长序列时受显存约束难以批处理；卷积路线（Extended Neural GPU、ByteNet、ConvS2S）可并行，但关联两个任意位置所需操作数随距离增长（ConvS2S 线性、ByteNet 对数），使远距离依赖更难学习。",
+        "核心方法一：缩放点积注意力 Attention(Q,K,V) = softmax(QK^T/√d_k)·V，把查询与所有键做点积、除以 √d_k 后经 softmax 得到权重，再对值加权求和；除以 √d_k 是为了抵消 d_k 较大时点积幅值膨胀把 softmax 推入极小梯度区域的问题。",
+        "核心方法二：多头注意力，用 h=8 组不同的可学习线性投影把查询、键、值分别投影到 d_k、d_v 维并行做注意力，再拼接并投影；每个头维度 d_k=d_v=d_model/h=64，总计算量与单头全维情形相当，可联合关注不同位置、不同表示子空间的信息。",
+        "架构细节：编码器与解码器各 N=6 层，d_model=512；每个子层外包裹残差连接并做层归一化，输出为 LayerNorm(x + Sublayer(x))；解码器额外插入对编码器栈输出做多头注意力的第三子层，并对自注意力做掩码（softmax 输入中非法连接置为 −∞）以保持自回归性质。",
+        "位置信息：因无循环无卷积，模型在编码器与解码器栈底部向输入嵌入注入正弦/余弦位置编码，波长从 2π 到 10000·2π 呈几何级数，使任意固定偏移 k 下 PE(pos+k) 可表示为 PE(pos) 的线性函数，从而可能外推到比训练时更长的序列。",
+        "训练配置：WMT 2014 英德（约 450 万句对，byte-pair 编码，共享约 37000 词表）与 WMT 2014 英法（3600 万句，32000 word-piece 词表），按近似长度分批，每批约 25000 源 token 与 25000 目标 token；优化器 Adam（β1=0.9、β2=0.98、ε=1e-9）配合 warmup_steps=4000 的学习率调度；正则化使用残差 dropout 与 ε_ls=0.1 的 label smoothing。",
+        "硬件与成本：单机 8 张 NVIDIA P100，base 模型每步约 0.4 秒、训练 100000 步约 12 小时；big 模型每步 1.0 秒、训练 300000 步约 3.5 天，训练 FLOPs 分别为 3.3·10^18 与 2.3·10^19。",
+        "翻译结果：Transformer (big) 在 WMT 2014 英德 newstest2014 上取得 28.4 BLEU，超过此前所有已发表模型（含集成）2.0 BLEU 以上；base 模型 27.3 BLEU 也超过此前所有已发表模型与集成，且训练成本远低于 ConvS2S、GNMT+RL、MoE 等对比系统。",
+        "英法任务：big 模型取得 41.8 BLEU（摘要称刷新单模型 SOTA；6.1 节正文叙述为 41.0 BLEU），训练成本不足此前最好模型的 1/4；该配置使用 P_drop=0.1 而非 base 的 0.3。",
+        "消融结论：单头注意力比最佳设置低 0.9 BLEU，头数过多质量同样下降；减小 d_k 会损害质量，说明判定兼容性并不容易、可能需要比点积更复杂的兼容函数；模型越大越好，dropout 对抑制过拟合非常有效；用学习式位置嵌入替换正弦编码结果几乎相同（PPL 4.92 / BLEU 25.7 对 base 4.92 / 25.8）。",
+        "跨任务泛化：4 层、d_model=1024 的 Transformer 在 Penn Treebank WSJ（约 4 万训练句）上取得 91.3 F1，高于 Petrov 90.4、Zhu 90.4、Vinyals & Kaiser 88.3，但低于 Dyer et al. 的 RNNG 91.7；半监督设置（high-confidence 与 BerkleyParser 语料，约 1700 万句）达到 92.7 F1，高于 McClosky 92.1 与 Vinyals & Kaiser 92.1，低于多任务 Luong 93.0 与生成式 RNNG 93.3。",
+        "局限与未来工作：自注意力每层复杂度为 O(n²·d)，超长序列仍受二次复杂度制约，作者计划研究把注意力限制在大小为 r 的邻域内的受限自注意力；解码仍是自回归的顺序步骤，作者把“让生成更少顺序化”列为目标；计划把模型扩展到图像、音频、视频等模态。",
+        "可复现性线索：训练与评估代码已开源（https://github.com/tensorflow/tensor2tensor），数据为公开的 WMT 2014 与 Penn Treebank/BerkleyParser 语料，词表大小、batch 规模、warmup、dropout、label smoothing、checkpoint 平均策略与 beam 解码参数均在正文给出；但全文只报告 BLEU/F1/PPL 单点数值，未提供方差、置信区间或显著性检验。"
+      ]
+    },
+    "research_question_and_contributions": {
+      "research_question": "能否在完全不使用循环与卷积的前提下，仅靠注意力机制构建出既在翻译质量上超越现有循环/卷积序列转导模型、又具备高并行度与低训练成本的序列转导架构？",
+      "contributions": [
+        "提出 Transformer：首个完全基于自注意力、无循环无卷积的序列转导架构，编码器与解码器均由堆叠的自注意力与逐位置全连接层构成。",
+        "提出缩放点积注意力并解释 1/√d_k 缩放对避免 softmax 梯度消失的必要性，区别于加性注意力。",
+        "提出多头注意力，使模型能联合关注不同位置、不同表示子空间的信息，缓解单头平均化的缺陷。",
+        "以理论表格对比自注意力、循环与卷积层在每层复杂度、最少顺序操作数与最大路径长度上的差异（自注意力为 O(1) 顺序操作与 O(1) 最大路径长度）。",
+        "引入正弦位置编码以在无循环/卷卷积结构下恢复序列顺序信息，并给出可外推到更长序列的理由。",
+        "在 WMT 2014 英德与英法两个任务上同时刷新 BLEU 纪录，并显著降低训练成本（FLOPs）。",
+        "在英语成分句法分析上验证跨任务泛化能力（WSJ 91.3 F1，半监督 92.7 F1），并给出注意力分布的可解释性观察。"
+      ]
+    },
+    "method_highlights": {
+      "items": [
+        "缩放点积注意力：Attention(Q,K,V) = softmax(QK^T/√d_k)V，查询、键、值分别打包为矩阵并行计算。",
+        "缩放因子 1/√d_k 抵消 d_k 增大时点积幅值增长导致的 softmax 梯度极小问题；加性注意力用单隐层前馈网络算兼容性，但点积注意力实践中更快更省空间。",
+        "多头注意力：h=8 组独立可学习线性投影，d_k=d_v=d_model/h=64，各头并行计算后拼接再投影，总计算量与单头全维相当。",
+        "编码器：N=6 层，每层含多头自注意力子层与逐位置全连接子层。",
+        "解码器：N=6 层，额外插入第三子层，对编码器栈输出做多头注意力。",
+        "残差连接与层归一化：每个子层输出为 LayerNorm(x + Sublayer(x))，所有子层及嵌入层输出维度统一为 d_model=512。",
+        "解码器自注意力掩码：把 softmax 输入中对应非法连接的值置为 −∞，并将输出嵌入偏移一个位置，保证位置 i 的预测只依赖 i 之前的已知输出。",
+        "逐位置前馈网络：两层线性变换夹 ReLU，输入/输出 512 维、内部 d_ff=2048，可视为卷积核大小为 1 的两个卷积；各位置共享权重、层间参数不同。",
+        "嵌入与 softmax：使用学习式嵌入，把解码输出映射为下一 token 概率；两个嵌入层与 softmax 前线性变换共享同一权重矩阵，嵌入层权重再乘 √d_model。",
+        "正弦位置编码：PE(pos,2i)=sin(pos/10000^{2i/d_model})、PE(pos,2i+1)=cos(pos/10000^{2i/d_model})，波长从 2π 到 10000·2π 几何级数递增。",
+        "注意力在模型中的三种用法：编码器-解码器注意力（查询来自解码器上一层、键值来自编码器输出）、编码器自注意力、解码器带掩码自注意力。",
+        "训练与解码：Adam + warmup_steps=4000 的学习率调度（先线性升温再按步数平方根倒数衰减）、残差 dropout、ε_ls=0.1 的 label smoothing、beam search beam=4 与长度惩罚 α=0.6、base 平均最后 5 个 checkpoint 而 big 平均最后 20 个。"
+      ]
+    },
+    "key_results": {
+      "items": [
+        "WMT 2014 英德 newstest2014：Transformer (big) 28.4 BLEU，超过此前最好的单模型与集成 2.0 BLEU 以上；base 模型 27.3 BLEU，同样超过所有此前已发表模型与集成。",
+        "训练成本（FLOPs）：base 3.3·10^18、big 2.3·10^19，显著低于 ConvS2S（9.6·10^18 / 7.7·10^19）、GNMT+RL（2.3·10^19 / 1.8·10^20）、MoE（2.0·10^19）、Deep-Att+PosUnk Ensemble（8.0·10^20）等对比系统。",
+        "WMT 2014 英法：big 模型 41.8 BLEU（6.1 节叙述为 41.0 BLEU），训练成本不足此前 SOTA 模型的 1/4；该模型 dropout 率取 0.1（base 为 0.3）。",
+        "训练速度：base 模型在 8×P100 上每步约 0.4 秒、10 万步约 12 小时；big 模型每步 1.0 秒、30 万步约 3.5 天。",
+        "注意力头数消融（英德 dev newstest2013）：h=1 为 PPL 5.29 / BLEU 24.9，比最佳设置低 0.9 BLEU；h=4 为 5.00 / 25.5，h=16 为 4.91 / 25.8，h=32 为 5.01 / 25.4，头数过多同样掉点。",
+        "键维消融：d_k 降到 16 得 PPL 5.16 / BLEU 25.1、参数量 58M，降到 32 得 5.01 / 25.4，说明兼容性判定不易，点积可能不是最优兼容函数。",
+        "规模消融：N=2 得 BLEU 23.7、N=4 得 25.3、N=8 得 25.5；d_model=256 得 24.5、1024 得 26.0（PPL 4.66）、4096 得 26.2（PPL 4.75）；big 配置（N=6、d_model=1024、d_ff=4096、h=16、P_drop=0.3、300K 步）dev PPL 4.33 / BLEU 26.4，参数 213M。",
+        "正则化消融：P_drop=0 时 BLEU 24.6，label smoothing 关闭时 25.3、改为 0.2 时 25.7，dropout 与 label smoothing 均有效。",
+        "位置编码消融：改用学习式位置嵌入得 PPL 4.92 / BLEU 25.7，与正弦版本（4.92 / 25.8）几乎相同，作者据此选择正弦版本以期能外推到更长序列。",
+        "英语成分句法分析（WSJ Section 23 F1）：WSJ-only 的 4 层 Transformer 为 91.3，高于 Petrov 90.4、Zhu 90.4、Vinyals & Kaiser 88.3，低于 Dyer 的 RNNG 91.7；半监督设置 92.7，高于 McClosky 92.1 与 Vinyals & Kaiser 92.1，低于多任务 Luong 93.0 与生成式 RNNG 93.3。",
+        "可解释性：附录注意力可视化显示第 5 层部分注意力头明显学到不同任务，有的追踪长距离依赖（making…more difficult），有的参与指代消解（its），有的呈现与句法/语义结构相关的模式。"
+      ]
+    },
+    "limitations_and_reproducibility": {
+      "items": [
+        "自注意力每层复杂度为 O(n²·d)，长序列上仍受二次增长限制；作者仅提出把注意力限制在大小为 r 的局部邻域的受限自注意力作为未来方向，未做实现与实验。",
+        "解码仍为自回归的顺序步骤，作者把“让生成更少顺序化”列为未来研究目标。",
+        "实验仅覆盖机器翻译与英语成分句法两类任务，向图像、音频、视频等模态的扩展只是计划；作者也指出尚未在超长输入输出场景验证。",
+        "计算资源门槛较高：结果依赖单机 8 张 NVIDIA P100（big 模型训练 3.5 天），复现实验需要相当的 GPU 资源。",
+        "统计报告有限：全文只给出 BLEU、F1、PPL 的单点数值，未报告方差、置信区间或显著性检验；部分任务超参数（dropout、学习率、beam size）仅在 Section 22 开发集上做了少量实验选择。",
+        "可复现性线索较好：训练与评估代码开源于 https://github.com/tensorflow/tensor2tensor；数据为公开的 WMT 2014 与 Penn Treebank/BerkleyParser 语料；BPE 与 word-piece 词表大小、batch 规模、warmup_steps、label smoothing、dropout、checkpoint 平均策略与 beam 解码参数均在正文中给出。"
+      ]
+    }
+  },
+  "section_summaries": [
+    {
+      "source_heading": "Abstract",
+      "items": [
+        "提出完全基于注意力机制的 Transformer 架构，取代循环与卷积。",
+        "摘要给出核心数字：WMT 2014 英德 28.4 BLEU（超既有最好结果含集成 2 BLEU 以上），英法单模型 41.8 BLEU、8 张 GPU 训练 3.5 天。",
+        "声明模型可通过英语成分句法分析任务验证泛化性。"
+      ]
+    },
+    {
+      "source_heading": "1 Introduction",
+      "items": [
+        "回顾 LSTM、门控循环网络在序列建模与转导中的既成地位，以及后续对循环语言模型与编码器-解码器架构的改进努力。",
+        "指出循环模型按符号位置分解计算，样本内无法并行，长序列时受显存限制难以批处理；因子分解技巧与条件计算虽提升效率，但顺序计算的根本约束仍在。",
+        "指出注意力机制已成为序列建模的核心部件，可在忽略距离的条件下建模依赖，但除少数工作外几乎总与循环网络搭配使用。",
+        "提出 Transformer 的目标：用全局依赖的注意力完全替代循环，以获得更高并行度与更短训练时间。"
+      ]
+    },
+    {
+      "source_heading": "2 Background",
+      "items": [
+        "介绍 Extended Neural GPU、ByteNet、ConvS2S 等以卷积为基本构件的并行序列模型，指出其关联远距离位置所需操作数随距离增长（ConvS2S 线性、ByteNet 对数）。",
+        "指出 Transformer 将该操作数降为常数，但代价是注意力加权平均带来的有效分辨率下降，由多头注意力加以补偿。",
+        "回顾自注意力（intra-attention）在阅读理解、抽象摘要、文本蕴含与句表示学习中的成功应用，以及基于循环注意力的端到端记忆网络。",
+        "明确本文定位：Transformer 是首个完全依赖自注意力、不使用序列对齐 RNN 或卷积计算输入输出表示的转导模型。"
+      ]
+    },
+    {
+      "source_heading": "3 Model Architecture",
+      "items": [
+        "沿用经典编码器-解码器结构：编码器把符号表示序列映射为连续表示 z，解码器自回归地逐个生成输出符号。",
+        "给出 Figure 1 模型架构图，Transformer 用堆叠的自注意力与逐位置全连接层分别构成编码器（左半部分）与解码器（右半部分）。"
+      ]
+    },
+    {
+      "source_heading": "3.1 Encoder and Decoder Stacks",
+      "items": [
+        "编码器为 N=6 个相同层，每层两个子层：多头自注意力与逐位置全连接前馈网络；每个子层外加残差连接并接层归一化，输出为 LayerNorm(x + Sublayer(x))。",
+        "为便于残差连接，所有子层与嵌入层输出维度统一为 d_model=512。",
+        "解码器同为 N=6 层，额外插入第三子层对编码器栈输出做多头注意力，同样使用残差连接与层归一化。",
+        "解码器自注意力子层被修改为屏蔽后续位置，配合输出嵌入偏移一位，保证位置 i 的预测只依赖 i 之前的已知输出。"
+      ]
+    },
+    {
+      "source_heading": "3.2 Attention",
+      "items": [
+        "把注意力函数定义为把查询与一组键值对映射为输出：输出是值的加权和，权重由查询与对应键的兼容函数计算。",
+        "给出 Figure 2：左为缩放点积注意力，右为多头注意力由若干并行注意力层组成。"
+      ]
+    },
+    {
+      "source_heading": "3.2.1 Scaled Dot-Product Attention",
+      "items": [
+        "计算流程：查询与键做点积、除以 √d_k、对结果做 softmax 得到对值的权重。",
+        "矩阵形式 Attention(Q,K,V) = softmax(QK^T/√d_k)V，查询、键、值被打包成矩阵并行计算。",
+        "对比加性注意力（用单隐层前馈网络算兼容性）与点积注意力：理论复杂度相近，但点积可用高度优化的矩阵乘法实现，实际更快更省空间。",
+        "解释缩放理由：d_k 较大时点积幅值增大，把 softmax 推入极小梯度区域，除以 √d_k 可抵消该效应。"
+      ]
+    },
+    {
+      "source_heading": "3.2.2 Multi-Head Attention",
+      "items": [
+        "用 h 组不同的可学习线性投影把查询、键、值分别投影到 d_k、d_k、d_v 维，在各投影版本上并行计算注意力，拼接后再投影得到最终输出。",
+        "多头使模型能联合关注不同表示子空间中不同位置的信息，单头情况下平均化会抑制这种能力。",
+        "本文取 h=8、d_k=d_v=d_model/h=64；由于每头维度较小，总计算量与全维单头注意力相当。"
+      ]
+    },
+    {
+      "source_heading": "3.2.3 Applications of Attention in our Model",
+      "items": [
+        "编码器-解码器注意力：查询来自解码器上一层，记忆的键值来自编码器输出，使解码器每个位置可关注输入序列所有位置。",
+        "编码器自注意力：查询、键、值均来自编码器上一层输出，每个位置可关注上一层所有位置。",
+        "解码器自注意力：每个位置可关注到当前位置（含）为止的所有解码位置，通过在缩放点积注意力中把非法连接的 softmax 输入置为 −∞ 实现掩码（参见 Figure 2）。"
+      ]
+    },
+    {
+      "source_heading": "3.3 Position-wise Feed-Forward Networks",
+      "items": [
+        "每个编码器/解码器层中还包含一个逐位置独立且完全相同的全连接前馈网络，由两次线性变换与中间 ReLU 构成。",
+        "FFN(x) = max(0, xW1+b1)W2+b2，跨位置共享权重、层间参数不同，可视为两次卷积核大小为 1 的卷积。",
+        "输入输出维度 d_model=512，内部维度 d_ff=2048。"
+      ]
+    },
+    {
+      "source_heading": "3.4 Embeddings and Softmax",
+      "items": [
+        "与其他转导模型类似，用学习式嵌入把输入/输出 token 转为 d_model 维向量，并用学习式线性变换加 softmax 得到下一 token 概率。",
+        "两个嵌入层与 softmax 前线性变换共享同一权重矩阵，嵌入层中该权重再乘以 √d_model。",
+        "Table 1 对比各类层的每层复杂度、顺序操作数与最大路径长度：自注意力 O(n²·d)/O(1)/O(1)，循环 O(n·d²)/O(n)/O(n)，卷积 O(k·n·d²)/O(1)/O(log_k n)，受限自注意力 O(r·n·d)/O(1)/O(n/r)。"
+      ]
+    },
+    {
+      "source_heading": "3.5 Positional Encoding",
+      "items": [
+        "由于既无循环也无卷积，必须向嵌入注入位置信息；位置编码与嵌入同维（d_model），可直接相加。",
+        "采用不同频率的正弦与余弦函数，位置编码每一维对应一条正弦曲线，波长从 2π 到 10000·2π 构成几何级数。",
+        "选择该函数的假设：对任意固定偏移 k，PE(pos+k) 可表示为 PE(pos) 的线性函数，便于模型学习按相对位置关注。",
+        "也实验了学习式位置嵌入，两者结果几乎相同（Table 3 行 E），作者选择正弦版本以期能外推到比训练更长的序列。"
+      ]
+    },
+    {
+      "source_heading": "4 Why Self-Attention",
+      "items": [
+        "提出三项评估标准：每层总计算复杂度、可并行化程度（以最少顺序操作数衡量）、以及网络中长程依赖的路径长度。",
+        "自注意力层以常数个顺序操作连接所有位置，而循环层需要 O(n) 次顺序操作；当序列长度 n 小于表示维度 d 时自注意力计算更快，这正是机器翻译中词片段/字节对表示的常见情形。",
+        "改进设想：把自注意力限制在以输出位置为中心、大小为 r 的邻域内，可提升超长序列性能，但最大路径长度会增至 O(n/r)，作者留待未来工作。",
+        "卷积层要连接所有位置对需堆叠 O(n/k) 或 O(log_k n) 层，路径更长且通常比循环层贵 k 倍；可分离卷积可把复杂度降到约 O(k·n·d + n·d²)，即使 k=n 也相当于自注意力层加逐位置前馈层之和。",
+        "附带收益是自注意力可提供更可解释的模型：附录展示注意力分布，不同注意力头明显学到不同任务，许多表现出与句法、语义结构相关的行为。"
+      ]
+    },
+    {
+      "source_heading": "5 Training",
+      "items": [
+        "本节描述所使用模型的训练机制，分为数据与批处理、硬件与训练计划、优化器与正则化四部分。"
+      ]
+    },
+    {
+      "source_heading": "5.1 Training Data and Batching",
+      "items": [
+        "英德任务使用标准 WMT 2014 数据集，约 450 万句对，用字节对编码、共享源目标词表约 37000 个 token。",
+        "英法任务使用规模大得多的 WMT 2014 英法数据集（3600 万句），切分为 32000 词条的 word-piece 词表。",
+        "句对按近似序列长度分批，每批约含 25000 个源 token 与 25000 个目标 token。"
+      ]
+    },
+    {
+      "source_heading": "5.2 Hardware and Schedule",
+      "items": [
+        "全部模型在单机 8 张 NVIDIA P100 上训练。",
+        "base 模型每个训练步约 0.4 秒，共训练 100000 步即 12 小时。",
+        "big 模型每个训练步 1.0 秒，共训练 300000 步即 3.5 天。"
+      ]
+    },
+    {
+      "source_heading": "5.3 Optimizer",
+      "items": [
+        "使用 Adam 优化器，β1=0.9、β2=0.98、ε=1e-9。",
+        "学习率按 lr = d_model^-0.5 · min(step_num^-0.5, step_num · warmup_steps^-1.5) 变化：前 warmup_steps 步线性升温，之后按步数平方根的倒数衰减。",
+        "warmup_steps 设为 4000。"
+      ]
+    },
+    {
+      "source_heading": "5.4 Regularization",
+      "items": [
+        "残差 dropout：对每个子层输出（在被加到子层输入并归一化之前）施加 dropout，并对编码器与解码器中嵌入与位置编码之和也施加 dropout；base 模型速率 P_drop=0.1。",
+        "Label smoothing：训练中使用 ε_ls=0.1 的标签平滑，虽然会损害困惑度（模型学得更不确定），但提升了准确率与 BLEU。",
+        "Table 2 在此给出 Transformer 与 ByteNet、Deep-Att+PosUnk、GNMT+RL、ConvS2S、MoE 及其集成在英德/英法 BLEU 与训练 FLOPs 上的对比。"
+      ]
+    },
+    {
+      "source_heading": "6 Results",
+      "items": [
+        "结果部分覆盖机器翻译、模型变体消融与英语成分句法分析三个实验。"
+      ]
+    },
+    {
+      "source_heading": "6.1 Machine Translation",
+      "items": [
+        "英德任务：big 模型 BLEU 28.4，超过此前报告的最佳模型（含集成）2.0 BLEU 以上，训练耗时 3.5 天、8 张 P100；base 模型也超过所有已发表模型与集成，且训练成本低得多。",
+        "英法任务：big 模型 BLEU 41.0，超过所有此前已发表单模型，训练成本不足此前 SOTA 的 1/4；该模型 dropout 率取 0.1 而非 0.3。",
+        "推理细节：base 用最后 5 个 checkpoint（每 10 分钟写一次）平均，big 平均最后 20 个 checkpoint；beam search beam=4、长度惩罚 α=0.6，推理时最大输出长度限制为输入长度 + 50 并尽可能提前终止。",
+        "训练 FLOPs 的估算方式是把训练时间、GPU 数量与每张 GPU 的单精度持续浮点算力相乘。",
+        "Table 2 汇总了翻译质量与训练成本的对比。"
+      ]
+    },
+    {
+      "source_heading": "6.2 Model Variations",
+      "items": [
+        "消融在英德开发集 newstest2013 上进行，使用 beam search 但不做 checkpoint 平均，结果见 Table 3。",
+        "行 (A)：在计算量不变的前提下改变注意力头数与 d_k、d_v，单头比最佳设置差 0.9 BLEU，头数过多也掉点。",
+        "行 (B)：减小注意力键维 d_k 损害模型质量，说明兼容性判定不易、可能需要比点积更复杂的兼容函数。",
+        "行 (C)、(D)：更大的模型更好，dropout 对避免过拟合非常有效。",
+        "行 (E)：用学习式位置嵌入替换正弦位置编码，结果与 base 模型几乎相同。"
+      ]
+    },
+    {
+      "source_heading": "6.3 English Constituency Parsing",
+      "items": [
+        "该任务的挑战在于输出受强结构约束且显著长于输入，RNN 序列到序列模型在小数据场景下未能达到最好水平。",
+        "训练 4 层、d_model=1024 的 Transformer：WSJ-only 设定使用 Penn Treebank WSJ 约 4 万训练句、16K 词表；半监督设定使用 high-confidence 与 BerkleyParser 语料约 1700 万句、32K 词表。",
+        "仅在 Section 22 开发集上做了少量实验来选择 dropout、学习率与 beam size，其余参数沿用英德 base 翻译模型；推理时最大输出长度提高到输入长度 + 300，beam size 21、α=0.3。",
+        "结果：WSJ-only 91.3 F1，优于 Petrov 90.4、Zhu 90.4、Vinyals & Kaiser 88.3，略低于 Dyer 的 RNNG 91.7；半监督 92.7 F1，优于 McClosky 92.1 与 Vinyals & Kaiser 92.1，低于多任务 Luong 93.0 与生成式 RNNG 93.3。",
+        "结论：在几乎不做任务专门调参的情况下模型表现仍然很好，并且仅用 4 万句 WSJ 训练集也超过了 BerkeleyParser。"
+      ]
+    },
+    {
+      "source_heading": "7 Conclusion",
+      "items": [
+        "总结了 Transformer 作为首个完全基于注意力的序列转导模型，用多头自注意力替代编码器-解码器架构中常用的循环层。",
+        "强调其训练显著快于基于循环或卷积层的架构，并在英德与英法两个任务上取得新的最好结果，英德任务超过了所有已报告的集成模型。",
+        "未来工作：把 Transformer 扩展到文本以外的输入输出模态，研究局部/受限注意力以高效处理图像、音频、视频等大输入输出，并让生成过程更少顺序化。",
+        "提供训练与评估代码地址 https://github.com/tensorflow/tensor2tensor。"
+      ]
+    },
+    {
+      "source_heading": "Attention Visualizations",
+      "items": [
+        "附录给出三张注意力可视化图：Figure 3 展示第 5 层编码器自注意力追踪长距离依赖（making…more difficult）；Figure 4 展示两个注意力头疑似参与指代消解（its），注意力非常尖锐；Figure 5 展示多个注意力头表现出与句子结构相关的行为，明显学到不同任务。"
+      ]
+    }
+  ],
+  "representative_image": {
+    "status": "selected",
+    "source_kind": "markdown_image_ref",
+    "label": "Figure 1",
+    "caption_quote": "The Transformer - model architecture.",
+    "section_hint": "3 Model Architecture",
+    "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg",
+    "selection_reason": "该图给出 Transformer 的整体模型架构（编码器与解码器两半），直接概括了论文的核心方法结构。",
+    "confidence": "high"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "evidence_kind": "real-local-runtime",
+  "original": [
+    {
+      "scenario": "approve",
+      "status": "ok",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "reject",
+      "status": "cancelled",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "existing",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "negative",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "missing-column",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "script-io-failure",
+      "status": "error",
+      "assertions": "passed"
+    }
+  ],
+  "relocated": [
+    {
+      "scenario": "approve",
+      "status": "ok",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "reject",
+      "status": "cancelled",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "existing",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "negative",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "missing-column",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "script-io-failure",
+      "status": "error",
+      "assertions": "passed"
+    }
+  ],
+  "model_used": false
+}

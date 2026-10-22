@@ -1,0 +1,45 @@
+{
+  "datasets": [
+    "WMT 2014 English-German",
+    "WMT 2014 English-French",
+    "Penn Treebank WSJ",
+    "BerkleyParser",
+    "high-confidence corpus"
+  ],
+  "exclude_terms": [
+    "medical image segmentation",
+    "speech recognition",
+    "recommender systems",
+    "reinforcement learning control"
+  ],
+  "key_terms": [
+    "Transformer",
+    "self-attention",
+    "sequence transduction",
+    "neural machine translation",
+    "encoder-decoder architecture",
+    "positional encoding",
+    "multi-head attention",
+    "parallel sequence processing",
+    "attention mechanism"
+  ],
+  "methods": [
+    "multi-head attention",
+    "scaled dot-product attention",
+    "sinusoidal positional encoding",
+    "residual connection",
+    "layer normalization",
+    "label smoothing",
+    "Adam optimizer with warmup",
+    "beam search decoding"
+  ],
+  "problems": [
+    "sequential computation bottleneck",
+    "long-range dependency learning",
+    "training cost of sequence transduction models",
+    "parallelization of encoder-decoder models",
+    "translation quality vs. parallelization trade-off",
+    "long output structure for constituency parsing"
+  ],
+  "schema": "literature_matching_metadata.v1"
+}

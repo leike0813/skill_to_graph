@@ -1,0 +1,48 @@
+{
+  "datasets": [
+    "WMT 2014 English-German",
+    "WMT 2014 English-French",
+    "Penn Treebank WSJ",
+    "newstest2013",
+    "newstest2014"
+  ],
+  "exclude_terms": [
+    "image classification",
+    "object detection",
+    "speech recognition",
+    "recommender system",
+    "medical imaging",
+    "reinforcement learning"
+  ],
+  "key_terms": [
+    "self-attention",
+    "Transformer",
+    "sequence transduction",
+    "neural machine translation",
+    "encoder-decoder architecture",
+    "parallelization",
+    "positional encoding",
+    "multi-head attention",
+    "long-range dependency",
+    "attention mechanism"
+  ],
+  "methods": [
+    "multi-head self-attention",
+    "scaled dot-product attention",
+    "position-wise feed-forward network",
+    "sinusoidal positional encoding",
+    "residual connection",
+    "layer normalization",
+    "label smoothing",
+    "inverse square root learning rate schedule"
+  ],
+  "problems": [
+    "sequential computation bottleneck",
+    "long-range dependency learning",
+    "training parallelism",
+    "machine translation quality",
+    "training cost",
+    "sequence transduction modeling"
+  ],
+  "schema": "literature_matching_metadata.v1"
+}

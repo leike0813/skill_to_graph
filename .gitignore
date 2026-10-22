@@ -1,0 +1,36 @@
+# Agent harness 托管目录：由 mattpack / omp 安装生成，可重新安装
+.agents/
+.claude/
+.omp/
+.mattpack/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.langgraph_api/
+
+# 本机验收恢复状态与完整代理会话（保留文件，不纳入提交）
+tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/
+tests/acceptance/literature-analysis-attention/graph-run/.literature_analysis_tmp/
+tests/acceptance/literature-analysis-attention/sessions-control/
+
+# 环境变量（保留示例文件）
+.env
+.env.*
+!.env.example
+
+# 编辑器与操作系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

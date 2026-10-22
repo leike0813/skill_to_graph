@@ -1,0 +1,1 @@
+"""Generated fixed-file application."""

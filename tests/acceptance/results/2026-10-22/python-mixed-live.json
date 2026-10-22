@@ -1,0 +1,76 @@
+{
+  "evidence_kind": "live-model",
+  "model": "MiniMax-M3.1-Flash",
+  "endpoint": "https://api.minimax.cn/anthropic",
+  "cases": [
+    {
+      "scenario": "sufficient",
+      "status": "ok",
+      "used_keys": [
+        "alpha",
+        "beta"
+      ],
+      "report": "## What controls a LangGraph task\n\nA LangGraph task's behavior and execution order are governed by its graph structure, defined using explicit nodes and edges [alpha]. Nodes represent the units of work to perform, and edges represent the connections between them — together they determine which steps run and how control flows from one step to the next [alpha].\n\n## How progress is stored\n\nExecution progress is not held only in memory during a run; it is persisted through checkpoints, which store the graph's progress [beta]. Checkpoints are therefore the mechanism by which the state of a graph's execution is recorded [beta].\n\n## Summary\n\n- **Control**: explicit nodes and edges define the task's steps and control flow [alpha].\n- **Progress storage**: checkpoints store the graph's progress [beta].\n\n## Evidence used\n\n- `alpha` — \"LangGraph uses explicit nodes and edges\"\n- `beta` — \"Checkpoints store graph progress\"\n- `empty` — retrieved but contains no relevant material; not cited.",
+      "tools": [
+        {
+          "name": "lookup",
+          "input": "{'key': 'alpha'}"
+        },
+        {
+          "name": "lookup",
+          "input": "{'key': 'beta'}"
+        },
+        {
+          "name": "lookup",
+          "input": "{'key': 'empty'}"
+        }
+      ],
+      "before_approval_no_output": true
+    },
+    {
+      "scenario": "reject",
+      "status": "cancelled",
+      "used_keys": [
+        "alpha",
+        "beta"
+      ],
+      "report": "LangGraph controls a task by representing it as a graph of explicit nodes and edges, which define the steps and their order/branching [alpha]. It also persists progress through checkpoints, so the state of the running task can be saved and resumed [beta].\n\nEvidence cited:\n- alpha: \"LangGraph uses explicit nodes and edges\"\n- beta: \"Checkpoints store graph progress\"",
+      "tools": [
+        {
+          "name": "lookup",
+          "input": "{'key': 'alpha'}"
+        },
+        {
+          "name": "lookup",
+          "input": "{'key': 'beta'}"
+        },
+        {
+          "name": "lookup",
+          "input": "{'key': 'empty'}"
+        }
+      ],
+      "before_approval_no_output": true
+    },
+    {
+      "scenario": "insufficient",
+      "status": "insufficient",
+      "used_keys": [],
+      "report": "",
+      "tools": [
+        {
+          "name": "lookup",
+          "input": "{'key': 'alpha'}"
+        },
+        {
+          "name": "lookup",
+          "input": "{'key': 'beta'}"
+        },
+        {
+          "name": "lookup",
+          "input": "{'key': 'empty'}"
+        }
+      ],
+      "before_approval_no_output": true
+    }
+  ]
+}

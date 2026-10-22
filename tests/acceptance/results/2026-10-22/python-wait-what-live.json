@@ -1,0 +1,23 @@
+{
+  "scenario": "wait-what",
+  "tools": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\", \"input.json\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/fixtures/wait-what-workspace/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    },
+    {
+      "name": "read_file",
+      "content": "{\n  \"conversation\": [\n    {\"role\": \"user\", \"content\": \"How will this task continue after I approve it?\"},\n    {\"role\": \"assistant\", \"content\": \"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\"},\n    {\"role\": \"user\", \"content\": \"Wait, I do not understand. Re-pitch that with a little context.\"}\n  ],\n  \"workdir\": \"REPLACE_WITH_ABSOLUTE_WORKSPACE_PATH\"\n}\n"
+    }
+  ],
+  "reply": "Here is what I mean, in simple terms.\n\n**Context:** Your question was how this task continues after you approve it.\n\n**What happens:**\n\n1. The Graph stops at a Node that waits for your approval. This Node is the confirmation boundary.\n2. When you approve, the Graph saves a Checkpoint.\n3. The Checkpoint links your approval to the task that was suspended. So the Graph continues the correct task, and not another one.\n4. The next Node then runs again. This Node sends the report.\n\n**One caution:** A Checkpoint does not guarantee that an external action happens only once. This means that a write to an external file can happen again after a crash. So, in some cases, the report can be sent two times.\n\n**Summary:** Your approval lets the Graph save a Checkpoint and continue. The report comes from the next Node. But a crash can cause the external file write to happen again.",
+  "judgement": "pending semantic and language review"
+}

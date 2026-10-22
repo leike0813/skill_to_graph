@@ -1,0 +1,21 @@
+{
+  "elapsed_seconds": 4.610670328140259,
+  "model": "minimax-code-cn/MiniMax-M3.1-Flash",
+  "result": {
+    "digest_path": "",
+    "references_path": "",
+    "citation_analysis_path": "",
+    "literature_matching_metadata_path": "",
+    "literature_score_path": "",
+    "provenance": {
+      "generated_at": "",
+      "input_hash": "",
+      "model": "MiniMax-M3.1-Flash"
+    },
+    "warnings": [],
+    "error": {
+      "code": "RuntimeError",
+      "message": "Runtime persist_analysis_plan did not return JSON: usage: run_analysis.py persist_analysis_plan [-h] --db-path DB_PATH\n                                             --payload-file PAYLOAD_FILE\nrun_analysis.py persist_analysis_plan: error: the following arguments are required: --payload-file\n"
+    }
+  }
+}

@@ -1,0 +1,1067 @@
+{
+  "meta": {
+    "language": "zh-CN",
+    "scope": {
+      "section_title": "1 Introduction + 2 Background",
+      "line_start": 25,
+      "line_end": 43
+    },
+    "scope_source": "agent",
+    "scope_decision": {
+      "selection_reason": "Review/background discourse is concentrated in the Introduction (lines 25-33, situating the work against recurrent and attention-based sequence models) and the Background section (lines 35-43, surveying convolutional sequence models such as Extended Neural GPU, ByteNet, ConvS2S, prior self-attention applications, and end-to-end memory networks). Neither section has child subsections, so the line range fully covers them. Later sections cite prior work only as experimental baselines or component citations rather than as a literature review.",
+      "covered_sections": [
+        "1 Introduction",
+        "2 Background"
+      ],
+      "fallback_from": null,
+      "fallback_reason": ""
+    },
+    "mapping_reliability": "normal",
+    "reference_extraction": {
+      "status": "completed"
+    }
+  },
+  "summary": "Within the Introduction and Background scope, the source organizes its citations as a funnel from the dominant recurrent paradigm to its own contribution: it first establishes RNNs, LSTM and gated RNNs as the state-of-the-art family for sequence modeling and transduction, then notes that further scaling of recurrent language models and encoder-decoder architectures had reached its limits while factorization tricks and conditional computation improved efficiency without removing sequential computation. Attention is then introduced as the mechanism that models dependencies independent of distance, with the observation that it is nearly always coupled to a recurrent network — the gap the source fills — supported by the small set of standalone-attention and self-attention precedents. The Background section groups the parallel-computation lineage (Extended Neural GPU, ByteNet, ConvS2S, Neural GPU) and the gradient-flow analysis as the concrete cost of distance-dependent path length, closes with memory networks as structural precedent for replacing recurrence with attention, and finally asserts the novelty claim that the Transformer is the first transduction model relying entirely on self-attention.",
+  "timeline": {
+    "early": {
+      "ref_indexes": [
+        12,
+        11,
+        1,
+        4,
+        6,
+        34,
+        23
+      ],
+      "summary": "Early citations establish the recurrent foundation the paper departs from: the long short-term memory network (1997) as the architecture that made recurrent sequence models state of the art, and the gradient-flow analysis of recurrent nets (2001) that explains why distant dependencies are hard to learn — the analytical basis for the source's path-length argument."
+    },
+    "mid": {
+      "ref_indexes": [
+        33,
+        3,
+        14,
+        15,
+        16,
+        26,
+        37
+      ],
+      "summary": "Middle-period citations consolidate the attention-augmented recurrent encoder-decoder paradigm that dominated the field just before the source: encoder-decoder RNNs for phrase-based and neural machine translation, attention-based NMT, gated recurrent networks, sequence-to-sequence learning, and end-to-end memory networks that already replaced sequence-aligned recurrence with recurrent attention."
+    },
+    "recent": {
+      "ref_indexes": [
+        8,
+        17,
+        18,
+        20,
+        21,
+        27,
+        31
+      ],
+      "summary": "Recent citations mark the immediate competitive frontier: convolutional and linear-time sequence models that parallelize computation but pay a distance-dependent path length, plus self-attention applications in reading comprehension, summarization, entailment and sentence representation, and efficiency work on factorization tricks and conditional computation that improved speed without removing the sequential constraint."
+    }
+  },
+  "items": [
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "attention",
+        "neural machine translation",
+        "encoder-decoder",
+        "alignment",
+        "long-range dependencies"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-1",
+        "key_reference_reason": "It is the only work cited in both the state-of-the-art recurrent sequence modeling sentence and the attention-mechanisms sentence, so it carries both the performance precedent and the conceptual motivation for the source's attention approach.",
+        "role_in_context": "foundational precedent for attention in neural sequence models, and the conceptual anchor for the source's claim that attention removes distance as an obstacle to modeling dependencies"
+      },
+      "topic": "attention mechanisms for neural machine translation and sequence transduction",
+      "usage": "Cited in two places: once in the claim that RNNs, LSTM and gated RNNs have been established as state of the art for sequence modeling and transduction such as machine translation, and once in the statement that attention mechanisms have become integral to compelling sequence modeling and transduction models, allowing dependencies to be modeled without regard to their distance in the input or output sequences.",
+      "ref_index": 1,
+      "function": "historical",
+      "summary": "The cited work introduced an attention-based neural machine translation model in which the decoder attends to encoder states, so that dependencies between distant input and output positions can be modeled directly. The source uses it both as a state-of-the-art exemplar of recurrent translation models and as the reference point for the observation that attention, though widely adopted in sequence models, is nearly always tied to a recurrent network — the gap the source's self-attention-only design addresses.",
+      "confidence": 0.85,
+      "ref_number": 2,
+      "reference": {
+        "author": [
+          "D. Bahdanau",
+          "Kyunghyun Cho",
+          "Yoshua Bengio"
+        ],
+        "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[2]",
+          "mention_id": "m00004",
+          "ref_number_hint": 2,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        },
+        {
+          "line_end": 31,
+          "line_start": 31,
+          "marker": "[2]",
+          "mention_id": "m00011",
+          "ref_number_hint": 2,
+          "snippet": "Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[2]",
+      "author_year_label": "D. Bahdanau, 2014"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "self-attention",
+        "intra-attention",
+        "reading comprehension",
+        "sentence representations",
+        "LSTM"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-3",
+        "key_reference_reason": "",
+        "role_in_context": "prior evidence that self-attention is an established and successful mechanism in its own right, supporting the source's use of self-attention as the sole computation primitive rather than as an add-on to a recurrent network"
+      },
+      "topic": "self-attention (intra-attention) for learning task-independent sentence representations and machine reading",
+      "usage": "Cited among works demonstrating that self-attention, which relates positions within a single sequence, has been used successfully across a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations.",
+      "ref_index": 3,
+      "function": "uncategorized",
+      "summary": "The cited work applies self-attention, relating different positions of a single sequence to compute a sequence representation, to machine reading and related comprehension tasks. The source cites it to establish that self-attention had already been validated across multiple task families, which grounds its claim that relying entirely on self-attention for input and output representations is a well-founded design rather than an untested one.",
+      "confidence": 0.85,
+      "ref_number": 4,
+      "reference": {
+        "author": [
+          "Jian-Peng Cheng",
+          "Li Dong",
+          "Mirella Lapata"
+        ],
+        "title": "Long Short-Term Memory-Networks for Machine Reading",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[4]",
+          "mention_id": "m00018",
+          "ref_number_hint": 4,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[4]",
+      "author_year_label": "Jian-Peng Cheng, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "encoder-decoder",
+        "RNN",
+        "phrase representations",
+        "statistical machine translation",
+        "sequence modeling"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-4",
+        "key_reference_reason": "",
+        "role_in_context": "background exemplar of the recurrent encoder-decoder paradigm that the source's non-recurrent transduction model is positioned against"
+      },
+      "topic": "recurrent encoder-decoder architectures and phrase representations for machine translation",
+      "usage": "Cited within the group of works establishing RNNs as state of the art for sequence modeling and transduction tasks such as machine translation, alongside the LSTM and gated RNN references, and as part of the encoder-decoder architecture line whose boundaries were later pushed.",
+      "ref_index": 4,
+      "function": "background",
+      "summary": "The cited work introduced an encoder-decoder recurrent network trained to score phrase pairs for statistical machine translation, an early instance of the encoder-decoder template later paired with attention. The source invokes it as part of the established evidence that recurrent, encoder-decoder models were the state of the art for sequence modeling and translation, i.e. as the baseline family whose sequential computation the source set out to remove.",
+      "confidence": 0.85,
+      "ref_number": 5,
+      "reference": {
+        "author": [
+          "Kyunghyun Cho",
+          "Bart van Merriënboer",
+          "Çaglar Gülçehre",
+          "D. Bahdanau",
+          "F. Bougares",
+          "Holger Schwenk",
+          "Yoshua Bengio"
+        ],
+        "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[5]",
+          "mention_id": "m00005",
+          "ref_number_hint": 5,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[5]",
+      "author_year_label": "Kyunghyun Cho, 2014"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "gated RNN",
+        "sequence modeling",
+        "recurrent neural network",
+        "state of the art",
+        "transduction"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-6",
+        "key_reference_reason": "",
+        "role_in_context": "representative of the gated recurrent architecture family that the source's non-recurrent model is positioned to supersede"
+      },
+      "topic": "gated recurrent neural networks for sequence modeling",
+      "usage": "Named directly in the sentence asserting that recurrent neural networks, long short-term memory and gated recurrent neural networks in particular have been firmly established as state of the art approaches in sequence modeling and transduction problems.",
+      "ref_index": 6,
+      "function": "component",
+      "summary": "The cited work provides the empirical evaluation of gated recurrent units on standard sequence modeling tasks, establishing the gated RNN as a state-of-the-art sequence model. The source cites it as one of the two specific architectures (with LSTM) that had become state of the art for sequence modeling and transduction, using it to characterize the dominant recurrent modeling paradigm at the time the source was written.",
+      "confidence": 0.85,
+      "ref_number": 7,
+      "reference": {
+        "author": [
+          "Junyoung Chung",
+          "Çaglar Gülçehre",
+          "Kyunghyun Cho",
+          "Yoshua Bengio"
+        ],
+        "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[7]",
+          "mention_id": "m00002",
+          "ref_number_hint": 7,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[7]",
+      "author_year_label": "Junyoung Chung, 2014"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "convolution",
+        "sequence-to-sequence",
+        "parallel computation",
+        "path length",
+        "baseline comparison"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-8",
+        "key_reference_reason": "It is mentioned in both cited passages, serving as the concrete parallel-computation exemplar behind the source's path-length argument and as a named comparison model in the source's novelty claim.",
+        "role_in_context": "primary competing design and comparison baseline: the closest existing attempt at non-sequential parallel sequence modeling, whose distance-dependent path length the source reduces to a constant"
+      },
+      "topic": "convolutional sequence-to-sequence models and parallel computation of hidden representations",
+      "usage": "Cited twice: once as one of the models (with the Extended Neural GPU and ByteNet) that use convolutional building blocks to compute hidden representations in parallel for all input and output positions, where the number of operations needed to relate signals from two arbitrary positions grows linearly with their distance; and once among the models over which the source claims advantages, having stated that the Transformer is the first transduction model relying entirely on self-attention without sequence-aligned RNNs or convolution.",
+      "ref_index": 8,
+      "function": "baseline",
+      "summary": "The cited work applies convolutional networks to sequence-to-sequence learning, computing all input and output positions in parallel instead of step by step. The source uses it both as the exemplar of a parallel, distance-dependent architecture — where relating two positions costs operations proportional to their distance, making distant dependencies harder to learn — and as the main non-recurrent model against which the Transformer's fully self-attention-based design and its claimed advantages are argued.",
+      "confidence": 0.85,
+      "ref_number": 9,
+      "reference": {
+        "author": [
+          "Jonas Gehring",
+          "M. Auli",
+          "D. Grangier",
+          "D. Yarats",
+          "Y. Dauphin"
+        ],
+        "title": "Convolutional Sequence to Sequence Learning",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[9]",
+          "mention_id": "m00016",
+          "ref_number_hint": 9,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        },
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "marker": "[9]",
+          "mention_id": "m00025",
+          "ref_number_hint": 9,
+          "snippet": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[9]",
+      "author_year_label": "Jonas Gehring, 2017"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "gradient flow",
+        "long-term dependencies",
+        "vanishing gradient",
+        "recurrent networks",
+        "path length"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-11",
+        "key_reference_reason": "It supplies the analytical basis for the source's main efficiency-and-learnability argument linking path length to the difficulty of modeling distant dependencies.",
+        "role_in_context": "theoretical grounding for the source's central argument that distance-dependent path length impairs learning of long-range dependencies, and thus for the advantage of a constant path length"
+      },
+      "topic": "gradient flow and the difficulty of learning long-term dependencies in recurrent networks",
+      "usage": "Cited immediately after the observation that in the Extended Neural GPU, ByteNet and ConvS2S the number of operations required to relate signals from two arbitrary input or output positions grows with the distance between them, as the reference for the resulting difficulty of learning dependencies between distant positions.",
+      "ref_index": 11,
+      "function": "uncategorized",
+      "summary": "The cited work analyzes gradient propagation through recurrent networks and characterizes the difficulty of learning long-term dependencies. The source cites it to substantiate the claim that architectures whose operation count between two positions grows with their separation make distant dependencies harder to learn, converting a well-known recurrent-net training pathology into the quantitative rationale for the source's constant-number-of-operations design.",
+      "confidence": 0.85,
+      "ref_number": 12,
+      "reference": {
+        "author": [
+          "S. Hochreiter",
+          "Yoshua Bengio"
+        ],
+        "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies",
+        "year": 2001
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[12]",
+          "mention_id": "m00017",
+          "ref_number_hint": 12,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[12]",
+      "author_year_label": "S. Hochreiter, 2001"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "LSTM",
+        "recurrent neural network",
+        "gating",
+        "sequence modeling",
+        "state of the art"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-12",
+        "key_reference_reason": "",
+        "role_in_context": "foundational recurrent architecture credited with making recurrent sequence models state of the art, i.e. the canonical example of the sequential-computation paradigm the source replaces"
+      },
+      "topic": "long short-term memory recurrent architecture for sequence modeling",
+      "usage": "Cited by name in the claim that recurrent neural networks, long short-term memory and gated recurrent neural networks in particular have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation.",
+      "ref_index": 12,
+      "function": "component",
+      "summary": "The cited work introduced the long short-term memory network with input, output and forget gates to mitigate vanishing gradients and preserve long-range information. The source cites it as the exemplar that made recurrent architectures state of the art for sequence modeling and transduction, using it to characterize the dominant baseline and the sequential computation that the source's architecture eliminates.",
+      "confidence": 0.85,
+      "ref_number": 13,
+      "reference": {
+        "author": [
+          "S. Hochreiter",
+          "J. Schmidhuber"
+        ],
+        "title": "Long Short-Term Memory",
+        "year": 1997
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[13]",
+          "mention_id": "m00001",
+          "ref_number_hint": 13,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[13]",
+      "author_year_label": "S. Hochreiter, 1997"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "language modeling",
+        "recurrent network",
+        "encoder-decoder",
+        "scaling",
+        "sequence modeling"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-14",
+        "key_reference_reason": "",
+        "role_in_context": "evidence of the scaling efforts and ceiling of recurrent sequence models, the trend the source's non-recurrent architecture is positioned to continue"
+      },
+      "topic": "recurrent language modeling at scale and the boundaries of encoder-decoder architectures",
+      "usage": "Cited in the sentence stating that numerous efforts continued to push the boundaries of recurrent language models and encoder-decoder architectures after RNNs, LSTM and gated RNNs had become state of the art for sequence modeling and transduction.",
+      "ref_index": 14,
+      "function": "component",
+      "summary": "The cited work studies large-scale recurrent language modeling and explores the limits of such models on harder sequence modeling tasks. The source cites it as one of the efforts that pushed recurrent language models and encoder-decoder architectures to their boundaries, framing the recurrent paradigm as mature and saturated, and motivating an architecture that avoids recurrent computation entirely.",
+      "confidence": 0.85,
+      "ref_number": 15,
+      "reference": {
+        "author": [
+          "R. Józefowicz",
+          "O. Vinyals",
+          "Mike Schuster",
+          "Noam Shazeer",
+          "Yong-Hui Wu"
+        ],
+        "title": "Exploring the Limits of Language Modeling",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[15]",
+          "mention_id": "m00008",
+          "ref_number_hint": 15,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[15]",
+      "author_year_label": "R. Józefowicz, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "Extended Neural GPU",
+        "active memory",
+        "parallel computation",
+        "attention alternative",
+        "convolutional building block"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-15",
+        "key_reference_reason": "",
+        "role_in_context": "precedent for parallelizing sequence computation and, within the source's grouping, the closest non-attention-weighted alternative to the source's self-attention design"
+      },
+      "topic": "active memory and the Extended Neural GPU as an alternative to attention-based sequence processing",
+      "usage": "Cited as one of the three works (Extended Neural GPU, ByteNet, ConvS2S) whose shared motivation is reducing sequential computation by using convolutional building blocks to compute hidden representations in parallel for all input and output positions.",
+      "ref_index": 15,
+      "function": "uncategorized",
+      "summary": "The cited work proposes an active-memory architecture with an extended Neural GPU, exploring whether external memory operations can substitute for attention in sequence modeling, and shares the goal of parallelizing the computation of sequence representations. The source cites it as a founding member of the family of models that reduce sequential computation by computing hidden representations in parallel, positioning it within the same efficiency lineage as ByteNet and ConvS2S.",
+      "confidence": 0.85,
+      "ref_number": 16,
+      "reference": {
+        "author": [
+          "Lukasz Kaiser",
+          "Samy Bengio"
+        ],
+        "title": "Can Active Memory Replace Attention?",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[16]",
+          "mention_id": "m00014",
+          "ref_number_hint": 16,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[16]",
+      "author_year_label": "Lukasz Kaiser, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "Neural GPU",
+        "self-attention",
+        "transduction model",
+        "parallel computation",
+        "comparison"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-16",
+        "key_reference_reason": "",
+        "role_in_context": "comparison point for the source's novelty claim, marking the boundary between earlier parallel sequence models and the fully self-attention-based design"
+      },
+      "topic": "Neural GPU as a parallel, non-recurrent alternative for learning sequence algorithms",
+      "usage": "Cited among the models over which the source claims advantages, in the passage stating that the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence-aligned RNNs or convolution.",
+      "ref_index": 16,
+      "function": "baseline",
+      "summary": "The cited work shows that a GPU-style, non-sequential recurrent-free network can learn simple algorithms, positioning it as an alternative way to process sequences without step-by-step recurrence. The source cites it, alongside ByteNet and ConvS2S, as an earlier model whose advantages the Transformer claims to exceed by being the first transduction model to compute its input and output representations purely through self-attention, with no sequence-aligned recurrence or convolution.",
+      "confidence": 0.85,
+      "ref_number": 17,
+      "reference": {
+        "author": [
+          "Łukasz Kaiser",
+          "Ilya Sutskever"
+        ],
+        "title": "Neural GPUs learn algorithms",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "marker": "[17]",
+          "mention_id": "m00023",
+          "ref_number_hint": 17,
+          "snippet": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[17]",
+      "author_year_label": "Łukasz Kaiser, 2016"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "convolutional sequence model",
+        "parallel computation",
+        "sequential computation reduction",
+        "machine translation",
+        "position-wise representations"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-17",
+        "key_reference_reason": "It is one of the explicitly named convolutional alternatives (ByteNet, ConvS2S) against which the Transformer's constant-operation self-attention and reduced effective resolution trade-off are argued, so it directly supports the paper's central contribution claim.",
+        "role_in_context": "direct comparator and baseline lineage for the Transformer's claim of removing sequential computation"
+      },
+      "topic": "convolutional sequence transduction models for machine translation (linear-time NMT)",
+      "usage": "Cited as one of the convolutional predecessors that reduce sequential computation by computing hidden representations in parallel for all input and output positions, and as a model whose long-range dependency modelling is weaker than the Transformer's constant-operation self-attention.",
+      "ref_index": 17,
+      "function": "baseline",
+      "summary": "The cited linear-time neural machine translation line of work is invoked to establish the convolutional approach to parallel sequence processing: like the Extended Neural GPU, ByteNet and ConvS2S, it trades recurrence for convolutions so all positions can be computed in parallel. The source uses it both as motivating background for reducing sequential computation and as a contrast case, noting that such models need a number of operations that grows linearly with the distance between positions (logarithmically for ByteNet), which makes distant dependencies harder to learn, whereas the Transformer reduces this to a constant number of operations.",
+      "confidence": 0.85,
+      "ref_number": 18,
+      "reference": {
+        "author": [
+          "N. Kalchbrenner",
+          "L. Espeholt",
+          "K. Simonyan",
+          "A. van den Oord",
+          "Alex Graves",
+          "K. Kavukcuoglu"
+        ],
+        "title": "Neural Machine Translation in Linear Time",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[18]",
+          "mention_id": "m00015",
+          "ref_number_hint": 18,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        },
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "marker": "[18]",
+          "mention_id": "m00024",
+          "ref_number_hint": 18,
+          "snippet": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[18]",
+      "author_year_label": "N. Kalchbrenner, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "attention mechanism",
+        "sequence modeling",
+        "transduction",
+        "distance-independent dependencies"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-18",
+        "key_reference_reason": "",
+        "role_in_context": "background support for the general utility of attention in sequence transduction"
+      },
+      "topic": "attention mechanisms for sequence modeling and transduction",
+      "usage": "Cited as an example of attention-based sequence modeling that captures dependencies regardless of their distance in the input or output sequences, in a sentence stating that attention has become integral to compelling sequence modeling and transduction models.",
+      "ref_index": 18,
+      "function": "background",
+      "summary": "Structured Attention Networks is cited to show that attention-based modeling of dependencies independent of their distance has become a standard component of strong sequence modeling and transduction systems. The source uses this citation as general background for the benefits of attention, and immediately contrasts it with the common pattern of coupling attention to a recurrent network, a coupling that the Transformer removes.",
+      "confidence": 0.85,
+      "ref_number": 19,
+      "reference": {
+        "author": [
+          "Yoon Kim",
+          "Carl Denton",
+          "Luong Hoang",
+          "Alexander M. Rush"
+        ],
+        "title": "Structured Attention Networks",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 31,
+          "line_start": 31,
+          "marker": "[19]",
+          "mention_id": "m00012",
+          "ref_number_hint": 19,
+          "snippet": "Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[19]",
+      "author_year_label": "Yoon Kim, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "factorization tricks",
+        "LSTM efficiency",
+        "computational efficiency",
+        "sequential computation constraint"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-20",
+        "key_reference_reason": "",
+        "role_in_context": "prior-art acknowledgement of partial efficiency gains in recurrent models, motivating the Transformer"
+      },
+      "topic": "efficient computation in LSTM/recurrent models via matrix factorization tricks",
+      "usage": "Cited as representative 'factorization tricks' that have improved the computational efficiency of recurrent models, while the source insists that the fundamental constraint of sequential computation remains.",
+      "ref_index": 20,
+      "function": "uncategorized",
+      "summary": "The cited factorization tricks for LSTM networks are invoked to acknowledge that recurrent models have already achieved significant computational-efficiency gains through factorization, yet these improvements do not remove the inherent sequential nature of recurrent computation. The source uses the citation to frame the Transformer as addressing a constraint that efficiency tricks alone cannot overcome.",
+      "confidence": 0.85,
+      "ref_number": 21,
+      "reference": {
+        "author": [
+          "Oleksii Kuchaiev",
+          "Boris Ginsburg"
+        ],
+        "title": "Factorization tricks for LSTM networks",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 29,
+          "line_start": 29,
+          "marker": "[21]",
+          "mention_id": "m00009",
+          "ref_number_hint": 21,
+          "snippet": "Recurrent models typically factor computation along the symbol positions of the input and output sequences. Aligning the positions to steps in computation time, they generate a sequence of hidden states $h _ { t } ,$ as a function of the previous hidden state $h _ { t - 1 }$ and the input for position t. This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples. Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter. The fundamental constraint of sequential computation, however, remains.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[21]",
+      "author_year_label": "Oleksii Kuchaiev, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "self-attention",
+        "intra-attention",
+        "sentence representation",
+        "task-independent embeddings"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-21",
+        "key_reference_reason": "",
+        "role_in_context": "evidence of prior successful use of self-attention that the Transformer generalizes to full transduction"
+      },
+      "topic": "self-attention for learning task-independent sentence representations",
+      "usage": "Cited among the successful applications of self-attention (intra-attention), specifically for learning task-independent sentence representations.",
+      "ref_index": 21,
+      "function": "uncategorized",
+      "summary": "The cited structured self-attentive sentence embedding work is cited as one of the tasks in which self-attention — relating different positions of a single sequence to compute a representation of that sequence — has already been applied successfully. The source uses it to show that the mechanism the Transformer relies on had prior precedent in representation-learning settings, before being scaled to full sequence transduction.",
+      "confidence": 0.85,
+      "ref_number": 22,
+      "reference": {
+        "author": [
+          "Zhouhan Lin",
+          "Min-Wei Feng",
+          "C. D. dos Santos",
+          "Mo Yu",
+          "Bing Xiang",
+          "Bowen Zhou",
+          "Yoshua Bengio"
+        ],
+        "title": "A Structured Self-attentive Sentence Embedding",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[22]",
+          "mention_id": "m00021",
+          "ref_number_hint": 22,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[22]",
+      "author_year_label": "Zhouhan Lin, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "attention-based NMT",
+        "encoder-decoder architecture",
+        "recurrent language model",
+        "sequence transduction"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-23",
+        "key_reference_reason": "",
+        "role_in_context": "recurrent-architecture lineage that the Transformer extends and reorganizes"
+      },
+      "topic": "attention-based encoder-decoder neural machine translation",
+      "usage": "Cited among the efforts that pushed the boundaries of recurrent language models and encoder-decoder architectures for sequence modeling and transduction such as machine translation.",
+      "ref_index": 23,
+      "function": "component",
+      "summary": "The cited attention-based NMT work is invoked in the opening discussion of recurrent networks as established state-of-the-art approaches to sequence modeling and transduction, and again among the numerous efforts that continued to push the boundaries of recurrent language models and encoder-decoder architectures. The source uses it as the exemplar of the attention-augmented recurrent encoder-decoder paradigm that the Transformer contrasts with and improves upon.",
+      "confidence": 0.85,
+      "ref_number": 24,
+      "reference": {
+        "author": [
+          "Thang Luong",
+          "Hieu Pham",
+          "Christopher D. Manning"
+        ],
+        "title": "Effective Approaches to Attention-based Neural Machine Translation",
+        "year": 2015
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[24]",
+          "mention_id": "m00007",
+          "ref_number_hint": 24,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[24]",
+      "author_year_label": "Thang Luong, 2015"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "attention without recurrence",
+        "decomposable attention",
+        "self-attention application",
+        "sequence modeling"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-26",
+        "key_reference_reason": "It is explicitly singled out as one of the few cases where attention is used without a recurrent network, which is the architectural departure the Transformer formalizes.",
+        "role_in_context": "rare counterexample to the attention-plus-recurrence convention, supporting the Transformer's architecture choice"
+      },
+      "topic": "attention-based sentence modeling without recurrence (decomposable attention)",
+      "usage": "Cited as one of the few models in which attention is used without being combined with a recurrent network, and also as a task on which self-attention had been applied successfully.",
+      "ref_index": 26,
+      "function": "component",
+      "summary": "The cited decomposable attention model serves a double citation role in the source. First, it is named in the statement that in all but a few cases attention mechanisms are used in conjunction with a recurrent network, making it one of the rare precedents for standalone attention-based sequence modeling that the Transformer generalizes. Second, it appears among the works where self-attention has been used successfully across tasks, evidencing the mechanism's versatility.",
+      "confidence": 0.85,
+      "ref_number": 27,
+      "reference": {
+        "author": [
+          "Ankur Parikh",
+          "Oscar Täckström",
+          "Dipanjan Das",
+          "Jakob Uszkoreit"
+        ],
+        "title": "A decomposable attention model",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 31,
+          "line_start": 31,
+          "marker": "[27]",
+          "mention_id": "m00013",
+          "ref_number_hint": 27,
+          "snippet": "Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.",
+          "style": "numeric"
+        },
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[27]",
+          "mention_id": "m00019",
+          "ref_number_hint": 27,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[27]",
+      "author_year_label": "Ankur Parikh, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "self-attention",
+        "abstractive summarization",
+        "sequence model",
+        "attention application"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-27",
+        "key_reference_reason": "",
+        "role_in_context": "example of successful prior self-attention application supporting the mechanism's generality"
+      },
+      "topic": "abstractive summarization with deep reinforced sequence models",
+      "usage": "Cited as a task in which self-attention has been used successfully, listed alongside reading comprehension and textual entailment.",
+      "ref_index": 27,
+      "function": "uncategorized",
+      "summary": "The cited deep reinforced summarization model is cited as one of the successful applications of self-attention (intra-attention) across diverse tasks. The source uses the citation to demonstrate that the intra-attention mechanism underpinning the Transformer had already proven effective in conditional generation tasks such as abstractive summarization.",
+      "confidence": 0.85,
+      "ref_number": 28,
+      "reference": {
+        "author": [
+          "Romain Paulus",
+          "Caiming Xiong",
+          "R. Socher"
+        ],
+        "title": "A Deep Reinforced Model for Abstractive Summarization",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[28]",
+          "mention_id": "m00020",
+          "ref_number_hint": 28,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[28]",
+      "author_year_label": "Romain Paulus, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "conditional computation",
+        "sparsely-gated mixture-of-experts",
+        "model capacity",
+        "computational efficiency"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-31",
+        "key_reference_reason": "",
+        "role_in_context": "conditional-computation counterpoint showing that capacity gains can be obtained without removing sequence order"
+      },
+      "topic": "conditional computation via sparsely-gated mixture-of-experts layers in very large networks",
+      "usage": "Cited as the representative work on conditional computation that achieved significant computational-efficiency improvements while also improving model performance.",
+      "ref_index": 31,
+      "function": "uncategorized",
+      "summary": "The cited sparsely-gated mixture-of-experts layer is used as the exemplar of conditional computation, which alongside factorization tricks is described as having significantly improved computational efficiency in recent work, and additionally improved model performance. The source contrasts such capacity-scaling strategies with its own approach, noting that the fundamental constraint of sequential computation remains even when efficiency is gained this way.",
+      "confidence": 0.85,
+      "ref_number": 32,
+      "reference": {
+        "author": [
+          "Noam Shazeer",
+          "Azalia Mirhoseini",
+          "Krzysztof Maziarz",
+          "Andy Davis",
+          "Quoc V. Le",
+          "Geoffrey E. Hinton",
+          "J. Dean"
+        ],
+        "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 29,
+          "line_start": 29,
+          "marker": "[32]",
+          "mention_id": "m00010",
+          "ref_number_hint": 32,
+          "snippet": "Recurrent models typically factor computation along the symbol positions of the input and output sequences. Aligning the positions to steps in computation time, they generate a sequence of hidden states $h _ { t } ,$ as a function of the previous hidden state $h _ { t - 1 }$ and the input for position t. This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples. Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter. The fundamental constraint of sequential computation, however, remains.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[32]",
+      "author_year_label": "Noam Shazeer, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "recurrent attention",
+        "memory networks",
+        "question answering",
+        "language modeling",
+        "non-sequence-aligned recurrence"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-33",
+        "key_reference_reason": "",
+        "role_in_context": "structural precedent for replacing sequence-aligned recurrence with attention-based processing"
+      },
+      "topic": "memory networks with recurrent attention over external memory slots",
+      "usage": "Cited as a model that is based on a recurrent attention mechanism rather than sequence-aligned recurrence and that performs well on simple-language question answering and language modeling.",
+      "ref_index": 33,
+      "function": "uncategorized",
+      "summary": "The cited end-to-end memory networks are used to show that a recurrent attention mechanism can replace sequence-aligned recurrence, with reported success on simple-language question answering and language modeling. The source uses the citation as evidence that the attention-based, recurrence-free design adopted by the Transformer has structural precedent in earlier architectures.",
+      "confidence": 0.85,
+      "ref_number": 34,
+      "reference": {
+        "author": [
+          "Sainbayar Sukhbaatar",
+          "A. Szlam",
+          "J. Weston",
+          "R. Fergus"
+        ],
+        "title": "End-To-End Memory Networks",
+        "year": 2015
+      },
+      "mentions": [
+        {
+          "line_end": 41,
+          "line_start": 41,
+          "marker": "[34]",
+          "mention_id": "m00022",
+          "ref_number_hint": 34,
+          "snippet": "End-to-end memory networks are based on a recurrent attention mechanism instead of sequencealigned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[34]",
+      "author_year_label": "Sainbayar Sukhbaatar, 2015"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "sequence-to-sequence learning",
+        "recurrent encoder-decoder",
+        "language modeling",
+        "machine translation",
+        "state-of-the-art RNN"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-34",
+        "key_reference_reason": "",
+        "role_in_context": "foundational recurrent encoder-decoder baseline that the Transformer departs from"
+      },
+      "topic": "sequence-to-sequence learning with recurrent encoder-decoder neural networks",
+      "usage": "Cited as one of the works establishing recurrent neural networks, long short-term memory and gated recurrent networks as state-of-the-art approaches to sequence modeling and transduction such as language modeling and machine translation.",
+      "ref_index": 34,
+      "function": "baseline",
+      "summary": "The cited sequence-to-sequence work is invoked in the source's opening framing of recurrent networks, LSTM and gated recurrent units as firmly established state-of-the-art methods for sequence modeling and transduction, including machine translation. It anchors the encoder-decoder paradigm from which the Transformer departs by removing recurrence and convolution entirely.",
+      "confidence": 0.85,
+      "ref_number": 35,
+      "reference": {
+        "author": [
+          "I. Sutskever",
+          "O. Vinyals",
+          "Quoc V. Le"
+        ],
+        "title": "Sequence to Sequence Learning with Neural Networks",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[35]",
+          "mention_id": "m00003",
+          "ref_number_hint": 35,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[35]",
+      "author_year_label": "I. Sutskever, 2014"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "recurrent neural networks",
+        "encoder-decoder",
+        "sequence transduction",
+        "machine translation",
+        "attention",
+        "state of the art"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-37",
+        "key_reference_reason": "It is cited as the primary, first-listed exemplar among the works cited for continued progress on recurrent language models and encoder-decoder architectures, giving the source's related-work framing a concrete high-profile anchor in the encoder-decoder NMT literature.",
+        "role_in_context": "related-work exemplar that anchors the source's account of the state of the art in recurrent encoder-decoder architectures and transduction, showing where the field was advancing prior to the source's own contribution"
+      },
+      "topic": "recurrent encoder-decoder neural networks with attention for machine translation",
+      "usage": "Cited in the source's background discussion of recurrent sequence modeling, as the first of a small set of works that continued to push the boundaries of recurrent language models and encoder-decoder architectures beyond the established LSTM / gated-RNN state of the art in sequence modeling and transduction tasks such as language modeling and machine translation.",
+      "ref_index": 37,
+      "function": "component",
+      "summary": "The source positions the cited work as a leading instance of the post-LSTM wave of large-scale recurrent encoder-decoder systems. After noting that recurrent networks, LSTMs and gated RNNs had become the state of the art for sequence modeling and transduction, the source invokes this work (with two others) as evidence that recurrent language models and encoder-decoder architectures continued to extend their boundaries, thereby motivating the source's own approach to the same family of problems.",
+      "confidence": 0.85,
+      "ref_number": 38,
+      "reference": {
+        "author": [
+          "Yong-Hui Wu",
+          "Mike Schuster",
+          "Z. Chen",
+          "Quoc V. Le",
+          "Mohammad Norouzi",
+          "Wolfgang Macherey",
+          "M. Krikun",
+          "Yuan Cao",
+          "Qin Gao",
+          "Klaus Macherey",
+          "J. Klingner",
+          "Apurva Shah",
+          "Melvin Johnson",
+          "Xiao-Bing Liu",
+          "Lukasz Kaiser",
+          "S. Gouws",
+          "Yoshikiyo Kato",
+          "Taku Kudo",
+          "Hideto Kazawa",
+          "K. Stevens",
+          "George Kurian",
+          "Nishant Patil",
+          "Wei Wang",
+          "Cliff Young",
+          "Jason Smith",
+          "Jason Riesa",
+          "Alex Rudnick",
+          "O. Vinyals",
+          "G. Corrado",
+          "Macduff Hughes",
+          "Jeffrey Dean"
+        ],
+        "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[38]",
+          "mention_id": "m00006",
+          "ref_number_hint": 38,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[38]",
+      "author_year_label": "Yong-Hui Wu, 2016"
+    }
+  ],
+  "unmapped_mentions": [],
+  "report_md": "## 文献综述章节引文线索\n\n### 总体总结\nWithin the Introduction and Background scope, the source organizes its citations as a funnel from the dominant recurrent paradigm to its own contribution: it first establishes RNNs, LSTM and gated RNNs as the state-of-the-art family for sequence modeling and transduction, then notes that further scaling of recurrent language models and encoder-decoder architectures had reached its limits while factorization tricks and conditional computation improved efficiency without removing sequential computation. Attention is then introduced as the mechanism that models dependencies independent of distance, with the observation that it is nearly always coupled to a recurrent network — the gap the source fills — supported by the small set of standalone-attention and self-attention precedents. The Background section groups the parallel-computation lineage (Extended Neural GPU, ByteNet, ConvS2S, Neural GPU) and the gradient-flow analysis as the concrete cost of distance-dependent path length, closes with memory networks as structural precedent for replacing recurrence with attention, and finally asserts the novelty claim that the Transformer is the first transduction model relying entirely on self-attention.\n\n\n### 关键文献\n\n- [2] D. Bahdanau, 2014: Neural Machine Translation by Jointly Learning to Align and Translate (Historical)\n\n- [9] Jonas Gehring, 2017: Convolutional Sequence to Sequence Learning (Baseline)\n\n- [12] S. Hochreiter, 2001: Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies (Uncategorized)\n\n- [18] N. Kalchbrenner, 2017: Neural Machine Translation in Linear Time (Baseline)\n\n- [27] Ankur Parikh, 2016: A decomposable attention model (Component)\n\n\n\n### 范围\n- 章节: 1 Introduction + 2 Background\n- 行号: 25-43\n\n### 按功能归类\n\n\n#### Historical\n\n- [2] D. Bahdanau, 2014\n  - 标题: Neural Machine Translation by Jointly Learning to Align and Translate\n  - 关键词: attention, neural machine translation, encoder-decoder, alignment, long-range dependencies\n  - 总结: The cited work introduced an attention-based neural machine translation model in which the decoder attends to encoder states, so that dependencies between distant input and output positions can be modeled directly. The source uses it both as a state-of-the-art exemplar of recurrent translation models and as the reference point for the observation that attention, though widely adopted in sequence models, is nearly always tied to a recurrent network — the gap the source's self-attention-only design addresses.\n\n\n\n#### Uncategorized\n\n- [4] Jian-Peng Cheng, 2016\n  - 标题: Long Short-Term Memory-Networks for Machine Reading\n  - 关键词: self-attention, intra-attention, reading comprehension, sentence representations, LSTM\n  - 总结: The cited work applies self-attention, relating different positions of a single sequence to compute a sequence representation, to machine reading and related comprehension tasks. The source cites it to establish that self-attention had already been validated across multiple task families, which grounds its claim that relying entirely on self-attention for input and output representations is a well-founded design rather than an untested one.\n\n- [12] S. Hochreiter, 2001\n  - 标题: Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies\n  - 关键词: gradient flow, long-term dependencies, vanishing gradient, recurrent networks, path length\n  - 总结: The cited work analyzes gradient propagation through recurrent networks and characterizes the difficulty of learning long-term dependencies. The source cites it to substantiate the claim that architectures whose operation count between two positions grows with their separation make distant dependencies harder to learn, converting a well-known recurrent-net training pathology into the quantitative rationale for the source's constant-number-of-operations design.\n\n- [16] Lukasz Kaiser, 2016\n  - 标题: Can Active Memory Replace Attention?\n  - 关键词: Extended Neural GPU, active memory, parallel computation, attention alternative, convolutional building block\n  - 总结: The cited work proposes an active-memory architecture with an extended Neural GPU, exploring whether external memory operations can substitute for attention in sequence modeling, and shares the goal of parallelizing the computation of sequence representations. The source cites it as a founding member of the family of models that reduce sequential computation by computing hidden representations in parallel, positioning it within the same efficiency lineage as ByteNet and ConvS2S.\n\n- [21] Oleksii Kuchaiev, 2017\n  - 标题: Factorization tricks for LSTM networks\n  - 关键词: factorization tricks, LSTM efficiency, computational efficiency, sequential computation constraint\n  - 总结: The cited factorization tricks for LSTM networks are invoked to acknowledge that recurrent models have already achieved significant computational-efficiency gains through factorization, yet these improvements do not remove the inherent sequential nature of recurrent computation. The source uses the citation to frame the Transformer as addressing a constraint that efficiency tricks alone cannot overcome.\n\n- [22] Zhouhan Lin, 2017\n  - 标题: A Structured Self-attentive Sentence Embedding\n  - 关键词: self-attention, intra-attention, sentence representation, task-independent embeddings\n  - 总结: The cited structured self-attentive sentence embedding work is cited as one of the tasks in which self-attention — relating different positions of a single sequence to compute a representation of that sequence — has already been applied successfully. The source uses it to show that the mechanism the Transformer relies on had prior precedent in representation-learning settings, before being scaled to full sequence transduction.\n\n- [28] Romain Paulus, 2017\n  - 标题: A Deep Reinforced Model for Abstractive Summarization\n  - 关键词: self-attention, abstractive summarization, sequence model, attention application\n  - 总结: The cited deep reinforced summarization model is cited as one of the successful applications of self-attention (intra-attention) across diverse tasks. The source uses the citation to demonstrate that the intra-attention mechanism underpinning the Transformer had already proven effective in conditional generation tasks such as abstractive summarization.\n\n- [32] Noam Shazeer, 2017\n  - 标题: Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer\n  - 关键词: conditional computation, sparsely-gated mixture-of-experts, model capacity, computational efficiency\n  - 总结: The cited sparsely-gated mixture-of-experts layer is used as the exemplar of conditional computation, which alongside factorization tricks is described as having significantly improved computational efficiency in recent work, and additionally improved model performance. The source contrasts such capacity-scaling strategies with its own approach, noting that the fundamental constraint of sequential computation remains even when efficiency is gained this way.\n\n- [34] Sainbayar Sukhbaatar, 2015\n  - 标题: End-To-End Memory Networks\n  - 关键词: recurrent attention, memory networks, question answering, language modeling, non-sequence-aligned recurrence\n  - 总结: The cited end-to-end memory networks are used to show that a recurrent attention mechanism can replace sequence-aligned recurrence, with reported success on simple-language question answering and language modeling. The source uses the citation as evidence that the attention-based, recurrence-free design adopted by the Transformer has structural precedent in earlier architectures.\n\n\n\n#### Background\n\n- [5] Kyunghyun Cho, 2014\n  - 标题: Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation\n  - 关键词: encoder-decoder, RNN, phrase representations, statistical machine translation, sequence modeling\n  - 总结: The cited work introduced an encoder-decoder recurrent network trained to score phrase pairs for statistical machine translation, an early instance of the encoder-decoder template later paired with attention. The source invokes it as part of the established evidence that recurrent, encoder-decoder models were the state of the art for sequence modeling and translation, i.e. as the baseline family whose sequential computation the source set out to remove.\n\n- [19] Yoon Kim, 2017\n  - 标题: Structured Attention Networks\n  - 关键词: attention mechanism, sequence modeling, transduction, distance-independent dependencies\n  - 总结: Structured Attention Networks is cited to show that attention-based modeling of dependencies independent of their distance has become a standard component of strong sequence modeling and transduction systems. The source uses this citation as general background for the benefits of attention, and immediately contrasts it with the common pattern of coupling attention to a recurrent network, a coupling that the Transformer removes.\n\n\n\n#### Component\n\n- [7] Junyoung Chung, 2014\n  - 标题: Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling\n  - 关键词: gated RNN, sequence modeling, recurrent neural network, state of the art, transduction\n  - 总结: The cited work provides the empirical evaluation of gated recurrent units on standard sequence modeling tasks, establishing the gated RNN as a state-of-the-art sequence model. The source cites it as one of the two specific architectures (with LSTM) that had become state of the art for sequence modeling and transduction, using it to characterize the dominant recurrent modeling paradigm at the time the source was written.\n\n- [13] S. Hochreiter, 1997\n  - 标题: Long Short-Term Memory\n  - 关键词: LSTM, recurrent neural network, gating, sequence modeling, state of the art\n  - 总结: The cited work introduced the long short-term memory network with input, output and forget gates to mitigate vanishing gradients and preserve long-range information. The source cites it as the exemplar that made recurrent architectures state of the art for sequence modeling and transduction, using it to characterize the dominant baseline and the sequential computation that the source's architecture eliminates.\n\n- [15] R. Józefowicz, 2016\n  - 标题: Exploring the Limits of Language Modeling\n  - 关键词: language modeling, recurrent network, encoder-decoder, scaling, sequence modeling\n  - 总结: The cited work studies large-scale recurrent language modeling and explores the limits of such models on harder sequence modeling tasks. The source cites it as one of the efforts that pushed recurrent language models and encoder-decoder architectures to their boundaries, framing the recurrent paradigm as mature and saturated, and motivating an architecture that avoids recurrent computation entirely.\n\n- [24] Thang Luong, 2015\n  - 标题: Effective Approaches to Attention-based Neural Machine Translation\n  - 关键词: attention-based NMT, encoder-decoder architecture, recurrent language model, sequence transduction\n  - 总结: The cited attention-based NMT work is invoked in the opening discussion of recurrent networks as established state-of-the-art approaches to sequence modeling and transduction, and again among the numerous efforts that continued to push the boundaries of recurrent language models and encoder-decoder architectures. The source uses it as the exemplar of the attention-augmented recurrent encoder-decoder paradigm that the Transformer contrasts with and improves upon.\n\n- [27] Ankur Parikh, 2016\n  - 标题: A decomposable attention model\n  - 关键词: attention without recurrence, decomposable attention, self-attention application, sequence modeling\n  - 总结: The cited decomposable attention model serves a double citation role in the source. First, it is named in the statement that in all but a few cases attention mechanisms are used in conjunction with a recurrent network, making it one of the rare precedents for standalone attention-based sequence modeling that the Transformer generalizes. Second, it appears among the works where self-attention has been used successfully across tasks, evidencing the mechanism's versatility.\n\n- [38] Yong-Hui Wu, 2016\n  - 标题: Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation\n  - 关键词: recurrent neural networks, encoder-decoder, sequence transduction, machine translation, attention, state of the art\n  - 总结: The source positions the cited work as a leading instance of the post-LSTM wave of large-scale recurrent encoder-decoder systems. After noting that recurrent networks, LSTMs and gated RNNs had become the state of the art for sequence modeling and transduction, the source invokes this work (with two others) as evidence that recurrent language models and encoder-decoder architectures continued to extend their boundaries, thereby motivating the source's own approach to the same family of problems.\n\n\n\n#### Baseline\n\n- [9] Jonas Gehring, 2017\n  - 标题: Convolutional Sequence to Sequence Learning\n  - 关键词: convolution, sequence-to-sequence, parallel computation, path length, baseline comparison\n  - 总结: The cited work applies convolutional networks to sequence-to-sequence learning, computing all input and output positions in parallel instead of step by step. The source uses it both as the exemplar of a parallel, distance-dependent architecture — where relating two positions costs operations proportional to their distance, making distant dependencies harder to learn — and as the main non-recurrent model against which the Transformer's fully self-attention-based design and its claimed advantages are argued.\n\n- [17] Łukasz Kaiser, 2016\n  - 标题: Neural GPUs learn algorithms\n  - 关键词: Neural GPU, self-attention, transduction model, parallel computation, comparison\n  - 总结: The cited work shows that a GPU-style, non-sequential recurrent-free network can learn simple algorithms, positioning it as an alternative way to process sequences without step-by-step recurrence. The source cites it, alongside ByteNet and ConvS2S, as an earlier model whose advantages the Transformer claims to exceed by being the first transduction model to compute its input and output representations purely through self-attention, with no sequence-aligned recurrence or convolution.\n\n- [18] N. Kalchbrenner, 2017\n  - 标题: Neural Machine Translation in Linear Time\n  - 关键词: convolutional sequence model, parallel computation, sequential computation reduction, machine translation, position-wise representations\n  - 总结: The cited linear-time neural machine translation line of work is invoked to establish the convolutional approach to parallel sequence processing: like the Extended Neural GPU, ByteNet and ConvS2S, it trades recurrence for convolutions so all positions can be computed in parallel. The source uses it both as motivating background for reducing sequential computation and as a contrast case, noting that such models need a number of operations that grows linearly with the distance between positions (logarithmically for ByteNet), which makes distant dependencies harder to learn, whereas the Transformer reduces this to a constant number of operations.\n\n- [35] I. Sutskever, 2014\n  - 标题: Sequence to Sequence Learning with Neural Networks\n  - 关键词: sequence-to-sequence learning, recurrent encoder-decoder, language modeling, machine translation, state-of-the-art RNN\n  - 总结: The cited sequence-to-sequence work is invoked in the source's opening framing of recurrent networks, LSTM and gated recurrent units as firmly established state-of-the-art methods for sequence modeling and transduction, including machine translation. It anchors the encoder-decoder paradigm from which the Transformer departs by removing recurrence and convolution entirely.\n\n\n\n\n\n### 时间线分析\n\n#### 早期\nEarly citations establish the recurrent foundation the paper departs from: the long short-term memory network (1997) as the architecture that made recurrent sequence models state of the art, and the gradient-flow analysis of recurrent nets (2001) that explains why distant dependencies are hard to learn — the analytical basis for the source's path-length argument.\n\n\n- [13] S. Hochreiter, 1997: Long Short-Term Memory\n\n- [12] S. Hochreiter, 2001: Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies\n\n- [2] D. Bahdanau, 2014: Neural Machine Translation by Jointly Learning to Align and Translate\n\n- [5] Kyunghyun Cho, 2014: Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation\n\n- [7] Junyoung Chung, 2014: Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling\n\n- [35] I. Sutskever, 2014: Sequence to Sequence Learning with Neural Networks\n\n- [24] Thang Luong, 2015: Effective Approaches to Attention-based Neural Machine Translation\n\n\n\n\n#### 中期\nMiddle-period citations consolidate the attention-augmented recurrent encoder-decoder paradigm that dominated the field just before the source: encoder-decoder RNNs for phrase-based and neural machine translation, attention-based NMT, gated recurrent networks, sequence-to-sequence learning, and end-to-end memory networks that already replaced sequence-aligned recurrence with recurrent attention.\n\n\n- [34] Sainbayar Sukhbaatar, 2015: End-To-End Memory Networks\n\n- [4] Jian-Peng Cheng, 2016: Long Short-Term Memory-Networks for Machine Reading\n\n- [15] R. Józefowicz, 2016: Exploring the Limits of Language Modeling\n\n- [16] Lukasz Kaiser, 2016: Can Active Memory Replace Attention?\n\n- [17] Łukasz Kaiser, 2016: Neural GPUs learn algorithms\n\n- [27] Ankur Parikh, 2016: A decomposable attention model\n\n- [38] Yong-Hui Wu, 2016: Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation\n\n\n\n\n#### 近期\nRecent citations mark the immediate competitive frontier: convolutional and linear-time sequence models that parallelize computation but pay a distance-dependent path length, plus self-attention applications in reading comprehension, summarization, entailment and sentence representation, and efficiency work on factorization tricks and conditional computation that improved speed without removing the sequential constraint.\n\n\n- [9] Jonas Gehring, 2017: Convolutional Sequence to Sequence Learning\n\n- [18] N. Kalchbrenner, 2017: Neural Machine Translation in Linear Time\n\n- [19] Yoon Kim, 2017: Structured Attention Networks\n\n- [21] Oleksii Kuchaiev, 2017: Factorization tricks for LSTM networks\n\n- [22] Zhouhan Lin, 2017: A Structured Self-attentive Sentence Embedding\n\n- [28] Romain Paulus, 2017: A Deep Reinforced Model for Abstractive Summarization\n\n- [32] Noam Shazeer, 2017: Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer\n\n\n\n\n\n"
+}

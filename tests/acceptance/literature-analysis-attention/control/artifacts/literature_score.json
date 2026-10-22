@@ -1,0 +1,543 @@
+{
+  "confidence": 0.81,
+  "confidence_adjusted_score": 66.4,
+  "dimensions": [
+    {
+      "applicable_max_score": 25,
+      "confidence": 0.84,
+      "configured_weight": 0.25,
+      "criteria": [
+        {
+          "criterion_key": "research_question_clarity",
+          "evidence": [
+            {
+              "line_end": 33,
+              "line_start": 33,
+              "quote": "In this work we propose the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output."
+            }
+          ],
+          "max_score": 5,
+          "name": "Research Question Clarity",
+          "reason": "引言先指出循环模型顺序计算带来的并行化瓶颈，再明确提出以纯注意力架构取代循环与卷积的目标，问题与目标一句话可辨。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "method_description_sufficiency",
+          "evidence": [
+            {
+              "line_end": 85,
+              "line_start": 85,
+              "quote": "Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions."
+            },
+            {
+              "line_end": 69,
+              "line_start": 69,
+              "quote": "We compute the dot products of the query with all keys, divide each by"
+            }
+          ],
+          "max_score": 5,
+          "name": "Method Description Sufficiency",
+          "reason": "自注意力、缩放点积、多头注意力、前馈网络、位置编码与编码器-解码器堆叠都给出定义与公式，核心机制足以理解；缺少数值实现细节如初始化方式。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "analysis_process_completeness",
+          "evidence": [
+            {
+              "line_end": 175,
+              "line_start": 175,
+              "quote": "We employ three types of regularization during training:"
+            },
+            {
+              "line_end": 161,
+              "line_start": 161,
+              "quote": "For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds."
+            }
+          ],
+          "max_score": 5,
+          "name": "Experiment Or Analysis Process Completeness",
+          "reason": "训练数据与批量、硬件与训练时长、优化器与学习率调度、正则化、推理设置、架构消融与跨任务实验构成较完整的实验链条；部分表格数值在转换中丢失。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "baseline_or_control_adequacy",
+          "evidence": [
+            {
+              "line_end": 195,
+              "line_start": 195,
+              "quote": "Table 2 summarizes our results and compares our translation quality and training costs to other model architectures from the literature."
+            }
+          ],
+          "max_score": 5,
+          "name": "Baseline Or Control Adequacy",
+          "reason": "翻译结果与 ByteNet、ConvS2S、GNMT+RL、MoE、Deep-Att 及其集成等同期强基线比较，并用架构变体行作自身对照；基线成绩取自文献而非同设置重跑。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "parameter_transparency",
+          "evidence": [
+            {
+              "line_end": 93,
+              "line_start": 93,
+              "quote": "In this work we employ $h \\ : = \\ : 8$ parallel attention layers, or heads."
+            },
+            {
+              "line_end": 171,
+              "line_start": 171,
+              "quote": "This corresponds to increasing the learning rate linearly for the first warmup\\_steps training steps, and decreasing it thereafter proportionally to the inverse square root of the step number."
+            }
+          ],
+          "max_score": 5,
+          "name": "Parameter Transparency",
+          "reason": "层数、维度、头数、dropout、标签平滑、warmup 步数、批量 token 数与学习率公式均给出；big 模型的部分超参只出现在被截断的表格中。",
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "methodological_rigor",
+      "effective_weight": 0.25,
+      "name": "Methodological Rigor",
+      "raw_score": 21,
+      "score": 84.0,
+      "summary": "研究问题、核心机制、对照基线与主要超参都给出可审查说明；缺口在于初始化方式、big 模型完整配置等实现细节在转换后的原文中随表格被截断。"
+    },
+    {
+      "applicable_max_score": 20,
+      "confidence": 0.8,
+      "configured_weight": 0.2,
+      "criteria": [
+        {
+          "criterion_key": "experiment_coverage",
+          "evidence": [
+            {
+              "line_end": 211,
+              "line_start": 211,
+              "quote": "To evaluate if the Transformer can generalize to other tasks we performed experiments on English constituency parsing."
+            },
+            {
+              "line_end": 199,
+              "line_start": 199,
+              "quote": "To evaluate the importance of different components of the Transformer, we varied our base model in different ways"
+            }
+          ],
+          "max_score": 5,
+          "name": "Experiment Coverage",
+          "reason": "覆盖两项主翻译任务、架构组件消融以及一个跨任务解析实验，能支撑主要主张；未覆盖超长序列、大规模模型行为与其他模态。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "data_scale_adequacy",
+          "evidence": [
+            {
+              "line_end": 157,
+              "line_start": 157,
+              "quote": "We trained on the standard WMT 2014 English-German dataset consisting of about 4.5 million sentence pairs."
+            },
+            {
+              "line_end": 157,
+              "line_start": 157,
+              "quote": "For English-French, we used the significantly larger WMT 2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece vocabulary [38]."
+            }
+          ],
+          "max_score": 5,
+          "name": "Data Scale Adequacy",
+          "reason": "英德 450 万句对、英法 3600 万句对与 WSJ 4 万训练句的规模与翻译质量结论相称；缺少专门考察长度与规模外推的实验。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "statistical_analysis",
+          "evidence": [],
+          "max_score": 5,
+          "name": "Statistical Analysis",
+          "reason": "只报告单次运行的 BLEU 与困惑度等点估计，没有方差、置信区间、显著性检验或多种子结果，不确定性处理不充分。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "claim_evidence_alignment",
+          "evidence": [
+            {
+              "line_end": 23,
+              "line_start": 23,
+              "quote": "Our model achieves 28.4 BLEU on the WMT 2014 English to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU."
+            },
+            {
+              "line_end": 135,
+              "line_start": 135,
+              "quote": "We chose the sinusoidal version because it may allow the model to extrapolate to sequence lengths longer than the ones encountered during training."
+            }
+          ],
+          "max_score": 5,
+          "name": "Claim Evidence Alignment",
+          "reason": "质量与训练成本优势均由表格中的具体数值支撑，外推与可解释性等结论用 may、could 等保留措辞；个别推广性表述超出直接实验范围。",
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "evidence_completeness",
+      "effective_weight": 0.2,
+      "name": "Evidence Completeness",
+      "raw_score": 14,
+      "score": 70.0,
+      "summary": "两项翻译主任务、架构消融与跨任务解析实验覆盖了主要主张，但只报告单次 BLEU 与困惑度，未给出方差、置信区间或显著性分析。"
+    },
+    {
+      "applicable_max_score": 15,
+      "confidence": 0.85,
+      "configured_weight": 0.15,
+      "criteria": [
+        {
+          "criterion_key": "data_source_clarity",
+          "evidence": [
+            {
+              "line_end": 157,
+              "line_start": 157,
+              "quote": "For English-French, we used the significantly larger WMT 2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece vocabulary [38]."
+            },
+            {
+              "line_end": 157,
+              "line_start": 157,
+              "quote": "Sentences were encoded using byte-pair encoding [3], which has a shared sourcetarget vocabulary of about 37000 tokens."
+            }
+          ],
+          "max_score": 3,
+          "name": "Data Source Clarity",
+          "reason": "训练与评测数据均给出标准数据集名称、规模、子词切分方式与词表大小，来源明确可查。",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "code_availability",
+          "evidence": [
+            {
+              "line_end": 233,
+              "line_start": 233,
+              "quote": "The code we used to train and evaluate our models is available at https://github.com/ tensorflow/tensor2tensor."
+            }
+          ],
+          "max_score": 3,
+          "name": "Code Availability",
+          "reason": "正文给出训练与评估代码的公开仓库地址，读者可直接获取等价工件。",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "parameter_availability",
+          "evidence": [
+            {
+              "line_end": 193,
+              "line_start": 193,
+              "quote": "We set the maximum output length during inference to input length + 50, but terminate early when possible [38]."
+            },
+            {
+              "line_end": 93,
+              "line_start": 93,
+              "quote": "In this work we employ $h \\ : = \\ : 8$ parallel attention layers, or heads."
+            }
+          ],
+          "max_score": 3,
+          "name": "Parameter Availability",
+          "reason": "主要超参与推理设置公开，但 big 模型的完整配置只出现在被截断的表格中，初始化等关键参数未给出。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "procedure_detail",
+          "evidence": [
+            {
+              "line_end": 157,
+              "line_start": 157,
+              "quote": "Sentence pairs were batched together by approximate sequence length. Each training batch contained a set of sentence pairs containing approximately 25000 source tokens and 25000 target tokens."
+            },
+            {
+              "line_end": 193,
+              "line_start": 193,
+              "quote": "For the base models, we used a single model obtained by averaging the last 5 checkpoints, which were written at 10-minute intervals."
+            }
+          ],
+          "max_score": 3,
+          "name": "Procedure Detail",
+          "reason": "批量构成、训练步数与时长、学习率调度与解码策略可追踪，但数据流水线与预处理实现细节需要读者自行补充。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "environment_description",
+          "evidence": [
+            {
+              "line_end": 161,
+              "line_start": 161,
+              "quote": "We trained our models on one machine with 8 NVIDIA P100 GPUs."
+            },
+            {
+              "line_end": 161,
+              "line_start": 161,
+              "quote": "The big models were trained for 300,000 steps (3.5 days)."
+            }
+          ],
+          "max_score": 3,
+          "name": "Environment Description",
+          "reason": "硬件环境描述较具体（单机 8 块 P100、每步耗时、总训练时长），但完全没有软件框架、库版本与依赖环境说明。",
+          "score": 2,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "reproducibility",
+      "effective_weight": 0.15,
+      "name": "Reproducibility",
+      "raw_score": 12,
+      "score": 80.0,
+      "summary": "数据集规模、词表、批量构成、GPU 型号与训练时长披露较完整且明确开源代码；软件与依赖版本、初始化方式与部分预处理配置未给出。"
+    },
+    {
+      "applicable_max_score": 15,
+      "confidence": 0.8,
+      "configured_weight": 0.15,
+      "criteria": [
+        {
+          "criterion_key": "new_method_or_framework",
+          "evidence": [
+            {
+              "line_end": 43,
+              "line_start": 43,
+              "quote": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution."
+            },
+            {
+              "line_end": 69,
+              "line_start": 69,
+              "quote": "We call our particular attention \"Scaled Dot-Product Attention\" (Figure 2)."
+            }
+          ],
+          "max_score": 5,
+          "name": "New Method Or Framework",
+          "reason": "提出结构明确、可与既有路线区分的新架构与配套组件（缩放点积注意力、多头注意力、正弦位置编码），并给出完整形式定义。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "addresses_known_limitations",
+          "evidence": [
+            {
+              "line_end": 29,
+              "line_start": 29,
+              "quote": "Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32]"
+            },
+            {
+              "line_end": 189,
+              "line_start": 189,
+              "quote": "establishing a new state-of-the-art BLEU score of 28.4"
+            }
+          ],
+          "max_score": 5,
+          "name": "Addresses Known Limitations",
+          "reason": "明确针对循环模型顺序计算这一既有缺陷设计方案，并用 BLEU、训练成本与路径长度对比验证改进；注意力平均带来的分辨率下降只是承认而未量化。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "new_theoretical_explanation",
+          "evidence": [
+            {
+              "line_end": 145,
+              "line_start": 145,
+              "quote": "As noted in Table 1, a self-attention layer connects all positions with a constant number of sequentially executed operations, whereas a recurrent layer requires $O ( n )$ sequential operations."
+            },
+            {
+              "line_end": 79,
+              "line_start": 79,
+              "quote": "We suspect that for large values of $d _ { k } ,$ , the dot products grow large in magnitude, pushing the softmax function into regions where it has extremely small gradients"
+            }
+          ],
+          "max_score": 5,
+          "name": "New Theoretical Explanation",
+          "reason": "给出机制解释与概念关系：解释缩放因子为何必要（softmax 梯度饱和）、用复杂度与路径长度对比建立层类型与顺序操作数的对应关系、并提出相对位置注意的假设；但均为经验性论证，没有形式化定理或推导。",
+          "score": 3,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "innovation_signals",
+      "effective_weight": 0.15,
+      "name": "Innovation Signals",
+      "raw_score": 12,
+      "score": 80.0,
+      "summary": "提出结构清晰的新架构并针对已知的顺序计算瓶颈给出实验验证；对缩放与位置编码的解释主要依靠复杂度分析和经验论证，没有形式化推导。"
+    },
+    {
+      "applicable_max_score": 15,
+      "confidence": 0.78,
+      "configured_weight": 0.15,
+      "criteria": [
+        {
+          "criterion_key": "problem_importance",
+          "evidence": [
+            {
+              "line_end": 29,
+              "line_start": 29,
+              "quote": "This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples."
+            }
+          ],
+          "max_score": 5,
+          "name": "Problem Importance",
+          "reason": "把顺序计算带来的并行化与内存约束说成具体的、影响翻译训练成本的工程与研究需求，问题边界清楚。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "method_transferability",
+          "evidence": [
+            {
+              "line_end": 211,
+              "line_start": 211,
+              "quote": "To evaluate if the Transformer can generalize to other tasks we performed experiments on English constituency parsing."
+            },
+            {
+              "line_end": 223,
+              "line_start": 223,
+              "quote": "In contrast to RNN sequence-to-sequence models [37], the Transformer outperforms the Berkeley-Parser [29] even when training only on the WSJ training set of 40K sentences."
+            }
+          ],
+          "max_score": 5,
+          "name": "Method Transferability",
+          "reason": "在英语组句分析这一不同任务上完成训练与评测，证明方法可迁移到其他序列任务；尚未在图像、音频等模态上验证。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "application_breadth",
+          "evidence": [
+            {
+              "line_end": 231,
+              "line_start": 231,
+              "quote": "We plan to extend the Transformer to problems involving input and output modalities other than text and to investigate local, restricted attention mechanisms to efficiently handle large inputs and outputs such as images, audio and video."
+            }
+          ],
+          "max_score": 5,
+          "name": "Application Breadth",
+          "reason": "方法面向一般序列转导与表示学习任务，作者明确列出文本以外模态及大输入输出的应用方向，潜在使用范围明显宽于单一案例。",
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "research_impact_potential",
+      "effective_weight": 0.15,
+      "name": "Research Impact Potential",
+      "raw_score": 13,
+      "score": 86.7,
+      "summary": "问题指向明确且真实的工程与研究需求，架构已在解析任务上验证了跨任务迁移性，潜在适用面不限于单一场景。"
+    },
+    {
+      "applicable_max_score": 10,
+      "confidence": 0.76,
+      "configured_weight": 0.1,
+      "criteria": [
+        {
+          "criterion_key": "structural_clarity",
+          "evidence": [
+            {
+              "line_end": 139,
+              "line_start": 139,
+              "quote": "In this section we compare various aspects of self-attention layers to the recurrent and convolutional layers commonly used"
+            }
+          ],
+          "max_score": 2,
+          "name": "Structural Clarity",
+          "reason": "章节按引言、背景、架构、动机、训练、结果、结论层层推进，子节归属清晰，读者可快速定位内容。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "terminology_consistency",
+          "evidence": [
+            {
+              "line_end": 97,
+              "line_start": 97,
+              "quote": "The Transformer uses multi-head attention in three different ways:"
+            },
+            {
+              "line_end": 113,
+              "line_start": 113,
+              "quote": "The dimensionality of input and output is"
+            }
+          ],
+          "max_score": 2,
+          "name": "Terminology Consistency",
+          "reason": "Transformer、self-attention、multi-head attention、positional encoding 等术语与符号 d_model、d_k、d_v、h 在全文保持一致。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "logical_coherence",
+          "evidence": [
+            {
+              "line_end": 133,
+              "line_start": 133,
+              "quote": "We chose this function because we hypothesized it would allow the model to easily learn to attend by relative positions"
+            },
+            {
+              "line_end": 227,
+              "line_start": 227,
+              "quote": "we presented the Transformer, the first sequence transduction model based entirely on attention"
+            }
+          ],
+          "max_score": 2,
+          "name": "Logical Coherence",
+          "reason": "从顺序计算瓶颈到纯注意力架构，再到复杂度对比与实验验证，动机、方法选择与结论前后衔接顺畅。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "figure_table_effectiveness",
+          "evidence": [
+            {
+              "line_end": 50,
+              "line_start": 50,
+              "quote": "Figure 1: The Transformer - model architecture."
+            },
+            {
+              "line_end": 65,
+              "line_start": 65,
+              "quote": "Figure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several attention layers running in parallel."
+            }
+          ],
+          "max_score": 2,
+          "name": "Figure And Table Effectiveness",
+          "reason": "Figure 1、Figure 2 承担架构与注意力机制表达，Table 1–4 分别支撑复杂度与结果对比，附录 Figure 3–5 支撑可解释性论证，且都在正文被引用说明。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "language_quality",
+          "evidence": [
+            {
+              "line_end": 77,
+              "line_start": 77,
+              "quote": "While the two are similar in theoretical complexity, dot-product attention is much faster and more space-efficient in practice"
+            }
+          ],
+          "max_score": 2,
+          "name": "Language Quality",
+          "reason": "表述准确克制，长句结构清楚，术语使用规范，没有明显语病或含糊表述。",
+          "score": 2,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "writing_quality",
+      "effective_weight": 0.1,
+      "name": "Writing Quality",
+      "raw_score": 10,
+      "score": 100.0,
+      "summary": "章节层次、术语使用与论证组织清晰，图表都有标签并在正文被解释；但转换后的原文存在句尾省略与公式空格错乱，略影响阅读体验。"
+    }
+  ],
+  "overall_score": 82.0,
+  "paper_type": "empirical",
+  "paper_type_reason": "论文提出 Transformer 架构后，在 WMT 2014 英德与英法翻译任务上以 BLEU 与训练成本做对照实验，并通过架构变体消融和英语组句分析实验检验各项主张，属于以实验验证主张的实证型研究。",
+  "rubric_id": "literature-score.v1",
+  "schema": "literature_score.v1"
+}

@@ -1,0 +1,485 @@
+{
+  "control": {
+    "started_at": "2026-10-22T15:10:34.481Z",
+    "last_assistant_timestamp_ms": 1792682670299,
+    "elapsed_seconds": 835.8180000782013,
+    "stdout_event_log": "/tmp/literature-analysis-attention-control.jsonl",
+    "sessions": [
+      {
+        "session_file": "sessions-control/2026-10-22T15-10-34-481Z_01a16429-f7f1-7594-99e3-675f3256adec/CitationBatch0.jsonl",
+        "models": [
+          [
+            "minimax-code-cn",
+            "MiniMax-M3.1-Flash"
+          ]
+        ],
+        "tool_counts": {
+          "read": 6,
+          "write": 1,
+          "bash": 1
+        },
+        "read_search_and_command_calls": [
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json:15-140"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json:144-242"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json:raw:100-170"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.draft.json"
+          },
+          {
+            "tool": "write",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.draft.json"
+          },
+          {
+            "tool": "bash",
+            "command": "python3 -c \"\nimport json\np='/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.draft.json'\nd=json.load(open(p,encoding='utf-8'))\nr=d['citation_semantic_reviews']\nprint('entries',len(r))\nprint('keys',[x['citation_work_key'] for x in r])\nallowed={'citation_work_key','topic','usage','role_in_context','keywords','summary','key_reference_reason'}\nfor x in r:\n    assert set(x)<=allowed, set(x)-allowed\n    for f in ('topic','usage','role_in_context','summary'):\n        assert isinstance(x[f],str) and x[f].strip(), (x['citation_work_key'],f)\n    assert isinstance(x['keywords'],list) and 2<=len(x['keywords'])<=5, x['citation_work_key']\nprint('ok')\n\""
+          }
+        ]
+      },
+      {
+        "session_file": "sessions-control/2026-10-22T15-10-34-481Z_01a16429-f7f1-7594-99e3-675f3256adec/CitationBatch1.jsonl",
+        "models": [
+          [
+            "minimax-code-cn",
+            "MiniMax-M3.1-Flash"
+          ]
+        ],
+        "tool_counts": {
+          "read": 4,
+          "write": 1,
+          "bash": 1
+        },
+        "read_search_and_command_calls": [
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json:15-100:raw"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json:100-200:raw"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json:200-250:raw"
+          },
+          {
+            "tool": "write",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.draft.json"
+          },
+          {
+            "tool": "bash",
+            "command": "python3 -c \"\nimport json\np='/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.draft.json'\nd=json.load(open(p))\nrs=d['citation_semantic_reviews']\nprint(len(rs))\nkeys=[r['citation_work_key'] for r in rs]\nprint(keys)\nfor r in rs:\n    for f in ['citation_work_key','topic','usage','role_in_context','keywords','summary']:\n        assert f in r and r[f], (r['citation_work_key'],f)\n    assert isinstance(r['keywords'],list) and 2<=len(r['keywords'])<=5, r['citation_work_key']\n    assert set(r.keys())<= {'citation_work_key','topic','usage','role_in_context','keywords','summary','key_reference_reason'}, r.keys()\nprint('ok')\n\""
+          }
+        ]
+      },
+      {
+        "session_file": "sessions-control/2026-10-22T15-10-34-481Z_01a16429-f7f1-7594-99e3-675f3256adec/CitationBatch2.jsonl",
+        "models": [
+          [
+            "minimax-code-cn",
+            "MiniMax-M3.1-Flash"
+          ]
+        ],
+        "tool_counts": {
+          "read": 7,
+          "bash": 1,
+          "write": 2,
+          "eval": 1,
+          "grep": 1
+        },
+        "read_search_and_command_calls": [
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json:11-43"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json:53-63"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json:67-101"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic"
+          },
+          {
+            "tool": "bash",
+            "command": "ls -la /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/ 2>/dev/null; echo \"---\"; ls -la /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/ 2>/dev/null"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation_semantic_manifest.json"
+          },
+          {
+            "tool": "write",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.draft.json"
+          },
+          {
+            "tool": "write",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.draft.json"
+          },
+          {
+            "tool": "eval"
+          },
+          {
+            "tool": "grep",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.draft.json"
+          }
+        ]
+      },
+      {
+        "session_file": "sessions-control/2026-10-22T15-10-34-481Z_01a16429-f7f1-7594-99e3-675f3256adec/RefCoreBatch0.jsonl",
+        "models": [
+          [
+            "minimax-code-cn",
+            "MiniMax-M3.1-Flash"
+          ]
+        ],
+        "tool_counts": {
+          "read": 6,
+          "write": 1
+        },
+        "read_search_and_command_calls": [
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json:1-120:raw"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json:121-250:raw"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json:251-388:raw"
+          },
+          {
+            "tool": "write",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.draft.json"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.draft.json?q=[paths | join(\".\")]"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.draft.json:raw"
+          }
+        ]
+      },
+      {
+        "session_file": "sessions-control/2026-10-22T15-10-34-481Z_01a16429-f7f1-7594-99e3-675f3256adec/RefMetadataBatch0.jsonl",
+        "models": [
+          [
+            "minimax-code-cn",
+            "MiniMax-M3.1-Flash"
+          ]
+        ],
+        "tool_counts": {
+          "read": 12,
+          "bash": 3,
+          "grep": 4,
+          "find": 1,
+          "eval": 2,
+          "write": 1
+        },
+        "read_search_and_command_calls": [
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json?q=.metadata_evidence_packages[]&raw=true"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json:10-70"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json:150-232"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json:125-152"
+          },
+          {
+            "tool": "bash",
+            "command": "ls -la /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/ && ls -R /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp | head -50"
+          },
+          {
+            "tool": "grep",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph"
+          },
+          {
+            "tool": "bash",
+            "command": "ls -la /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/ && ls -la /home/joshua/Workspace/Code/Skill/skill_to_graph/graph-app/source/literature-analysis/scripts/analysis_runtime/ 2>/dev/null | head -40"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/graph-app/source/literature-analysis/references/reference_extraction.md:440-500"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/graph-app/source/literature-analysis/references/reference_extraction.md:440-500"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control-prompt.md"
+          },
+          {
+            "tool": "grep",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/graph-app/source/literature-analysis/scripts/analysis_runtime/runtime_db.py"
+          },
+          {
+            "tool": "find",
+            "path": "/home/joshua/Workspace/Code/Skill",
+            "query": "analysis_runtime directory containing runtime_db.py and payload_normalization.py",
+            "grep_keywords": [
+              "runtime_db.py",
+              "payload_normalization.py",
+              "analysis_runtime"
+            ]
+          },
+          {
+            "tool": "grep",
+            "path": "/home/joshua/Workspace/Code/Skill/literature_digest/literature-analysis/scripts/analysis_runtime"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/literature_digest/literature-analysis/scripts/analysis_runtime/references.py:1190-1265"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/literature_digest/literature-analysis/scripts/analysis_runtime/references.py:1130-1192"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/literature_digest/literature-analysis/scripts/analysis_runtime/payload_normalization.py"
+          },
+          {
+            "tool": "grep",
+            "path": "/home/joshua/Workspace/Code/Skill/literature_digest/literature-analysis/scripts/analysis_runtime"
+          },
+          {
+            "tool": "read",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/README.md"
+          },
+          {
+            "tool": "bash",
+            "command": "ls -la /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/graph-run /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/artifacts 2>/dev/null"
+          },
+          {
+            "tool": "eval"
+          },
+          {
+            "tool": "write",
+            "path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.draft.json"
+          },
+          {
+            "tool": "eval"
+          }
+        ]
+      },
+      {
+        "session_file": "sessions-control/2026-10-22T15-10-34-481Z_01a16429-f7f1-7594-99e3-675f3256adec.jsonl",
+        "models": [
+          [
+            "minimax-code-cn",
+            "MiniMax-M3.1-Flash"
+          ]
+        ],
+        "tool_counts": {
+          "read": 24,
+          "bash": 39,
+          "todo": 12,
+          "grep": 3,
+          "write": 8,
+          "edit": 4,
+          "task": 4,
+          "wait": 5
+        },
+        "read_search_and_command_calls": []
+      }
+    ]
+  },
+  "graph": {
+    "attempt3_elapsed_seconds": 571.0354914665222,
+    "batches": [
+      {
+        "batch_path": "graph-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json",
+        "model": "MiniMax-M3.1-Flash",
+        "expected_keys": [
+          "reference-10",
+          "reference-16",
+          "reference-19",
+          "reference-26",
+          "reference-36"
+        ],
+        "returned_keys": [
+          "reference-10",
+          "reference-16",
+          "reference-19",
+          "reference-26",
+          "reference-36"
+        ],
+        "complete_unique_coverage": true
+      },
+      {
+        "batch_path": "graph-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json",
+        "model": "MiniMax-M3.1-Flash",
+        "expected_keys": [
+          "reference-10",
+          "reference-16",
+          "reference-19",
+          "reference-26",
+          "reference-36"
+        ],
+        "returned_keys": [
+          "reference-10",
+          "reference-16",
+          "reference-19",
+          "reference-26",
+          "reference-36"
+        ],
+        "complete_unique_coverage": true
+      },
+      {
+        "batch_path": "graph-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json",
+        "model": "MiniMax-M3.1-Flash",
+        "expected_keys": [
+          "citation-work-37"
+        ],
+        "returned_keys": [
+          "citation-work-37"
+        ],
+        "complete_unique_coverage": true
+      },
+      {
+        "batch_path": "graph-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json",
+        "model": "MiniMax-M3.1-Flash",
+        "expected_keys": [
+          "citation-work-17",
+          "citation-work-18",
+          "citation-work-20",
+          "citation-work-21",
+          "citation-work-23",
+          "citation-work-26",
+          "citation-work-27",
+          "citation-work-31",
+          "citation-work-33",
+          "citation-work-34"
+        ],
+        "returned_keys": [
+          "citation-work-17",
+          "citation-work-18",
+          "citation-work-20",
+          "citation-work-21",
+          "citation-work-23",
+          "citation-work-26",
+          "citation-work-27",
+          "citation-work-31",
+          "citation-work-33",
+          "citation-work-34"
+        ],
+        "complete_unique_coverage": true
+      },
+      {
+        "batch_path": "graph-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json",
+        "model": "MiniMax-M3.1-Flash",
+        "expected_keys": [
+          "citation-work-1",
+          "citation-work-3",
+          "citation-work-4",
+          "citation-work-6",
+          "citation-work-8",
+          "citation-work-11",
+          "citation-work-12",
+          "citation-work-14",
+          "citation-work-15",
+          "citation-work-16"
+        ],
+        "returned_keys": [
+          "citation-work-1",
+          "citation-work-3",
+          "citation-work-4",
+          "citation-work-6",
+          "citation-work-8",
+          "citation-work-11",
+          "citation-work-12",
+          "citation-work-14",
+          "citation-work-15",
+          "citation-work-16"
+        ],
+        "complete_unique_coverage": true
+      }
+    ],
+    "runtime_errors": [
+      {
+        "action": "persist_digest",
+        "error": {
+          "code": "digest_stage_failed",
+          "message": "digest_slots.tldr must be object"
+        }
+      },
+      {
+        "action": "persist_references",
+        "error": {
+          "code": "reference_metadata_payload_invalid",
+          "message": "reference metadata evidence payload failed validation",
+          "details": [
+            "metadata_without_local_evidence: reference-10.metadata.pages has no local evidence in locked_reference, existing_metadata, or metadata_context_text"
+          ]
+        }
+      }
+    ]
+  },
+  "pdf_review": {
+    "library": "PyMuPDF",
+    "pages": 15,
+    "english_french_bleu": {
+      "abstract_page_1": 41.8,
+      "table_2_page_8": 41.8,
+      "section_6_1_page_8": 41.0
+    },
+    "transformer_parsing_table_4_page_10": {
+      "wsj_only": 91.3,
+      "semi_supervised": 92.7
+    }
+  }
+}

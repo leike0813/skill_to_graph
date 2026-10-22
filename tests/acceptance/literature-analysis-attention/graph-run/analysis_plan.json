@@ -1,0 +1,309 @@
+{
+  "outline_nodes": [
+    {
+      "node_id": "n_title",
+      "heading_level": 1,
+      "title": "Attention Is All You Need",
+      "line_start": 1,
+      "line_end": 19,
+      "parent_node_id": null,
+      "metadata": {
+        "role": "paper_title_and_authors"
+      }
+    },
+    {
+      "node_id": "n_abstract",
+      "heading_level": 2,
+      "title": "Abstract",
+      "line_start": 21,
+      "line_end": 23,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_intro",
+      "heading_level": 2,
+      "title": "1 Introduction",
+      "line_start": 25,
+      "line_end": 33,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_background",
+      "heading_level": 2,
+      "title": "2 Background",
+      "line_start": 35,
+      "line_end": 43,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_architecture",
+      "heading_level": 2,
+      "title": "3 Model Architecture",
+      "line_start": 45,
+      "line_end": 52,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_encdec",
+      "heading_level": 3,
+      "title": "3.1 Encoder and Decoder Stacks",
+      "line_start": 54,
+      "line_end": 58,
+      "parent_node_id": "n_architecture",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_attention",
+      "heading_level": 3,
+      "title": "3.2 Attention",
+      "line_start": 60,
+      "line_end": 65,
+      "parent_node_id": "n_architecture",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_sdpa",
+      "heading_level": 4,
+      "title": "3.2.1 Scaled Dot-Product Attention",
+      "line_start": 67,
+      "line_end": 79,
+      "parent_node_id": "n_attention",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_multihead",
+      "heading_level": 4,
+      "title": "3.2.2 Multi-Head Attention",
+      "line_start": 81,
+      "line_end": 93,
+      "parent_node_id": "n_attention",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_attn_apps",
+      "heading_level": 4,
+      "title": "3.2.3 Applications of Attention in our Model",
+      "line_start": 95,
+      "line_end": 103,
+      "parent_node_id": "n_attention",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_ffn",
+      "heading_level": 3,
+      "title": "3.3 Position-wise Feed-Forward Networks",
+      "line_start": 105,
+      "line_end": 113,
+      "parent_node_id": "n_architecture",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_embeddings",
+      "heading_level": 3,
+      "title": "3.4 Embeddings and Softmax",
+      "line_start": 115,
+      "line_end": 121,
+      "parent_node_id": "n_architecture",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_posenc",
+      "heading_level": 3,
+      "title": "3.5 Positional Encoding",
+      "line_start": 123,
+      "line_end": 135,
+      "parent_node_id": "n_architecture",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_why_selfattn",
+      "heading_level": 2,
+      "title": "4 Why Self-Attention",
+      "line_start": 137,
+      "line_end": 149,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_training",
+      "heading_level": 2,
+      "title": "5 Training",
+      "line_start": 151,
+      "line_end": 153,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_train_data",
+      "heading_level": 3,
+      "title": "5.1 Training Data and Batching",
+      "line_start": 155,
+      "line_end": 157,
+      "parent_node_id": "n_training",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_hardware",
+      "heading_level": 3,
+      "title": "5.2 Hardware and Schedule",
+      "line_start": 159,
+      "line_end": 161,
+      "parent_node_id": "n_training",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_optimizer",
+      "heading_level": 3,
+      "title": "5.3 Optimizer",
+      "line_start": 163,
+      "line_end": 171,
+      "parent_node_id": "n_training",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_regularization",
+      "heading_level": 3,
+      "title": "5.4 Regularization",
+      "line_start": 173,
+      "line_end": 183,
+      "parent_node_id": "n_training",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_results",
+      "heading_level": 2,
+      "title": "6 Results",
+      "line_start": 185,
+      "line_end": 185,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_res_mt",
+      "heading_level": 3,
+      "title": "6.1 Machine Translation",
+      "line_start": 187,
+      "line_end": 195,
+      "parent_node_id": "n_results",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_res_variations",
+      "heading_level": 3,
+      "title": "6.2 Model Variations",
+      "line_start": 197,
+      "line_end": 207,
+      "parent_node_id": "n_results",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_res_parsing",
+      "heading_level": 3,
+      "title": "6.3 English Constituency Parsing",
+      "line_start": 209,
+      "line_end": 223,
+      "parent_node_id": "n_results",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_conclusion",
+      "heading_level": 2,
+      "title": "7 Conclusion",
+      "line_start": 225,
+      "line_end": 235,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_references",
+      "heading_level": 2,
+      "title": "References",
+      "line_start": 237,
+      "line_end": 317,
+      "parent_node_id": "n_title",
+      "metadata": {}
+    },
+    {
+      "node_id": "n_attention_visualizations",
+      "heading_level": 2,
+      "title": "Attention Visualizations",
+      "line_start": 319,
+      "line_end": 327,
+      "parent_node_id": "n_title",
+      "metadata": {
+        "role": "appendix",
+        "note": "plain-text appendix heading after the reference list"
+      }
+    }
+  ],
+  "references_scope": {
+    "section_title": "References",
+    "line_start": 237,
+    "line_end": 317,
+    "metadata": {
+      "selection_reason": "The document contains a single explicit 'References' heading at line 237 followed by 40 numbered entries [1]-[40] ending at line 317; the trailing 'Attention Visualizations' block (lines 319-327) is an appendix of figures, not bibliography."
+    }
+  },
+  "citation_scope": {
+    "section_title": "1 Introduction + 2 Background",
+    "line_start": 25,
+    "line_end": 43,
+    "metadata": {
+      "selection_reason": "Review/background discourse is concentrated in the Introduction (lines 25-33, situating the work against recurrent and attention-based sequence models) and the Background section (lines 35-43, surveying convolutional sequence models such as Extended Neural GPU, ByteNet, ConvS2S, prior self-attention applications, and end-to-end memory networks). Neither section has child subsections, so the line range fully covers them. Later sections cite prior work only as experimental baselines or component citations rather than as a literature review.",
+      "covered_sections": [
+        "1 Introduction",
+        "2 Background"
+      ]
+    }
+  },
+  "source_identity": null,
+  "literature_matching_metadata": {
+    "schema": "literature_matching_metadata.v1",
+    "key_terms": [
+      "Transformer",
+      "self-attention",
+      "sequence transduction",
+      "neural machine translation",
+      "encoder-decoder architecture",
+      "positional encoding",
+      "multi-head attention",
+      "parallel sequence processing",
+      "attention mechanism"
+    ],
+    "methods": [
+      "multi-head attention",
+      "scaled dot-product attention",
+      "sinusoidal positional encoding",
+      "residual connection",
+      "layer normalization",
+      "label smoothing",
+      "Adam optimizer with warmup",
+      "beam search decoding"
+    ],
+    "problems": [
+      "sequential computation bottleneck",
+      "long-range dependency learning",
+      "training cost of sequence transduction models",
+      "parallelization of encoder-decoder models",
+      "translation quality vs. parallelization trade-off",
+      "long output structure for constituency parsing"
+    ],
+    "datasets": [
+      "WMT 2014 English-German",
+      "WMT 2014 English-French",
+      "Penn Treebank WSJ",
+      "BerkleyParser",
+      "high-confidence corpus"
+    ],
+    "exclude_terms": [
+      "medical image segmentation",
+      "speech recognition",
+      "recommender systems",
+      "reinforcement learning control"
+    ]
+  }
+}

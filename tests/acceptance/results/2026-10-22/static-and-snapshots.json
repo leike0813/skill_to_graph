@@ -1,0 +1,62 @@
+{
+  "fixed-file": {
+    "static": {
+      "ok": true,
+      "operation": "check",
+      "data": {
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "fixed-file": "./skill_graph/graph.py:cli_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "issues": []
+    },
+    "snapshot_file_count": 4,
+    "snapshot_equal": true
+  },
+  "mixed-retrieval": {
+    "static": {
+      "ok": true,
+      "operation": "check",
+      "data": {
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "mixed-retrieval": "./skill_graph/graph.py:cli_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "issues": []
+    },
+    "snapshot_file_count": 2,
+    "snapshot_equal": true
+  },
+  "wait-what": {
+    "static": {
+      "ok": true,
+      "operation": "check",
+      "data": {
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "wait-what": "./skill_graph/graph.py:make_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "issues": []
+    },
+    "snapshot_file_count": 3,
+    "snapshot_equal": true
+  }
+}

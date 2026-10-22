@@ -1,0 +1,68 @@
+{
+  "entry": "CLI Agent Server",
+  "server": "http://127.0.0.1:20287",
+  "observations": [
+    {
+      "graph_id": "fixed-file",
+      "reply": true,
+      "thread_id": "01a16407-b070-759f-b285-5feb9e9d25fc",
+      "pause_before_file": true,
+      "result": {
+        "source_csv": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/generated/fixed-file-graph/source/fixed-file/data/example.csv",
+        "output_dir": "/tmp/cli-graph-6op6qbbj/fixed-fileTrue",
+        "rows": 2,
+        "total": 5,
+        "content": "Total: 5\n",
+        "status": "ok",
+        "approved": true,
+        "path": "/tmp/cli-graph-6op6qbbj/fixed-fileTrue/summary.txt"
+      }
+    },
+    {
+      "graph_id": "fixed-file",
+      "reply": false,
+      "thread_id": "01a16407-b6d0-76a9-9f98-873602284390",
+      "pause_before_file": true,
+      "result": {
+        "source_csv": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/generated/fixed-file-graph/source/fixed-file/data/example.csv",
+        "output_dir": "/tmp/cli-graph-6op6qbbj/fixed-fileFalse",
+        "rows": 2,
+        "total": 5,
+        "content": "Total: 5\n",
+        "status": "cancelled",
+        "approved": false
+      }
+    },
+    {
+      "graph_id": "mixed-retrieval",
+      "reply": true,
+      "thread_id": "01a16407-bf01-72e9-b3cf-a11912b2255c",
+      "pause_before_file": true,
+      "result": {
+        "question": "Explain both explicit graph control and saved progress, using evidence keys.",
+        "catalog": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/generated/mixed-retrieval-graph/source/mixed-retrieval/examples/catalog.json",
+        "output_dir": "/tmp/cli-graph-6op6qbbj/mixed-retrievalTrue",
+        "keys": [
+          "alpha",
+          "beta",
+          "empty"
+        ],
+        "status": "ok",
+        "report": "## Explicit graph control and saved progress\n\n**Explicit graph control.** LangGraph represents a workflow as explicit nodes and edges: each node is a distinct unit of work and each edge is a declared connection between them, so the order and branching of execution are stated directly in the graph structure rather than being implicit in ad-hoc control flow [alpha]. This makes the flow of the application visible and editable as a first-class object.\n\n**Saved progress.** Checkpoints record the graph's progress as it runs, capturing the state at a given point so execution can be resumed, continued, or inspected from that saved point [beta].\n\n**How the two relate.** Explicit nodes and edges define the structure of the run [alpha], while checkpoints preserve that structure's progress across time and interruptions [beta]. Together they mean a graph's shape is declared up front and its intermediate state is durably stored rather than lost.\n\n**Note on the evidence.** The catalog contains an entry marked \"No relevant material\" [empty], which contributed nothing to this explanation; the two claims above rest solely on [alpha] and [beta], each of which supplies a single short statement, so no further detail beyond the points listed is supported by the available evidence.\n\n### Evidence keys used\n- [alpha] — \"LangGraph uses explicit nodes and edges\"\n- [beta] — \"Checkpoints store graph progress\"\n- [empty] — \"No relevant material\" (not substantive)",
+        "used_keys": [
+          "alpha",
+          "beta",
+          "empty"
+        ],
+        "approved": true,
+        "path": "/tmp/cli-graph-6op6qbbj/mixed-retrievalTrue/report.md"
+      }
+    },
+    {
+      "graph_id": "wait-what",
+      "reply": "**Context:** You asked how the task continues after you approve it.\n\n**Short version:**\n\n- When you approve, the Graph waits at a confirmation point.\n- At that point, the Graph saves a Checkpoint.\n- The Checkpoint links your approval to the run that is on hold.\n- When the Graph starts again, the next Node writes the report.\n\n**One point to note:** the Checkpoint does not guarantee that an external file write happens only once. If the system crashes, the Graph can write the file again.\n\n**Words used from the glossary:** Graph, Node, Checkpoint.",
+      "loaded_and_called": true
+    }
+  ],
+  "semantic_review": "required for model responses"
+}

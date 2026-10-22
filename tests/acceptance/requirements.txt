@@ -1,0 +1,8 @@
+# Repository acceptance baseline; installation requires explicit project authorization.
+PyYAML==6.0.3
+langgraph==1.2.16
+langchain==1.4.7
+langchain-core==1.6.13
+langgraph-cli[inmem]==0.4.37
+# User-selected MiniMax CN M Plan, via the official Anthropic-compatible endpoint.
+langchain-anthropic==1.7.6

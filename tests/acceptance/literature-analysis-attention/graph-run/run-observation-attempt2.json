@@ -1,0 +1,21 @@
+{
+  "elapsed_seconds": 3.8010151386260986,
+  "model": "minimax-code-cn/MiniMax-M3.1-Flash",
+  "result": {
+    "digest_path": "",
+    "references_path": "",
+    "citation_analysis_path": "",
+    "literature_matching_metadata_path": "",
+    "literature_score_path": "",
+    "provenance": {
+      "generated_at": "",
+      "input_hash": "",
+      "model": "MiniMax-M3.1-Flash"
+    },
+    "warnings": [],
+    "error": {
+      "code": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/graph-run/references/source_and_plan.md'"
+    }
+  }
+}

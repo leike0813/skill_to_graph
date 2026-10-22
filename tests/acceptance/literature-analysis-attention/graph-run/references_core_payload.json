@@ -1,0 +1,67 @@
+{
+  "reference_reviews": [
+    {
+      "reference_key": "reference-10",
+      "selected_parse_pattern": "venue_marker",
+      "authors": [
+        "Kaiming He",
+        "Xiangyu Zhang",
+        "Shaoqing Ren",
+        "Jian Sun"
+      ],
+      "title": "Deep residual learning for image recognition",
+      "publication_year": 2016,
+      "review_notes": "Split on the 'In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition' venue marker; the four-author prefix precedes the first period and the trailing year 2016 follows the page range."
+    },
+    {
+      "reference_key": "reference-16",
+      "selected_parse_pattern": "venue_marker",
+      "authors": [
+        "Łukasz Kaiser",
+        "Ilya Sutskever"
+      ],
+      "title": "Neural GPUs learn algorithms",
+      "publication_year": 2016,
+      "review_notes": "Split on the 'In International Conference on Learning Representations (ICLR)' venue marker; title ends before the venue phrase and year 2016 trails the marker."
+    },
+    {
+      "reference_key": "reference-19",
+      "selected_parse_pattern": "venue_marker",
+      "authors": [
+        "Diederik Kingma",
+        "Jimmy Ba"
+      ],
+      "title": "Adam: A method for stochastic optimization",
+      "publication_year": 2015,
+      "review_notes": "Split on the 'In ICLR' venue marker; the colon inside the title is retained and the trailing year 2015 is taken from the end of the entry."
+    },
+    {
+      "reference_key": "reference-26",
+      "selected_parse_pattern": "venue_marker",
+      "authors": [
+        "Ankur Parikh",
+        "Oscar Täckström",
+        "Dipanjan Das",
+        "Jakob Uszkoreit"
+      ],
+      "title": "A decomposable attention model",
+      "publication_year": 2016,
+      "review_notes": "Split on the 'In Empirical Methods in Natural Language Processing' venue marker; the four-author list ends at the first period and year 2016 follows the venue."
+    },
+    {
+      "reference_key": "reference-36",
+      "selected_parse_pattern": "venue_marker",
+      "authors": [
+        "Vinyals",
+        "Kaiser",
+        "Koo",
+        "Petrov",
+        "Sutskever",
+        "Hinton"
+      ],
+      "title": "Grammar as a foreign language",
+      "publication_year": 2015,
+      "review_notes": "Split on the 'In Advances in Neural Information Processing Systems' venue marker; the ampersand-and-comma author list is expanded to individual surnames and year 2015 trails the venue."
+    }
+  ]
+}

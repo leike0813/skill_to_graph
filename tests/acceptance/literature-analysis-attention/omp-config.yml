@@ -1,0 +1,15 @@
+modelRoles:
+  default: minimax-code-cn/MiniMax-M3.1-Flash
+  task: minimax-code-cn/MiniMax-M3.1-Flash
+  smol: minimax-code-cn/MiniMax-M3.1-Flash
+  slow: minimax-code-cn/MiniMax-M3.1-Flash
+  plan: minimax-code-cn/MiniMax-M3.1-Flash
+task:
+  agentModelOverrides:
+    task: minimax-code-cn/MiniMax-M3.1-Flash
+    scout: minimax-code-cn/MiniMax-M3.1-Flash
+    sonic: minimax-code-cn/MiniMax-M3.1-Flash
+    reviewer: minimax-code-cn/MiniMax-M3.1-Flash
+  prewalk: false
+retry:
+  modelFallback: false

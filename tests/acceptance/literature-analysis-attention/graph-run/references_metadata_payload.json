@@ -1,0 +1,50 @@
+{
+  "metadata_evidence_reviews": [
+    {
+      "reference_key": "reference-10",
+      "status": "fields_extracted",
+      "metadata": {
+        "conferenceName": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition",
+        "pages": "770–778",
+        "date": "2016"
+      },
+      "evidence_note": "conferenceName and pages are visible in locked_reference.raw ('In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 770–778, 2016') and echoed in metadata_context_text; date=2016 is the trailing year in locked_reference.raw. No volume, issue, DOI, URL, publisher, or place appears in the batch file, and publicationTitle was omitted because the entry names a proceedings venue rather than a separate journal container."
+    },
+    {
+      "reference_key": "reference-16",
+      "status": "fields_extracted",
+      "metadata": {
+        "conferenceName": "International Conference on Learning Representations (ICLR)",
+        "date": "2016"
+      },
+      "evidence_note": "conferenceName is visible in locked_reference.raw ('In International Conference on Learning Representations (ICLR), 2016') and metadata_context_text; date=2016 from locked_reference.raw. No pages, volume, issue, DOI, URL, publisher, or place are present in the batch file. publicationTitle omitted because the entry names a proceedings venue rather than a separate journal container."
+    },
+    {
+      "reference_key": "reference-19",
+      "status": "fields_extracted",
+      "metadata": {
+        "conferenceName": "ICLR",
+        "date": "2015"
+      },
+      "evidence_note": "conferenceName recorded exactly as the venue string 'ICLR' visible in locked_reference.raw ('In ICLR, 2015') and metadata_context_text ('In ICLR'); date=2015 from locked_reference.raw. The acronym is not expanded because no expansion appears in the batch file. No pages, volume, issue, DOI, URL, publisher, or place are visible. publicationTitle omitted because the entry names a proceedings venue rather than a separate journal container."
+    },
+    {
+      "reference_key": "reference-26",
+      "status": "fields_extracted",
+      "metadata": {
+        "conferenceName": "Empirical Methods in Natural Language Processing",
+        "date": "2016"
+      },
+      "evidence_note": "conferenceName is visible in locked_reference.raw ('In Empirical Methods in Natural Language Processing, 2016') and metadata_context_text; date=2016 from locked_reference.raw. No pages, volume, issue, DOI, URL, publisher, or place are present in the batch file. publicationTitle omitted because the entry names a proceedings venue rather than a separate journal container."
+    },
+    {
+      "reference_key": "reference-36",
+      "status": "fields_extracted",
+      "metadata": {
+        "conferenceName": "Advances in Neural Information Processing Systems",
+        "date": "2015"
+      },
+      "evidence_note": "conferenceName is visible in locked_reference.raw ('In Advances in Neural Information Processing Systems, 2015') and metadata_context_text; date=2015 from locked_reference.raw. No pages, volume, issue, DOI, URL, publisher, or place are present in the batch file. publicationTitle omitted because the entry names a proceedings venue rather than a separate journal container."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "dependencies": [
+    "./generated/fixed-file-graph",
+    "./generated/mixed-retrieval-graph",
+    "./generated/wait-what-graph"
+  ],
+  "graphs": {
+    "fixed-file": "./generated/fixed-file-graph/skill_graph/graph.py:cli_graph",
+    "mixed-retrieval": "./generated/mixed-retrieval-graph/skill_graph/graph.py:cli_graph",
+    "wait-what": "./generated/wait-what-graph/skill_graph/graph.py:make_graph"
+  }
+}

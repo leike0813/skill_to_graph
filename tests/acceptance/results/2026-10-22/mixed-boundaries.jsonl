@@ -1,0 +1,4 @@
+{"evidence_kind": "double", "scenario": "semantic-loop-routing", "outcome": "passed", "tools": [{"name": "lookup", "input": "{'key': 'alpha'}"}, {"name": "lookup", "input": "{'key': 'beta'}"}]}
+{"evidence_kind": "double", "scenario": "lookup-failure-stops", "outcome": "passed", "status": "failed", "tool_calls": 1}
+{"evidence_kind": "real-local-runtime", "scenario": "input-validation", "outcome": "passed"}
+{"evidence_kind": "double", "scenario": "existing-file-protected", "outcome": "passed"}

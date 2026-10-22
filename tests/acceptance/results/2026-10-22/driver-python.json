@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "time": "2026-10-22T14:39:05.272370+00:00",
+  "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/generated/fixed-file-graph",
+  "entry": "python",
+  "graph_id": "fixed-file",
+  "evidence_kind": "runtime",
+  "relocated": false,
+  "python_factory": "make_graph",
+  "config_file": null,
+  "outcome": "executed",
+  "judgement": "pending-review",
+  "events": [
+    {
+      "stage": "static",
+      "outcome": "passed",
+      "result": {
+        "ok": true,
+        "operation": "check",
+        "data": {
+          "checked_files": [
+            "langgraph.json",
+            "skill_graph/__init__.py",
+            "skill_graph/graph.py"
+          ],
+          "graph_entries": {
+            "fixed-file": "./skill_graph/graph.py:cli_graph"
+          },
+          "unresolved_entries": {}
+        },
+        "issues": []
+      }
+    },
+    {
+      "stage": "load",
+      "outcome": "loaded"
+    },
+    {
+      "stage": "call",
+      "outcome": "executed",
+      "result": {
+        "source_csv": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/generated/fixed-file-graph/source/fixed-file/data/example.csv",
+        "output_dir": "/tmp/skill-to-graph-driver-20261022/output",
+        "rows": 2,
+        "total": 5,
+        "content": "Total: 5\n",
+        "status": "planned",
+        "__interrupt__": [
+          {
+            "value": {
+              "question": "Write summary.txt?",
+              "rows": 2,
+              "total": 5,
+              "content": "Total: 5\n",
+              "path": "/tmp/skill-to-graph-driver-20261022/output/summary.txt"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "stage": "resume",
+      "outcome": "executed",
+      "result": {
+        "source_csv": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/generated/fixed-file-graph/source/fixed-file/data/example.csv",
+        "output_dir": "/tmp/skill-to-graph-driver-20261022/output",
+        "rows": 2,
+        "total": 5,
+        "content": "Total: 5\n",
+        "status": "ok",
+        "approved": true,
+        "path": "/tmp/skill-to-graph-driver-20261022/output/summary.txt"
+      }
+    }
+  ],
+  "uncovered": [
+    "Business semantics require comparison with the source contract"
+  ]
+}
