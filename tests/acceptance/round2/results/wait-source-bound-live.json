@@ -1,0 +1,15 @@
+{
+  "scenario": "wait-what",
+  "tools": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\", \"input.json\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "reply": "**Context:** You asked what the Graph does after you approve it. Here is the same information in simpler words.\n\n**Re-pitch:**\n\nThe Graph waits at a confirmation boundary. A Checkpoint is a saved record of the Graph state that can help it continue. This Checkpoint binds the reply to the suspended execution. After re-entry, the downstream Node emits the report. This does not give an exactly-once guarantee for a write to an external file after a crash. A Checkpoint does not guarantee that an external action happens only once.",
+  "judgement": "pending semantic and language review"
+}

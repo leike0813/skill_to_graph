@@ -1,0 +1,24 @@
+{
+  "graph": "mixed-retrieval",
+  "thread_id": "01a16710-5bf0-71ae-b220-896990437415",
+  "pause_before_file": true,
+  "result": {
+    "question": "Explain both explicit graph control and saved progress, using evidence keys.",
+    "catalog": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph/source/mixed-retrieval/examples/catalog.json",
+    "output_dir": "/tmp/round2-final-cli-i3mr_fcv/report",
+    "keys": [
+      "alpha",
+      "beta",
+      "empty"
+    ],
+    "needs_input": false,
+    "status": "ok",
+    "report": "**Explicit graph control:** LangGraph uses explicit nodes and edges [alpha]. The graph's structure is declared directly, with nodes as the units of work and edges as the connections between them, rather than being implicit.\n\n**Saved progress:** Checkpoints store graph progress [beta]. Checkpoints are the mechanism by which a graph run's progress is retained.\n\nThese two entries cover the two aspects asked about: how the graph's flow is defined [alpha], and how progress through that flow is preserved [beta]. The remaining catalog entry contains no relevant material and supports no part of this answer.",
+    "used_keys": [
+      "alpha",
+      "beta"
+    ],
+    "approved": true,
+    "path": "/tmp/round2-final-cli-i3mr_fcv/report/report.md"
+  }
+}

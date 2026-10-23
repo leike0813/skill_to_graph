@@ -1,0 +1,32 @@
+{
+  "reply": "Here is the same information in plain words.\n\n**Context:** This is about the workflow Graph for this task. The Graph has a confirmation point, a saved Checkpoint, and a Node that makes the report.\n\n**What the passage says:**\n\n- The Graph stops at the confirmation point and waits there.\n- A Checkpoint is a saved record of the Graph state. It links the reply to the paused task.\n- After the task continues, the next Node makes the report.\n- The Checkpoint does not guarantee that a write to an external file happens only once. This is true if the system crashes.",
+  "tools": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY-MAP.md\", \"geometry\", \"workflow\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "# Glossary map\nFor workflow tasks, task confirmation, saved progress, and reports: workflow/GLOSSARY.md\nFor geometry: geometry/GLOSSARY.md\n"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "input": [
+    {
+      "role": "user",
+      "content": "How will this task continue after I approve it?"
+    },
+    {
+      "role": "assistant",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "user",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "map": "# Glossary map\nFor workflow tasks, task confirmation, saved progress, and reports: workflow/GLOSSARY.md\nFor geometry: geometry/GLOSSARY.md\n"
+}

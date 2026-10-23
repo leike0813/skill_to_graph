@@ -1,0 +1,23 @@
+{
+  "scenario": "wait-what",
+  "tools": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\", \"input.json\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/fixtures/wait-what-workspace/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    },
+    {
+      "name": "read_file",
+      "content": "{\n  \"conversation\": [\n    {\"role\": \"user\", \"content\": \"How will this task continue after I approve it?\"},\n    {\"role\": \"assistant\", \"content\": \"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\"},\n    {\"role\": \"user\", \"content\": \"Wait, I do not understand. Re-pitch that with a little context.\"}\n  ],\n  \"workdir\": \"REPLACE_WITH_ABSOLUTE_WORKSPACE_PATH\"\n}\n"
+    }
+  ],
+  "reply": "**Context:** This task uses a Graph. The Graph is a set of Nodes and paths that controls the task. The Glossary says a Checkpoint is a saved record of the Graph state that can help the Graph continue.\n\n**What the previous message says:**\n\n- The Graph waits at a confirmation point.\n- A Checkpoint links your reply to the task that is paused.\n- The next Node makes the report after the task continues.\n- This does not guarantee that an external file write happens only once. So, after a crash, the file write can happen more than once.\n- A Checkpoint does not guarantee that an external action happens only once.",
+  "judgement": "pending semantic and language review"
+}

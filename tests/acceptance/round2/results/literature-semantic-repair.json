@@ -1,0 +1,38 @@
+{
+  "evidence_kind": "live-model-source-permitted-correction",
+  "review_findings": [
+    "人工复核发现 citation_analysis.md 中 [24] 的 summary 写了“进展与饱和状态”。分配 snippets 只说 pushing the boundaries，不支持饱和。请删除该无依据判断。",
+    "timeline early 把 LSTM 描述为“门控单元处理长程依赖”，mid 把 Neural GPU [17] 与减少顺序计算的模型并列。请只依据对应 citation_work_packages 的 snippets 重查，不能从被引文献题名/常识补造内部机制或移用相邻引用的论证角色。",
+    "逐条核对全部21项、三桶综述和全局 summary。对来源明说与主执行者解释作出区分，删除缺乏 snippets 依据的技术机制、历史评价或强断言。中文保留、stable keys/源分桶保持，不重扫全文。",
+    "现有完整正式 payload 位于 .literature_analysis_tmp/agent_work/citation_semantic/citation_payload.json。通过当前阶段正式重交修正，并核对返回JSON及产物。无需重新提交参考文献。"
+  ],
+  "elapsed_seconds": 408.26245188713074,
+  "result": {
+    "digest_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/digest.md",
+    "references_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/references.json",
+    "citation_analysis_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/citation_analysis.json",
+    "literature_matching_metadata_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/literature_matching_metadata.json",
+    "literature_score_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/literature_score.json",
+    "provenance": {
+      "generated_at": "2026-10-22T16:24:48Z",
+      "input_hash": "sha256:84a6c55073f13d094b43394a293aa7994feef2cb594135d051017a2eb3eaed1d",
+      "model": "minimax-code-cn/MiniMax-M3.1-Flash"
+    },
+    "warnings": [
+      "reference_pattern_ambiguous: 40 entries",
+      "reference_api_provider_failed: provider=semantic_scholar status=429"
+    ],
+    "error": {},
+    "citation_analysis_report_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/citation_analysis.md",
+    "representative_image": {
+      "caption_quote": "Figure 1: The Transformer - model architecture.",
+      "confidence": "high",
+      "label": "Figure 1",
+      "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg",
+      "section_hint": "3 Model Architecture",
+      "selection_reason": "Figure 1 是论文核心方法的总览图，同时呈现编码器（左半）与解码器（右半）的堆叠结构，最能代表该文提出的 Transformer 架构。",
+      "source_kind": "markdown_image_ref",
+      "status": "selected"
+    }
+  }
+}

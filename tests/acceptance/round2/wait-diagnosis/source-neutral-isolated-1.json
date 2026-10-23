@@ -1,0 +1,66 @@
+{
+  "arm": "source-neutral-isolated",
+  "repetition": 1,
+  "model": "MiniMax-M3.1-Flash",
+  "model_options": {
+    "max_tokens": 16384,
+    "reasoning_effort": "high",
+    "thinking": {
+      "type": "adaptive"
+    }
+  },
+  "input": [
+    {
+      "role": "user",
+      "content": "Please explain the task workflow."
+    },
+    {
+      "role": "assistant",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "user",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "reply": "I read the task-context files. The repo has one glossary, `GLOSSARY.md` (there is no `GLOSSARY-MAP.md`, so no second glossary to follow). Here is the same explanation again, with context, in Simplified Technical English and with the glossary names: **Graph**, **Node**, **Checkpoint**.\n\n## What the task does\n\nThe task is a **Graph**. The Graph is a set of **Nodes** and paths. Each Node is one step. The last Node writes a report to an external file.\n\n## The order of the steps\n\n1. The Graph starts at the first Node.\n2. The Graph goes to the Node that waits for a confirmation.\n3. The Graph stops at that Node. The Graph is not complete.\n4. The system receives the confirmation.\n5. The system saves a **Checkpoint**. The Checkpoint records the state of the Graph.\n6. The system sends the reply. The reply is bound to the Checkpoint, so the reply starts the correct run of the Graph.\n7. The Graph continues at the next Node.\n8. The next Node writes the report to the external file.\n9. The Graph ends.\n\n## Why the Checkpoint matters\n\nThe Checkpoint lets the Graph continue after a stop. If the system stops at step 5 or later, the system uses the Checkpoint to continue at the same Node. The user does not have to start the task again.\n\n## The limit of the Checkpoint\n\nThe Checkpoint does not guarantee that the file write happens only once. This is a rule of the glossary.\n\nIf the system stops after step 8 and before the next Checkpoint, the system can write the file a second time when it continues. The result is two reports in the file.\n\n## What you must do about the limit\n\n- Add a Checkpoint after the Node that writes the file. Then a stop after the write is safe.\n- Or, make the Node check the file before it writes. The Node writes only if the report is not in the file.\n- Or, tell the user to check the file after a stop. The user removes the old report by hand.\n\n## Note on the terms\n\nI use the words from `GLOSSARY.md` for **Graph**, **Node**, and **Checkpoint**. I do not use \"persisted checkpoint\", \"suspended execution\", \"re-entry\", or \"downstream node\", because the glossary does not define them. Use these words in the other documents for this task, so the reader learns one name for each thing.",
+  "tool_results": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "first_request": [
+    {
+      "role": "system",
+      "content": "Wait, I don't understand where you've got to here. Re-pitch that: give me a little bit of context, talk in ASD-STE100 Simplified Technical English, and use the ubiquitous language from `GLOSSARY.md` (follow `GLOSSARY-MAP.md` to the right one if the repo has more than one)."
+    },
+    {
+      "role": "human",
+      "content": "Please explain the task workflow."
+    },
+    {
+      "role": "ai",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "human",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list_files",
+      "input": "{'path': '.'}"
+    },
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY.md'}"
+    }
+  ],
+  "elapsed_seconds": 15.375387907028198
+}

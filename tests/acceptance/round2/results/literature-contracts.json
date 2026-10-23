@@ -1,0 +1,238 @@
+{
+  "status": "contract-checks-passed",
+  "checks": {
+    "final_result_schema": {
+      "passed": true,
+      "errors": []
+    },
+    "runtime_success": {
+      "passed": true
+    },
+    "mirror_provenance_matches_db": {
+      "passed": true
+    },
+    "final_response_is_json": {
+      "passed": true
+    },
+    "final_response_matches_mirror": {
+      "passed": true
+    },
+    "digest_path": {
+      "passed": true
+    },
+    "references_path": {
+      "passed": true
+    },
+    "citation_analysis_path": {
+      "passed": true
+    },
+    "citation_analysis_report_path": {
+      "passed": true
+    },
+    "literature_matching_metadata_path": {
+      "passed": true
+    },
+    "literature_score_path": {
+      "passed": true
+    },
+    "citation_markdown_matches_json": {
+      "passed": true
+    },
+    "citation_language_metadata": {
+      "passed": true
+    },
+    "references.json_render_context_schema": {
+      "passed": true,
+      "errors": []
+    },
+    "citation_analysis.json_render_context_schema": {
+      "passed": true,
+      "errors": []
+    },
+    "matching_metadata_schema": {
+      "passed": true
+    }
+  },
+  "facts": {
+    "workflow_state": {
+      "id": 1,
+      "current_stage": "stage_8_completed",
+      "current_substep": "render_and_validate",
+      "stage_gate": "ready",
+      "next_action": "render_and_validate",
+      "active_batch_kind": null,
+      "active_batch_index": null,
+      "status_summary": "artifacts rendered and validated",
+      "last_error_code": null,
+      "updated_at": "2026-10-23T04:48:50Z"
+    },
+    "input_hash": "sha256:84a6c55073f13d094b43394a293aa7994feef2cb594135d051017a2eb3eaed1d",
+    "model": "minimax-code-cn/MiniMax-M3.1-Flash",
+    "language": "zh-CN",
+    "normalized_chars": 43091,
+    "receipts": [
+      {
+        "action_name": "confirm_runtime_paths",
+        "stage": "stage_0_bootstrap",
+        "status": "succeeded",
+        "metadata_json": "{\"db_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/literature_analysis.db\", \"output_dir\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts\", \"result_json_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/literature-analysis.result.json\", \"tmp_dir\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp\", \"working_dir\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run\"}",
+        "updated_at": "2026-10-22T16:24:48Z"
+      },
+      {
+        "action_name": "bootstrap_runtime_db",
+        "stage": "stage_0_bootstrap",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-22T16:24:48Z"
+      },
+      {
+        "action_name": "persist_render_templates",
+        "stage": "stage_1_normalize_source",
+        "status": "succeeded",
+        "metadata_json": "{\"citation_analysis_template_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/templates/citation_analysis.runtime.md.j2\", \"digest_template_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/templates/digest.runtime.md.j2\", \"literature_score_template_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/templates/literature_score.runtime.json.j2\", \"scoring_rubric_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/templates/scoring_rubric.runtime.json\", \"target_language\": \"zh-CN\"}",
+        "updated_at": "2026-10-22T16:24:48Z"
+      },
+      {
+        "action_name": "normalize_source",
+        "stage": "stage_1_normalize_source",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-22T16:24:48Z"
+      },
+      {
+        "action_name": "persist_outline_and_scopes",
+        "stage": "stage_2_outline_and_scopes",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-23T04:33:18Z"
+      },
+      {
+        "action_name": "persist_digest",
+        "stage": "stage_3_digest",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-23T04:34:53Z"
+      },
+      {
+        "action_name": "persist_literature_score",
+        "stage": "stage_4_scoring",
+        "status": "succeeded",
+        "metadata_json": "{\"paper_type\": \"empirical\", \"rubric_id\": \"literature-score.v1\"}",
+        "updated_at": "2026-10-23T04:40:00Z"
+      },
+      {
+        "action_name": "prepare_references_workset",
+        "stage": "stage_5_references",
+        "status": "succeeded",
+        "metadata_json": "{\"api_accepted_entry_count\": 0, \"entry_style\": \"mixed\", \"file_quality_low\": false, \"grouping_suspect_count\": 0, \"requires_split_review\": false, \"review_generation_id\": \"\", \"skipped_split_review_block_count\": 0, \"split_review_package_count\": 0, \"triggered_signals\": []}",
+        "updated_at": "2026-10-23T04:46:16Z"
+      },
+      {
+        "action_name": "resolve_reference_api",
+        "stage": "stage_5_references",
+        "status": "partial",
+        "metadata_json": "{\"accepted_count\": 0, \"identifier\": \"ARXIV:1706.03762\", \"identifier_source\": \"parameter\", \"providers\": [{\"cached\": true, \"candidate_count\": 0, \"error\": {\"kind\": \"http_error\", \"message\": \"{\\\"message\\\": \\\"Too Many Requests. Please wait and try again or apply for a key for higher rate limits. https://www.semanticscholar.org/product/api#api-key-form\\\", \\\"code\\\": \\\"429\\\"}\", \"status\": 429}, \"http_status\": 429, \"provider\": \"semantic_scholar\", \"response_sha256\": \"74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b\", \"status\": \"failed\"}], \"unresolved_count\": 40}",
+        "updated_at": "2026-10-23T04:46:16Z"
+      },
+      {
+        "action_name": "persist_references",
+        "stage": "stage_5_references",
+        "status": "succeeded",
+        "metadata_json": "{\"stored_reference_items\": 40}",
+        "updated_at": "2026-10-23T04:46:16Z"
+      },
+      {
+        "action_name": "prepare_reference_metadata_enrichment",
+        "stage": "stage_5_references",
+        "status": "succeeded",
+        "metadata_json": "{\"batch_count\": 4, \"item_count\": 40}",
+        "updated_at": "2026-10-23T04:46:24Z"
+      },
+      {
+        "action_name": "persist_reference_metadata_enrichment",
+        "stage": "stage_5_references",
+        "status": "succeeded",
+        "metadata_json": "{\"confirmed_existing_count\": 0, \"enriched_count\": 39, \"item_count\": 40, \"no_metadata_found_count\": 1}",
+        "updated_at": "2026-10-23T04:46:24Z"
+      },
+      {
+        "action_name": "prepare_citation_workset",
+        "stage": "stage_6_citation",
+        "status": "succeeded",
+        "metadata_json": "{\"resolved_items\": 21, \"total_mentions\": 25, \"unresolved_mentions\": 0}",
+        "updated_at": "2026-10-23T04:46:55Z"
+      },
+      {
+        "action_name": "persist_citation_semantics",
+        "stage": "stage_6_citation",
+        "status": "succeeded",
+        "metadata_json": "{\"stored_citation_items\": 21}",
+        "updated_at": "2026-10-23T04:48:49Z"
+      },
+      {
+        "action_name": "persist_citation_timeline",
+        "stage": "stage_6_citation",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-23T04:48:49Z"
+      },
+      {
+        "action_name": "persist_citation_summary",
+        "stage": "stage_6_citation",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-23T04:48:49Z"
+      },
+      {
+        "action_name": "render_and_validate",
+        "stage": "stage_7_render_and_validate",
+        "status": "succeeded",
+        "metadata_json": "{}",
+        "updated_at": "2026-10-23T04:48:50Z"
+      }
+    ],
+    "errors": [],
+    "result": {
+      "digest_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/digest.md",
+      "references_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/references.json",
+      "citation_analysis_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/citation_analysis.json",
+      "literature_matching_metadata_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/literature_matching_metadata.json",
+      "literature_score_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/literature_score.json",
+      "provenance": {
+        "generated_at": "2026-10-22T16:24:48Z",
+        "input_hash": "sha256:84a6c55073f13d094b43394a293aa7994feef2cb594135d051017a2eb3eaed1d",
+        "model": "minimax-code-cn/MiniMax-M3.1-Flash"
+      },
+      "warnings": [
+        "reference_pattern_ambiguous: 40 entries",
+        "reference_api_provider_failed: provider=semantic_scholar status=429"
+      ],
+      "error": {},
+      "citation_analysis_report_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/citation_analysis.md",
+      "representative_image": {
+        "caption_quote": "Figure 1: The Transformer - model architecture.",
+        "confidence": "high",
+        "label": "Figure 1",
+        "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg",
+        "section_hint": "3 Model Architecture",
+        "selection_reason": "Figure 1 是论文核心方法的总览图，同时呈现编码器（左半）与解码器（右半）的堆叠结构，最能代表该文提出的 Transformer 架构。",
+        "source_kind": "markdown_image_ref",
+        "status": "selected"
+      }
+    },
+    "citation_items": 21,
+    "citation_scope": {
+      "section_title": "1 Introduction + 2 Background",
+      "line_start": 25,
+      "line_end": 43
+    },
+    "reference_items": 40,
+    "reference_root_type": "list",
+    "paper_score": {
+      "overall_score": 83.0,
+      "confidence": 0.85,
+      "confidence_adjusted_score": 70.6
+    }
+  },
+  "semantic_review": "separate human review required"
+}

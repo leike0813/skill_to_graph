@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "time": "2026-10-23T04:40:40.027022+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:40:40.707852+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-1.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:40:42.441921+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-2.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:40:52.086381+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-3.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:42:32.396222+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:42:33.628749+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-1.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:42:33.640485+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-2.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:42:57.365165+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-3.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:47:09.142878+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json",
+      "language": "zh-CN",
+      "count": 1,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:47:22.879437+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:47:35.465778+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:56:59.582339+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json",
+      "language": "zh-CN",
+      "count": 1,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:57:22.842489+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    },
+    {
+      "time": "2026-10-23T04:57:46.874155+00:00",
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json",
+      "language": "zh-CN",
+      "count": 10,
+      "scope_matches": true
+    }
+  ],
+  "semantic_review": "Scope only; see REPORT.md"
+}

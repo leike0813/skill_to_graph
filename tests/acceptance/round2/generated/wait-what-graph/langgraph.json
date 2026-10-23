@@ -1,0 +1,5 @@
+{
+  "dependencies": ["."],
+  "graphs": {"wait-what": "./skill_graph/graph.py:make_graph"}
+}
+

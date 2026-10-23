@@ -66,7 +66,7 @@
 | frontmatter `description` | 必填，≤1024 字符 | 图的用途描述；`create_agent` 的 `system_prompt` 开头段落；也用于路由到本图 |
 | frontmatter `license` / `compatibility` / `metadata` | 选填 | 随图一起保留的元数据；`compatibility`（≤500 字符）→ 运行前置条件说明 |
 | frontmatter `allowed-tools` | 选填，实验性 | 保留其预授权语义，不因字段名直接把工具池裁成白名单。工具可用性、调用预授权与禁止规则分别处理；只有源包或目标平台的明确语义支持排除时才限制工具 |
-| SKILL.md 正文 | 指令正文 | `create_agent` 的 `system_prompt`；或自建图里的「提示词节点」system message |
+| SKILL.md 正文 | 指令正文 | 转换时提取职责：固定控制进入图，语义判断生成局部运行指令，跨职责规则在适用接收点明确传递；完整自主区段可保留其必要完整指令 |
 | `references/` | 渐进式披露，按需加载 | **不得**全文注入 prompt；保留在 `source/<原包目录名>/references/`，改为工具（`read_reference(path)`）或独立节点按需读取（`agent-skills-package-format.md` §5） |
 | `scripts/` | 确定性脚本 | 保留在 `source/<原包目录名>/scripts/`；源流程需要时提供真实运行路径并声明运行依赖（见本文件 §8）。转换 Skill 自身的脚本不与源脚本混放 |
 | `assets/` | 模板、样例等只读资源 | 保留在 `source/<原包目录名>/assets/`，脚本与节点按源包内相对路径访问 |

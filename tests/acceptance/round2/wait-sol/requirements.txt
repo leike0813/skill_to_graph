@@ -1,0 +1,3 @@
+# Added to the previously authorized external acceptance environment; core versions stay pinned.
+langchain-openai==1.7.2
+openai==3.37.0

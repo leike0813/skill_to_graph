@@ -1,0 +1,11 @@
+{
+  "proxy_hosts": {},
+  "credential_sent": false,
+  "observations": [
+    {
+      "trust_env": true,
+      "error": "ConnectTimeout",
+      "elapsed_seconds": 10.075763463973999
+    }
+  ]
+}

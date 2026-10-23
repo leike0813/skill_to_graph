@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "workdir": "/tmp/wait-what-source-control-j250csb7",
+  "model": "minimax-code-cn/MiniMax-M3.1-Flash",
+  "thinking": "high",
+  "system_prompt": "You execute explicitly invoked Agent Skills. Follow the supplied Skill and conversation. Read task resources when needed.",
+  "tools": [
+    "read",
+    "find"
+  ],
+  "input": [
+    {
+      "role": "user",
+      "content": "How will this task continue after I approve it?"
+    },
+    {
+      "role": "assistant",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "user",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "source_snapshot_matches": true
+}

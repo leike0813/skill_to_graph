@@ -1,0 +1,10 @@
+modelRoles:
+  default: openai-codex/gpt-6.1-sol
+  task: openai-codex/gpt-6.1-sol
+  smol: openai-codex/gpt-6.1-sol
+  slow: openai-codex/gpt-6.1-sol
+  plan: openai-codex/gpt-6.1-sol
+task:
+  prewalk: false
+retry:
+  modelFallback: false

@@ -1,0 +1,56 @@
+{
+  "source_execution": "omp on isolated source snapshot and glossary",
+  "provider": "minimax-code-cn",
+  "model": "MiniMax-M3.1-Flash",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "i": "Read the invoked Skill instructions",
+        "path": "/tmp/wait-what-source-control-j250csb7/wait-what/SKILL.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "i": "List workspace root to locate glossary and references",
+        "path": "/tmp/wait-what-source-control-j250csb7"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "i": "Read the glossary",
+        "path": "/tmp/wait-what-source-control-j250csb7/GLOSSARY.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "i": "List wait-what skill directory",
+        "path": "/tmp/wait-what-source-control-j250csb7/wait-what"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "i": "Check skill agent config for extra instructions",
+        "path": "/tmp/wait-what-source-control-j250csb7/wait-what/agents/openai.yaml"
+      }
+    },
+    {
+      "name": "find",
+      "arguments": {
+        "i": "Confirm whether a GLOSSARY-MAP.md exists",
+        "query": "GLOSSARY-MAP mapping file for glossary selection",
+        "grep_keywords": [
+          "GLOSSARY-MAP",
+          "glossary"
+        ],
+        "path": "/tmp/wait-what-source-control-j250csb7"
+      }
+    }
+  ],
+  "reply": "## Re-pitch, with the missing context\n\n**In one sentence:** your approval restarts the Graph at the Node that was waiting for you, and the last Node makes the report.\n\n### The context first\n\nYour task runs as a **Graph**. A Graph is a set of Nodes and paths that controls the task. A **Node** is one step in the Graph. A **Checkpoint** is a saved record of the Graph state that can help it continue.\n\n### What happens after you approve\n\n1. The Graph stops at the confirmation Node. It waits for your reply.\n2. The system saves a Checkpoint. The Checkpoint holds the state of the Graph and your reply.\n3. Your approval restarts the Graph. The system reads the Checkpoint. The waiting Node continues where it stopped.\n4. The next Node runs. That Node makes the report.\n\n### The limit you must know\n\nA Checkpoint does not guarantee that an external action happens only once.\n\nIf the system writes a file and then crashes before it saves the Checkpoint, the system writes that file again on the next start. The Graph still continues, but the file then holds the same result two times.\n\n### How you can remove that limit\n\nMake the file write safe to repeat. Before the system writes the file, it checks whether the result is already there. It writes only if the result is missing. Then a repeated write causes no harm.",
+  "limitation": "Conversation provided as role-tagged user data; omp tool definitions and base system differ. Matched graph-runtime prompt ablation supplies strict same-harness comparison."
+}

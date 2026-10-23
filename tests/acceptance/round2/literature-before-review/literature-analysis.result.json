@@ -1,0 +1,28 @@
+{
+  "digest_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/digest.md",
+  "references_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/references.json",
+  "citation_analysis_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/citation_analysis.json",
+  "literature_matching_metadata_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/literature_matching_metadata.json",
+  "literature_score_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/literature_score.json",
+  "provenance": {
+    "generated_at": "2026-10-22T16:24:48Z",
+    "input_hash": "sha256:84a6c55073f13d094b43394a293aa7994feef2cb594135d051017a2eb3eaed1d",
+    "model": "minimax-code-cn/MiniMax-M3.1-Flash"
+  },
+  "warnings": [
+    "reference_pattern_ambiguous: 40 entries",
+    "reference_api_provider_failed: provider=semantic_scholar status=429"
+  ],
+  "error": {},
+  "citation_analysis_report_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/artifacts/citation_analysis.md",
+  "representative_image": {
+    "caption_quote": "Figure 1: The Transformer - model architecture.",
+    "confidence": "high",
+    "label": "Figure 1",
+    "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg",
+    "section_hint": "3 Model Architecture",
+    "selection_reason": "Figure 1 是论文核心方法的总览图，同时呈现编码器（左半）与解码器（右半）的堆叠结构，最能代表该文提出的 Transformer 架构。",
+    "source_kind": "markdown_image_ref",
+    "status": "selected"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "elapsed_seconds": 2.248213291168213,
+  "evidence_kind": "live-model",
+  "input": {
+    "source_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/input/mineru/attention-is-all-you-need.md",
+    "language": "zh-CN",
+    "score_only": false,
+    "identifier": "arXiv:1706.03762"
+  },
+  "work": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run",
+  "result": {
+    "digest_path": "",
+    "references_path": "",
+    "citation_analysis_path": "",
+    "literature_matching_metadata_path": "",
+    "literature_score_path": "",
+    "provenance": {
+      "generated_at": "",
+      "input_hash": "",
+      "model": "MiniMax-M3.1-Flash"
+    },
+    "warnings": [],
+    "error": {
+      "code": "AnthropicRateLimitError",
+      "message": "Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': '已达到 Token Plan 用量上限：请升级 Token Plan 套餐或购买积分补充用量。 (2056)'}, 'request_id': '07296bd126cb6e45a20a3c7bfd078390'}"
+    }
+  }
+}

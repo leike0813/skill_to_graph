@@ -1,0 +1,38 @@
+{
+  "evidence_kind": "live-tool",
+  "original_temporary_app_unavailable": true,
+  "source_user_package_unchanged": true,
+  "relocated_app_used": true,
+  "observations": [
+    {
+      "scenario": "approve",
+      "status": "ok",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "reject",
+      "status": "cancelled",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "existing",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "negative",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "missing-column",
+      "status": "error",
+      "assertions": "passed"
+    },
+    {
+      "scenario": "script-io-failure",
+      "status": "error",
+      "assertions": "passed"
+    }
+  ]
+}

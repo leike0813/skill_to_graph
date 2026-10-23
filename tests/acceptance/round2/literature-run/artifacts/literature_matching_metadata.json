@@ -1,0 +1,48 @@
+{
+  "datasets": [
+    "WMT 2014 English-German",
+    "WMT 2014 English-French",
+    "WMT newstest2013",
+    "WMT newstest2014",
+    "Penn Treebank WSJ",
+    "BerkeleyParser corpora"
+  ],
+  "exclude_terms": [
+    "protein structure prediction",
+    "graph neural network",
+    "speech recognition",
+    "recommendation system",
+    "medical image segmentation"
+  ],
+  "key_terms": [
+    "Transformer",
+    "self-attention",
+    "encoder-decoder architecture",
+    "neural machine translation",
+    "sequence transduction",
+    "positional encoding",
+    "attention mechanism",
+    "recurrent neural network",
+    "convolutional sequence modeling",
+    "long-range dependency"
+  ],
+  "methods": [
+    "multi-head attention",
+    "scaled dot-product attention",
+    "position-wise feed-forward network",
+    "sinusoidal positional encoding",
+    "residual connection with layer normalization",
+    "residual dropout",
+    "label smoothing",
+    "Adam optimizer with learning-rate warmup"
+  ],
+  "problems": [
+    "sequential computation bottleneck",
+    "limited parallelization in training",
+    "long-range dependency learning",
+    "translation quality improvement",
+    "training cost reduction",
+    "sequence order information without recurrence"
+  ],
+  "schema": "literature_matching_metadata.v1"
+}

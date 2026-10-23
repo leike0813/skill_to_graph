@@ -1,0 +1,69 @@
+{
+  "isolated_inspect": {
+    "exit_code": 0,
+    "result": {
+      "ok": true,
+      "operation": "inspect",
+      "data": {
+        "source_root": "/tmp/round2-release-xlsa8lps/skill-to-graph",
+        "metadata": {
+          "name": "skill-to-graph",
+          "description": "将 Agent Skill 包转换为保持源契约和行为的 Python LangGraph 应用。用于需要将 Skill 的流程显式化，并通过 Python 或 langgraph CLI 执行时。",
+          "compatibility": "转换辅助脚本需要 Python 3.11+ 和 PyYAML；生成图的模型、工具、存储及依赖由运行环境提供。"
+        },
+        "files": [
+          {
+            "path": "SKILL.md",
+            "type": "file"
+          },
+          {
+            "path": "references",
+            "type": "directory"
+          },
+          {
+            "path": "references/runtime-api.md",
+            "type": "file"
+          },
+          {
+            "path": "references/skill-to-langgraph-mapping.md",
+            "type": "file"
+          },
+          {
+            "path": "scripts",
+            "type": "directory"
+          },
+          {
+            "path": "scripts/__pycache__",
+            "type": "directory"
+          },
+          {
+            "path": "scripts/__pycache__/_cli.cpython-312.pyc",
+            "type": "file"
+          },
+          {
+            "path": "scripts/__pycache__/_cli.cpython-313.pyc",
+            "type": "file"
+          },
+          {
+            "path": "scripts/_cli.py",
+            "type": "file"
+          },
+          {
+            "path": "scripts/check_graph.py",
+            "type": "file"
+          },
+          {
+            "path": "scripts/skill_package.py",
+            "type": "file"
+          }
+        ]
+      },
+      "issues": []
+    }
+  },
+  "links": {
+    "SKILL.md:references/skill-to-langgraph-mapping.md": true,
+    "SKILL.md:references/runtime-api.md": true
+  },
+  "repository_environment_in_release": false
+}

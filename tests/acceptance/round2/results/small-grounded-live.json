@@ -1,0 +1,293 @@
+{
+  "schema": 1,
+  "samples": {
+    "fixed-file": {
+      "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/fixed-file-graph",
+      "static": {
+        "exit_code": 0,
+        "ok": true,
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "fixed-file": "./skill_graph/graph.py:cli_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "entries": {
+        "fixed-file": {
+          "entry": "./skill_graph/graph.py:cli_graph",
+          "callable": true
+        }
+      },
+      "snapshot": {
+        "snapshot": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/fixed-file-graph/source/fixed-file",
+        "files": [
+          "SKILL.md",
+          "data/example.csv",
+          "scripts/render.py",
+          "templates/summary.txt"
+        ],
+        "missing": [],
+        "content_differing": [],
+        "matches_source": true
+      },
+      "runtime": [
+        {
+          "scenario": "approve",
+          "status": "ok",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "reject",
+          "status": "cancelled",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "existing",
+          "status": "error",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "negative",
+          "status": "error",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "missing-column",
+          "status": "error",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "script-io-failure",
+          "status": "error",
+          "assertions": "passed"
+        }
+      ],
+      "boundaries": [
+        {
+          "scenario": "missing-output-dir-asks",
+          "asked_fields": [
+            "output_dir"
+          ],
+          "wrote_file": false
+        },
+        {
+          "scenario": "refusal-has-no-path",
+          "status": "cancelled",
+          "path_absent": true,
+          "output_dir_created": false
+        }
+      ]
+    },
+    "mixed-retrieval": {
+      "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph",
+      "static": {
+        "exit_code": 0,
+        "ok": true,
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "mixed-retrieval": "./skill_graph/graph.py:cli_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "entries": {
+        "mixed-retrieval": {
+          "entry": "./skill_graph/graph.py:cli_graph",
+          "callable": true
+        }
+      },
+      "snapshot": {
+        "snapshot": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph/source/mixed-retrieval",
+        "files": [
+          "SKILL.md",
+          "examples/catalog.json"
+        ],
+        "missing": [],
+        "content_differing": [],
+        "matches_source": true
+      },
+      "boundaries": [
+        {
+          "evidence_kind": "double",
+          "scenario": "semantic-loop-routing",
+          "outcome": "passed",
+          "tools": [
+            {
+              "name": "lookup",
+              "input": "{'key': 'alpha'}"
+            },
+            {
+              "name": "lookup",
+              "input": "{'key': 'beta'}"
+            }
+          ]
+        },
+        {
+          "evidence_kind": "double",
+          "scenario": "lookup-failure-stops",
+          "outcome": "passed",
+          "status": "failed",
+          "tool_calls": 1
+        },
+        {
+          "evidence_kind": "real-local-runtime",
+          "scenario": "input-validation",
+          "outcome": "passed"
+        },
+        {
+          "evidence_kind": "double",
+          "scenario": "existing-file-protected",
+          "outcome": "passed"
+        }
+      ]
+    },
+    "wait-what": {
+      "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/wait-what-graph",
+      "static": {
+        "exit_code": 0,
+        "ok": true,
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "wait-what": "./skill_graph/graph.py:make_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "entries": {
+        "wait-what": {
+          "entry": "./skill_graph/graph.py:make_graph",
+          "callable": true
+        }
+      },
+      "snapshot": {
+        "snapshot": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/wait-what-graph/source/wait-what",
+        "files": [
+          ".mattpack-owner.json",
+          "SKILL.md",
+          "agents/openai.yaml"
+        ],
+        "missing": [],
+        "content_differing": [],
+        "matches_source": true
+      },
+      "boundaries": [
+        {
+          "scenario": "glossary-path-semantics",
+          "relative_under_workdir": true,
+          "absolute_preserved": true
+        }
+      ]
+    }
+  },
+  "live": {
+    "status": "executed",
+    "mixed": [
+      {
+        "scenario": "sufficient",
+        "status": "ok",
+        "used_keys": [
+          "alpha",
+          "beta"
+        ],
+        "report": "A LangGraph task is controlled by explicit nodes and edges, which define the structure and flow of the graph [alpha]. Its progress is stored in checkpoints, which capture the state of the graph so execution can be resumed [beta]. The third catalog entry (\"empty\") contains no relevant material.",
+        "tools": [
+          {
+            "name": "lookup",
+            "input": "{'key': 'alpha'}"
+          },
+          {
+            "name": "lookup",
+            "input": "{'key': 'beta'}"
+          },
+          {
+            "name": "lookup",
+            "input": "{'key': 'empty'}"
+          }
+        ],
+        "before_approval_no_output": true
+      },
+      {
+        "scenario": "reject",
+        "status": "cancelled",
+        "used_keys": [
+          "alpha",
+          "beta"
+        ],
+        "report": "LangGraph controls a task by using explicit nodes and edges [alpha]. In addition, checkpoints store graph progress, allowing the task's state to be tracked/resumed across steps [beta]. The third catalog entry contains no relevant material and contributes nothing [empty].",
+        "tools": [
+          {
+            "name": "lookup",
+            "input": "{'key': 'alpha'}"
+          },
+          {
+            "name": "lookup",
+            "input": "{'key': 'beta'}"
+          },
+          {
+            "name": "lookup",
+            "input": "{'key': 'empty'}"
+          }
+        ],
+        "before_approval_no_output": true
+      },
+      {
+        "scenario": "insufficient",
+        "status": "insufficient",
+        "used_keys": [
+          "alpha",
+          "beta",
+          "empty"
+        ],
+        "report": "",
+        "tools": [
+          {
+            "name": "lookup",
+            "input": "{'key': 'alpha'}"
+          },
+          {
+            "name": "lookup",
+            "input": "{'key': 'beta'}"
+          },
+          {
+            "name": "lookup",
+            "input": "{'key': 'empty'}"
+          }
+        ],
+        "before_approval_no_output": true
+      }
+    ],
+    "wait_what": {
+      "scenario": "wait-what",
+      "tools": [
+        {
+          "name": "list_files",
+          "content": "[\"GLOSSARY.md\", \"input.json\"]"
+        },
+        {
+          "name": "read_file",
+          "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/fixtures/wait-what-workspace/GLOSSARY-MAP.md'\"}"
+        },
+        {
+          "name": "read_file",
+          "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+        },
+        {
+          "name": "read_file",
+          "content": "{\n  \"conversation\": [\n    {\"role\": \"user\", \"content\": \"How will this task continue after I approve it?\"},\n    {\"role\": \"assistant\", \"content\": \"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\"},\n    {\"role\": \"user\", \"content\": \"Wait, I do not understand. Re-pitch that with a little context.\"}\n  ],\n  \"workdir\": \"REPLACE_WITH_ABSOLUTE_WORKSPACE_PATH\"\n}\n"
+        }
+      ],
+      "reply": "Here is the re-pitch, in simpler words and with the terms from `GLOSSARY.md`.\n\n**Context:** your question was how the task continues after you approve it.\n\n**Answer:**\n\nWhen you approve the task, the Graph stops at a point where it waits for your confirmation. At that point, the Graph saves a Checkpoint.\n\nThe Checkpoint links your approval to the task execution that is on hold. So the Graph can continue the same execution later.\n\nAfter the Graph starts again, the next Node writes the report.\n\nOne limit is important. A Checkpoint does not guarantee that an external action happens only once. If the system stops unexpectedly, a write to an external file can happen a second time. So this design is not an exactly-once guarantee for a file write after a crash.",
+      "judgement": "pending semantic and language review"
+    }
+  }
+}

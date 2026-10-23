@@ -1,0 +1,339 @@
+{
+  "entry": "CLI Agent Server",
+  "observations": [
+    {
+      "graph": "mixed-retrieval",
+      "thread_id": "01a1670e-1124-76e1-86e1-72a30be62250",
+      "pause_before_file": true,
+      "result": {
+        "question": "Explain both explicit graph control and saved progress, using evidence keys.",
+        "catalog": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph/source/mixed-retrieval/examples/catalog.json",
+        "output_dir": "/tmp/round2-cli-x9bn52w6/report",
+        "keys": [
+          "alpha",
+          "beta",
+          "empty"
+        ],
+        "needs_input": false,
+        "status": "ok",
+        "report": "Explicit graph control: In LangGraph, the workflow's structure is declared directly rather than inferred — the graph consists of explicitly defined nodes and explicit edges connecting them, so the developer states which steps exist and how they transition. [alpha]\n\nSaved progress: The graph's execution state is persisted via checkpoints, which store the graph's progress so that where the run has reached can be captured and (implicitly) restored rather than recomputed from scratch. [beta]\n\nThe two address separate concerns: graph control is about how the flow is declared and steered (nodes + edges), while saved progress is about durable capture of runtime state (checkpoints). [alpha][beta]\n\nThe catalog entry \"empty\" was inspected but contains no relevant material, so it supports no conclusion and is not counted among the supporting keys. [empty]",
+        "used_keys": [
+          "alpha",
+          "beta"
+        ],
+        "approved": true,
+        "path": "/tmp/round2-cli-x9bn52w6/report/report.md"
+      }
+    },
+    {
+      "graph": "wait-what",
+      "result": {
+        "messages": [
+          {
+            "content": "How will this task continue after I approve it?",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": "730f4db6-4a0a-4cbe-a2a1-77596dc85900"
+          },
+          {
+            "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": "dd8a09e8-e1c4-46fb-84ab-9341a8319c9d",
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+          },
+          {
+            "content": "Wait, I do not understand. Re-pitch that with a little context.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": "83f150bd-1614-451a-a21d-4ba526c07046"
+          },
+          {
+            "content": [
+              {
+                "signature": "4d2c85588fe9f6f80e951e42a76988c8c5aa2085a63423a763567b25c6780932",
+                "thinking": "The user wants a re-pitch in ASD-STE100 Simplified Technical English, using glossary terms. Let me read the glossary files.\n\nNote: the task binding says re-pitch the assistant message immediately before the latest user turn — which is the message I just gave (the \"graph parks at confirmation boundary...\" passage). Let me read glossary files first.\n\nAlso there is a subtlety: the previous assistant message was the passage itself, and the passage is about a workflow graph. Let me look at the workdir for glossary files.\n\nNote that \"ASD-STE100\" — approved by the user. Also the user asked \"How will this task continue after I approve it?\" earlier and got the answer. Now re-pitch with context.\n\nLet me explore files.",
+                "type": "thinking"
+              },
+              {
+                "id": "call_01a1670e467c75ddb628338b",
+                "input": {
+                  "path": "."
+                },
+                "name": "list_files",
+                "type": "tool_use",
+                "toolset_name": null
+              },
+              {
+                "id": "call_01a1670e46e0774483425015",
+                "input": {
+                  "path": "GLOSSARY-MAP.md"
+                },
+                "name": "read_file",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ],
+            "additional_kwargs": {},
+            "response_metadata": {
+              "id": "072a17ec53562d3dd189f4547ed00008",
+              "container": null,
+              "diagnostics": null,
+              "model": "MiniMax-M3.1-Flash",
+              "stop_details": null,
+              "stop_reason": "tool_use",
+              "stop_sequence": null,
+              "usage": {
+                "cache_creation": null,
+                "cache_creation_input_tokens": 0,
+                "cache_read_input_tokens": 640,
+                "inference_geo": null,
+                "input_tokens": 137,
+                "output_tokens": 207,
+                "output_tokens_details": {
+                  "thinking_tokens": 153
+                },
+                "server_tool_use": null,
+                "service_tier": null,
+                "speed": null
+              },
+              "base_resp": {
+                "status_code": 0,
+                "status_msg": ""
+              },
+              "model_name": "MiniMax-M3.1-Flash",
+              "model_provider": "anthropic"
+            },
+            "type": "ai",
+            "name": null,
+            "id": "lc_run--01a1670e-3b97-745b-8ceb-db027211080c-0",
+            "tool_calls": [
+              {
+                "name": "list_files",
+                "args": {
+                  "path": "."
+                },
+                "id": "call_01a1670e467c75ddb628338b",
+                "type": "tool_call"
+              },
+              {
+                "name": "read_file",
+                "args": {
+                  "path": "GLOSSARY-MAP.md"
+                },
+                "id": "call_01a1670e46e0774483425015",
+                "type": "tool_call"
+              }
+            ],
+            "invalid_tool_calls": [],
+            "usage_metadata": {
+              "input_tokens": 777,
+              "output_tokens": 207,
+              "total_tokens": 984,
+              "input_token_details": {
+                "cache_read": 640,
+                "cache_creation": 0
+              },
+              "output_token_details": {
+                "reasoning": 153
+              }
+            }
+          },
+          {
+            "content": "[\"GLOSSARY.md\", \"input.json\"]",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "tool",
+            "name": "list_files",
+            "id": "9dd9c0bb-3be1-4339-ae42-d5a5a9b157ac",
+            "tool_call_id": "call_01a1670e467c75ddb628338b",
+            "artifact": null,
+            "status": "success"
+          },
+          {
+            "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/fixtures/wait-what-workspace/GLOSSARY-MAP.md'\"}",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "tool",
+            "name": "read_file",
+            "id": "ffd4a5cd-9cf9-4e98-b4ea-91aa72991f11",
+            "tool_call_id": "call_01a1670e46e0774483425015",
+            "artifact": null,
+            "status": "success"
+          },
+          {
+            "content": [
+              {
+                "id": "call_01a1670e4df47025b0f44964",
+                "input": {
+                  "path": "GLOSSARY.md"
+                },
+                "name": "read_file",
+                "type": "tool_use",
+                "toolset_name": null
+              },
+              {
+                "id": "call_01a1670e4e6f774bb12765b9",
+                "input": {
+                  "path": "input.json"
+                },
+                "name": "read_file",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ],
+            "additional_kwargs": {},
+            "response_metadata": {
+              "id": "072a17ef283dfa3157d10c3b5f014d49",
+              "container": null,
+              "diagnostics": null,
+              "model": "MiniMax-M3.1-Flash",
+              "stop_details": null,
+              "stop_reason": "tool_use",
+              "stop_sequence": null,
+              "usage": {
+                "cache_creation": null,
+                "cache_creation_input_tokens": 0,
+                "cache_read_input_tokens": 640,
+                "inference_geo": null,
+                "input_tokens": 431,
+                "output_tokens": 53,
+                "output_tokens_details": null,
+                "server_tool_use": null,
+                "service_tier": null,
+                "speed": null
+              },
+              "base_resp": {
+                "status_code": 0,
+                "status_msg": ""
+              },
+              "model_name": "MiniMax-M3.1-Flash",
+              "model_provider": "anthropic"
+            },
+            "type": "ai",
+            "name": null,
+            "id": "lc_run--01a1670e-4843-76b7-aeb0-9eddfdfdd25c-0",
+            "tool_calls": [
+              {
+                "name": "read_file",
+                "args": {
+                  "path": "GLOSSARY.md"
+                },
+                "id": "call_01a1670e4df47025b0f44964",
+                "type": "tool_call"
+              },
+              {
+                "name": "read_file",
+                "args": {
+                  "path": "input.json"
+                },
+                "id": "call_01a1670e4e6f774bb12765b9",
+                "type": "tool_call"
+              }
+            ],
+            "invalid_tool_calls": [],
+            "usage_metadata": {
+              "input_tokens": 1071,
+              "output_tokens": 53,
+              "total_tokens": 1124,
+              "input_token_details": {
+                "cache_read": 640,
+                "cache_creation": 0
+              }
+            }
+          },
+          {
+            "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "tool",
+            "name": "read_file",
+            "id": "ae529bfd-f7b0-48e7-8492-ebcf864e3470",
+            "tool_call_id": "call_01a1670e4df47025b0f44964",
+            "artifact": null,
+            "status": "success"
+          },
+          {
+            "content": "{\n  \"conversation\": [\n    {\"role\": \"user\", \"content\": \"How will this task continue after I approve it?\"},\n    {\"role\": \"assistant\", \"content\": \"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\"},\n    {\"role\": \"user\", \"content\": \"Wait, I do not understand. Re-pitch that with a little context.\"}\n  ],\n  \"workdir\": \"REPLACE_WITH_ABSOLUTE_WORKSPACE_PATH\"\n}\n",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "tool",
+            "name": "read_file",
+            "id": "502184b6-ccf2-41ab-9282-92388c324235",
+            "tool_call_id": "call_01a1670e4e6f774bb12765b9",
+            "artifact": null,
+            "status": "success"
+          },
+          {
+            "content": [
+              {
+                "signature": "06fc5454312ee91cd6ba9b2c4e450f1e46163f7000ba29a497cf84f3c17bb3d3",
+                "thinking": "Now write in ASD-STE100 Simplified Technical English, using glossary terms: Graph, Node, Checkpoint.\n\nSimple sentences, one idea per sentence, active voice, no complex words. Include a little context: what happens after approval.\n\nDraft:\n\n\"Here is the short version.\n\nAfter you approve the task, the Graph stops at the Node that waits for your approval. This Node is a confirmation step.\n\nThe Graph then saves a Checkpoint. A Checkpoint is a saved record of the Graph state that can help it continue. The Checkpoint links your approval to the task run that was paused.\n\nAfter this, the Graph starts again at the Node after the confirmation step. This Node makes the report.\n\nImportant point: a Checkpoint does not guarantee that an external action happens only once. If the system crashes after the Checkpoint is saved and before the report file is written, the Graph can run that Node again. The report file can then be written two times.\"\n\nASD-STE100 rules: use \"you\" for the reader, avoid \"the system\" maybe. Keep sentences short (max 20 words). Use approved vocabulary. Also mention \"external file write\" → \"write the report file\".\n\nLet me be careful: STE rules say use present tense for instructions, \"shall\" for requirements, etc. Keep it simple.\n\nAlso note the context before: the user's first question \"How will this task continue after I approve it?\" So context: the task is a Graph with Nodes.\n\nI'll produce the re-pitched answer.",
+                "type": "thinking"
+              },
+              {
+                "text": "Here is the same answer in simpler words, with a little more context.\n\n**What happens after you approve the task**\n\n1. The Graph stops at the Node that waits for your approval. This Node is a confirmation step.\n2. The Graph saves a Checkpoint. A Checkpoint is a saved record of the Graph state that can help it continue.\n3. The Checkpoint links your approval to the task run that was paused.\n4. The Graph then starts again at the next Node. This Node makes the report.\n\n**One important point**\n\nA Checkpoint does not guarantee that an external action happens only once. If the machine stops after the Checkpoint is saved and before the report file is written, the Graph can run that Node again. The report file can then be written two times.\n\n**Short version**\n\nYour approval releases the Graph. A Checkpoint keeps the link to the paused run. The next Node makes the report. The write of the report file is not safe against a crash.",
+                "type": "text"
+              }
+            ],
+            "additional_kwargs": {},
+            "response_metadata": {
+              "id": "072a17f1cffadef1d991035a25d84116",
+              "container": null,
+              "diagnostics": null,
+              "model": "MiniMax-M3.1-Flash",
+              "stop_details": null,
+              "stop_reason": "end_turn",
+              "stop_sequence": null,
+              "usage": {
+                "cache_creation": null,
+                "cache_creation_input_tokens": 0,
+                "cache_read_input_tokens": 896,
+                "inference_geo": null,
+                "input_tokens": 463,
+                "output_tokens": 511,
+                "output_tokens_details": {
+                  "thinking_tokens": 307
+                },
+                "server_tool_use": null,
+                "service_tier": null,
+                "speed": null
+              },
+              "base_resp": {
+                "status_code": 0,
+                "status_msg": ""
+              },
+              "model_name": "MiniMax-M3.1-Flash",
+              "model_provider": "anthropic"
+            },
+            "type": "ai",
+            "name": null,
+            "id": "lc_run--01a1670e-4ff9-700e-b41e-7e59302d73db-0",
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": {
+              "input_tokens": 1359,
+              "output_tokens": 511,
+              "total_tokens": 1870,
+              "input_token_details": {
+                "cache_read": 896,
+                "cache_creation": 0
+              },
+              "output_token_details": {
+                "reasoning": 307
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "dependencies": ["."],
+  "graphs": {"mixed-retrieval": "./skill_graph/graph.py:cli_graph"}
+}
+

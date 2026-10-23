@@ -1,0 +1,4 @@
+{
+  "dependencies": ["."],
+  "graphs": {"fixed-file": "./skill_graph/graph.py:cli_graph"}
+}

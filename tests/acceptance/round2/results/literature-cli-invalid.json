@@ -1,0 +1,51 @@
+{
+  "evidence_kind": "live-tool",
+  "model_called": false,
+  "request": {
+    "assistant_id": "literature-analysis",
+    "input": {
+      "source_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid/missing.md",
+      "language": "zh-CN"
+    },
+    "config": {
+      "configurable": {
+        "working_dir": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid",
+        "model_label": "minimax-code-cn/MiniMax-M3.1-Flash"
+      }
+    }
+  },
+  "response": {
+    "source_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid/missing.md",
+    "language": "zh-CN",
+    "working_dir": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid",
+    "db_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid/.literature_analysis_tmp/literature_analysis.db",
+    "action": "failed",
+    "runtime": {
+      "db_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid/.literature_analysis_tmp/literature_analysis.db",
+      "next_action": "init_runtime",
+      "runtime_backend": "analysis_runtime.stages",
+      "error": {
+        "code": "FILE_NOT_FOUND",
+        "message": "source_path not found: /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid/missing.md"
+      }
+    },
+    "result": {
+      "digest_path": "",
+      "references_path": "",
+      "citation_analysis_path": "",
+      "literature_matching_metadata_path": "",
+      "literature_score_path": "",
+      "provenance": {
+        "generated_at": "",
+        "input_hash": "",
+        "model": ""
+      },
+      "warnings": [],
+      "error": {
+        "code": "FILE_NOT_FOUND",
+        "message": "source_path not found: /home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-cli-invalid/missing.md"
+      }
+    }
+  },
+  "judgement": "CLI loaded and source missing-input failure preserved; successful semantic invocation not covered."
+}

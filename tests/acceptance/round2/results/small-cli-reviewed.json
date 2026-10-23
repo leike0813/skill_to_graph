@@ -1,0 +1,47 @@
+{
+  "entry": "CLI Agent Server",
+  "observations": [
+    {
+      "graph": "mixed-retrieval",
+      "thread_id": "01a16713-d71e-7252-9068-176a5e77da04",
+      "pause_before_file": true,
+      "result": {
+        "question": "Explain both explicit graph control and saved progress, using evidence keys.",
+        "catalog": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph/source/mixed-retrieval/examples/catalog.json",
+        "output_dir": "/tmp/round2-reviewed-cli-frac1uk2/report",
+        "keys": [
+          "alpha",
+          "beta",
+          "empty"
+        ],
+        "needs_input": false,
+        "status": "ok",
+        "report": "Explicit graph control: LangGraph uses explicit nodes and edges, so the graph's structure and control flow are directly specified rather than implicit [alpha].\n\nSaved progress: Checkpoints store graph progress, providing a mechanism to persist the state of a run [beta].",
+        "used_keys": [
+          "alpha",
+          "beta"
+        ],
+        "approved": true,
+        "path": "/tmp/round2-reviewed-cli-frac1uk2/report/report.md"
+      }
+    },
+    {
+      "graph": "wait-what",
+      "reply": "**Context:** You asked what the task does after you approve it.\n\n**What happens after your approval**\n\nThe Graph waits at the point where it asks you to confirm. A saved Checkpoint links your reply to the paused task. When the task continues, the next Node makes the report.\n\n**What this does not do**\n\nA Checkpoint does not guarantee that an external action happens only one time. So the Graph does not guarantee that a write to a file outside the Graph happens only one time after a crash.",
+      "tools": [
+        {
+          "name": "list_files",
+          "content": "[\"GLOSSARY.md\", \"input.json\"]"
+        },
+        {
+          "name": "read_file",
+          "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+        },
+        {
+          "name": "read_file",
+          "content": "{\n  \"conversation\": [\n    {\"role\": \"user\", \"content\": \"How will this task continue after I approve it?\"},\n    {\"role\": \"assistant\", \"content\": \"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\"},\n    {\"role\": \"user\", \"content\": \"Wait, I do not understand. Re-pitch that with a little context.\"}\n  ],\n  \"workdir\": \"REPLACE_WITH_ABSOLUTE_WORKSPACE_PATH\"\n}\n"
+        }
+      ]
+    }
+  ]
+}

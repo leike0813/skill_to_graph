@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "samples": {
+    "fixed-file": {
+      "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/fixed-file-graph",
+      "static": {
+        "exit_code": 0,
+        "ok": true,
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "fixed-file": "./skill_graph/graph.py:cli_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "entries": {
+        "fixed-file": {
+          "entry": "./skill_graph/graph.py:cli_graph",
+          "callable": true
+        }
+      },
+      "snapshot": {
+        "snapshot": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/fixed-file-graph/source/fixed-file",
+        "files": [
+          "SKILL.md",
+          "data/example.csv",
+          "scripts/render.py",
+          "templates/summary.txt"
+        ],
+        "missing": [],
+        "content_differing": [],
+        "matches_source": true
+      },
+      "runtime": [
+        {
+          "scenario": "approve",
+          "status": "ok",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "reject",
+          "status": "cancelled",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "existing",
+          "status": "error",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "negative",
+          "status": "error",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "missing-column",
+          "status": "error",
+          "assertions": "passed"
+        },
+        {
+          "scenario": "script-io-failure",
+          "status": "error",
+          "assertions": "passed"
+        }
+      ],
+      "boundaries": [
+        {
+          "scenario": "missing-output-dir-asks",
+          "asked_fields": [
+            "output_dir"
+          ],
+          "wrote_file": false
+        },
+        {
+          "scenario": "refusal-has-no-path",
+          "status": "cancelled",
+          "path_absent": true,
+          "output_dir_created": false
+        }
+      ]
+    },
+    "mixed-retrieval": {
+      "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph",
+      "static": {
+        "exit_code": 0,
+        "ok": true,
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "mixed-retrieval": "./skill_graph/graph.py:cli_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "entries": {
+        "mixed-retrieval": {
+          "entry": "./skill_graph/graph.py:cli_graph",
+          "callable": true
+        }
+      },
+      "snapshot": {
+        "snapshot": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/mixed-retrieval-graph/source/mixed-retrieval",
+        "files": [
+          "SKILL.md",
+          "examples/catalog.json"
+        ],
+        "missing": [],
+        "content_differing": [],
+        "matches_source": true
+      },
+      "boundaries": [
+        {
+          "evidence_kind": "double",
+          "scenario": "semantic-loop-routing",
+          "outcome": "passed",
+          "tools": [
+            {
+              "name": "lookup",
+              "input": "{'key': 'alpha'}"
+            },
+            {
+              "name": "lookup",
+              "input": "{'key': 'beta'}"
+            }
+          ]
+        },
+        {
+          "evidence_kind": "double",
+          "scenario": "lookup-failure-stops",
+          "outcome": "passed",
+          "status": "failed",
+          "tool_calls": 1
+        },
+        {
+          "evidence_kind": "real-local-runtime",
+          "scenario": "input-validation",
+          "outcome": "passed"
+        },
+        {
+          "evidence_kind": "double",
+          "scenario": "existing-file-protected",
+          "outcome": "passed"
+        }
+      ]
+    },
+    "wait-what": {
+      "application": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/wait-what-graph",
+      "static": {
+        "exit_code": 0,
+        "ok": true,
+        "checked_files": [
+          "langgraph.json",
+          "skill_graph/__init__.py",
+          "skill_graph/graph.py"
+        ],
+        "graph_entries": {
+          "wait-what": "./skill_graph/graph.py:make_graph"
+        },
+        "unresolved_entries": {}
+      },
+      "entries": {
+        "wait-what": {
+          "entry": "./skill_graph/graph.py:make_graph",
+          "callable": true
+        }
+      },
+      "snapshot": {
+        "snapshot": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/generated/wait-what-graph/source/wait-what",
+        "files": [
+          ".mattpack-owner.json",
+          "SKILL.md",
+          "agents/openai.yaml"
+        ],
+        "missing": [],
+        "content_differing": [],
+        "matches_source": true
+      },
+      "boundaries": [
+        {
+          "scenario": "glossary-path-semantics",
+          "relative_under_workdir": true,
+          "absolute_preserved": true
+        }
+      ]
+    }
+  },
+  "live": {
+    "status": "not-run",
+    "reason": "live model probes are opt-in via --live"
+  }
+}

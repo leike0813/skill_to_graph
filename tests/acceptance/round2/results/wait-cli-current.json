@@ -1,0 +1,18 @@
+{
+  "entry": "CLI",
+  "reply": "Here is the same information in simple words.\n\nA Graph is a set of Nodes and paths that controls this task. After you approve the task, the Graph waits at a confirmation step. The Graph then saves a Checkpoint. This Checkpoint links your approval to the part of the task that was paused.\n\nWhen the Graph continues, the next Node makes the report. The report goes out after the Graph starts again.\n\nOne limit: a Checkpoint does not guarantee that an external action happens only once. If the system crashes, the write of the report to an external file can happen again. So you can get the report more than one time after a crash.",
+  "tools": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\", \"input.json\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/fixtures/wait-what-workspace/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ]
+}

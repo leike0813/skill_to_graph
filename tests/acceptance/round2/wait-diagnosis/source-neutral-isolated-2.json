@@ -1,0 +1,74 @@
+{
+  "arm": "source-neutral-isolated",
+  "repetition": 2,
+  "model": "MiniMax-M3.1-Flash",
+  "model_options": {
+    "max_tokens": 16384,
+    "reasoning_effort": "high",
+    "thinking": {
+      "type": "adaptive"
+    }
+  },
+  "input": [
+    {
+      "role": "user",
+      "content": "Please explain the task workflow."
+    },
+    {
+      "role": "assistant",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "user",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "reply": "## Context first\n\n- A **Graph** controls a task.\n- A **Node** is one step in the Graph.\n- A **Checkpoint** is a saved record of the Graph state. It helps the Graph continue.\n\nSome tasks are long. A long task can stop and start again later. The **Checkpoint** is how the Graph remembers where it stopped.\n\n## The workflow\n\n1. The Graph runs the Nodes, one after the other.\n2. The Graph arrives at a confirmation Node. The Graph stops there.\n3. The system saves a Checkpoint. The Checkpoint holds the state of the Graph and the name of the suspended run.\n4. The system sends the reply. The reply is bound to the suspended run.\n5. The Graph starts again. It reads the Checkpoint. It continues at the same place.\n6. The next Node writes the report.\n\n## The part that is easy to misread\n\nThe Checkpoint saves the state of the **Graph** only. It does not save the state of the external file.\n\nSo this failure is possible:\n\n1. The next Node writes the report to the file.\n2. The system stops. It stops before it saves the next Checkpoint.\n3. The system starts the Graph again. It reads the old Checkpoint.\n4. The next Node writes the report again.\n\nThe report now exists two times.\n\n**A Checkpoint does not guarantee that an external action happens only once.** The Graph continues correctly. The write to the file is not safe.\n\n## What to do about it\n\n- Make the write idempotent. Check the file before you write it.\n- Or save a Checkpoint right after the write. Then the Graph does not repeat the Node.\n- Or use a lock. Only one run may write the file.\n\nPick one of these three ways. Do not rely on the Checkpoint alone.",
+  "tool_results": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/tmp/wait-what-graph-control-2hp4o6lv/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "first_request": [
+    {
+      "role": "system",
+      "content": "Wait, I don't understand where you've got to here. Re-pitch that: give me a little bit of context, talk in ASD-STE100 Simplified Technical English, and use the ubiquitous language from `GLOSSARY.md` (follow `GLOSSARY-MAP.md` to the right one if the repo has more than one)."
+    },
+    {
+      "role": "human",
+      "content": "Please explain the task workflow."
+    },
+    {
+      "role": "ai",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "human",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list_files",
+      "input": "{'path': '.'}"
+    },
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY-MAP.md'}"
+    },
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY.md'}"
+    }
+  ],
+  "elapsed_seconds": 16.881752252578735
+}

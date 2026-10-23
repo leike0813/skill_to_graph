@@ -1,0 +1,117 @@
+{
+  "evidence_kind": "replay",
+  "semantic_origin": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/graph-run",
+  "source_runtime_real": true,
+  "model_called": false,
+  "plan": {
+    "stored_outline_nodes": 26,
+    "references_scope": {
+      "section_title": "References",
+      "line_start": 237,
+      "line_end": 317,
+      "metadata": {
+        "selection_reason": "The document contains a single explicit 'References' heading at line 237 followed by 40 numbered entries [1]-[40] ending at line 317; the trailing 'Attention Visualizations' block (lines 319-327) is an appendix of figures, not bibliography."
+      }
+    },
+    "citation_scope": {
+      "section_title": "1 Introduction + 2 Background",
+      "line_start": 25,
+      "line_end": 43,
+      "metadata": {
+        "selection_reason": "Review/background discourse is concentrated in the Introduction (lines 25-33, situating the work against recurrent and attention-based sequence models) and the Background section (lines 35-43, surveying convolutional sequence models such as Extended Neural GPU, ByteNet, ConvS2S, prior self-attention applications, and end-to-end memory networks). Neither section has child subsections, so the line range fully covers them. Later sections cite prior work only as experimental baselines or component citations rather than as a literature review.",
+        "covered_sections": [
+          "1 Introduction",
+          "2 Background"
+        ]
+      }
+    },
+    "source_identity": null,
+    "literature_matching_metadata": {
+      "schema": "literature_matching_metadata.v1",
+      "key_terms": [
+        "Transformer",
+        "self-attention",
+        "sequence transduction",
+        "neural machine translation",
+        "encoder-decoder architecture",
+        "positional encoding",
+        "multi-head attention",
+        "parallel sequence processing",
+        "attention mechanism"
+      ],
+      "methods": [
+        "multi-head attention",
+        "scaled dot-product attention",
+        "sinusoidal positional encoding",
+        "residual connection",
+        "layer normalization",
+        "label smoothing",
+        "Adam optimizer with warmup",
+        "beam search decoding"
+      ],
+      "problems": [
+        "sequential computation bottleneck",
+        "long-range dependency learning",
+        "training cost of sequence transduction models",
+        "parallelization of encoder-decoder models",
+        "translation quality vs. parallelization trade-off",
+        "long output structure for constituency parsing"
+      ],
+      "datasets": [
+        "WMT 2014 English-German",
+        "WMT 2014 English-French",
+        "Penn Treebank WSJ",
+        "BerkleyParser",
+        "high-confidence corpus"
+      ],
+      "exclude_terms": [
+        "medical image segmentation",
+        "speech recognition",
+        "recommender systems",
+        "reinforcement learning control"
+      ]
+    },
+    "error": null,
+    "db_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-runtime-replay/.literature_analysis_tmp/literature_analysis.db",
+    "runtime_backend": "analysis_runtime.stages",
+    "next_action": "persist_digest"
+  },
+  "first_digest": {
+    "stored_digest_slots": 5,
+    "stored_section_summaries": 24,
+    "representative_image": {
+      "status": "selected",
+      "source_kind": "markdown_image_ref",
+      "label": "Figure 1",
+      "caption_quote": "The Transformer - model architecture.",
+      "selection_reason": "该图给出 Transformer 的整体模型架构（编码器与解码器两半），直接概括了论文的核心方法结构。",
+      "confidence": "high",
+      "section_hint": "3 Model Architecture",
+      "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg"
+    },
+    "error": null,
+    "db_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-runtime-replay/.literature_analysis_tmp/literature_analysis.db",
+    "runtime_backend": "analysis_runtime.stages",
+    "next_action": "persist_literature_score"
+  },
+  "resubmitted_digest": {
+    "stored_digest_slots": 5,
+    "stored_section_summaries": 24,
+    "representative_image": {
+      "status": "selected",
+      "source_kind": "markdown_image_ref",
+      "label": "Figure 1",
+      "caption_quote": "The Transformer - model architecture.",
+      "selection_reason": "该图给出 Transformer 的整体模型架构（编码器与解码器两半），直接概括了论文的核心方法结构。",
+      "confidence": "high",
+      "section_hint": "3 Model Architecture",
+      "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg"
+    },
+    "error": null,
+    "db_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-runtime-replay/.literature_analysis_tmp/literature_analysis.db",
+    "runtime_backend": "analysis_runtime.stages",
+    "next_action": "persist_literature_score"
+  },
+  "passed": true,
+  "limit": "Reuses previously authored semantic decisions; proves formal resubmission, not corrected natural-language quality."
+}

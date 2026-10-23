@@ -1,0 +1,19 @@
+{
+  "scenario": "wait-what",
+  "tools": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\", \"input.json\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/fixtures/wait-what-workspace/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "reply": "Context: This is about how a Graph continues after you approve a step. The Graph is a set of Nodes, and each Node is one step in the task.\n\nWhen you approve, the Graph waits at a confirmation boundary. It saves a Checkpoint. The Checkpoint is a saved record of the Graph state. This Checkpoint links your reply to the step that was paused. After the Graph continues, the next Node makes the report.\n\nPlease note: a Checkpoint does not guarantee that an external action happens only once. So if the system crashes, the write to an external file may happen more than once.",
+  "judgement": "pending semantic and language review"
+}

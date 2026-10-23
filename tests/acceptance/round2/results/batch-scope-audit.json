@@ -1,0 +1,116 @@
+{
+  "checks": [
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "reference_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-1.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "reference_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-2.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "reference_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-3.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "reference_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "metadata_evidence_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-1.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "metadata_evidence_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-2.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "metadata_evidence_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-3.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "metadata_evidence_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "citation_semantic_reviews"
+      ],
+      "count": 1,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "citation_semantic_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    },
+    {
+      "batch": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json",
+      "language": "zh-CN",
+      "top_fields": [
+        "citation_semantic_reviews"
+      ],
+      "count": 10,
+      "scope_matches": true,
+      "transport": "fenced-json-with-commentary"
+    }
+  ],
+  "permissions_basis": "Each child is constructed with only the read_batch closure for its assigned file; see generated graph.py and runtime boundary test. No claim of an OS sandbox.",
+  "semantic_review": "separate; scope and transport checks do not establish factual accuracy"
+}

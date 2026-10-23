@@ -23,6 +23,7 @@ venv/
 tests/acceptance/literature-analysis-attention/control/.literature_analysis_tmp/
 tests/acceptance/literature-analysis-attention/graph-run/.literature_analysis_tmp/
 tests/acceptance/literature-analysis-attention/sessions-control/
+tests/acceptance/round2/**/.literature_analysis_tmp/
 
 # 环境变量（保留示例文件）
 .env

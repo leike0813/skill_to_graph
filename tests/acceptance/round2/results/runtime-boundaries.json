@@ -1,0 +1,14 @@
+{
+  "evidence_kind": "double",
+  "command": "/tmp/skill-to-graph-acceptance-20261022/bin/python -B tests/acceptance/round2/test_runtime_boundaries.py -v",
+  "tests": 3,
+  "passed": true,
+  "stderr": "test_language_reaches_stage_and_read_only_batch_from_db (__main__.RuntimeBoundaries.test_language_reaches_stage_and_read_only_batch_from_db) ... ok\ntest_render_failure_only_returns_to_a_source_prescribed_missing_stage (__main__.RuntimeBoundaries.test_render_failure_only_returns_to_a_source_prescribed_missing_stage) ... ok\ntest_successful_submission_can_be_corrected_through_runtime (__main__.RuntimeBoundaries.test_successful_submission_can_be_corrected_through_runtime) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.066s\n\nOK\n",
+  "coverage": [
+    "DB language reaches stage and read-only batch (zh-CN and en)",
+    "different batch rejected",
+    "successful same-stage resubmission reaches runtime",
+    "missing DB state returns to source repair stage; unknown render failures stop"
+  ],
+  "limits": "Controlled agents/runtime validate routing and propagation only; real source resubmission separately recorded as replay, no real-model semantics proved."
+}

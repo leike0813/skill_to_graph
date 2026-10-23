@@ -1,0 +1,28 @@
+{
+  "elapsed_seconds": 207.0605731010437,
+  "evidence_kind": "live-model",
+  "input": {
+    "source_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/input/mineru/attention-is-all-you-need.md",
+    "language": "zh-CN",
+    "score_only": false,
+    "identifier": "arXiv:1706.03762"
+  },
+  "work": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-run",
+  "result": {
+    "digest_path": "",
+    "references_path": "",
+    "citation_analysis_path": "",
+    "literature_matching_metadata_path": "",
+    "literature_score_path": "",
+    "provenance": {
+      "generated_at": "",
+      "input_hash": "",
+      "model": ""
+    },
+    "warnings": [],
+    "error": {
+      "code": "TypeError",
+      "message": "string indices must be integers, not 'str'"
+    }
+  }
+}

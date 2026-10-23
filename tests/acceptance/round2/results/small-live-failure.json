@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "time": "2026-10-23",
+  "evidence_kind": "live-model-attempt",
+  "status": "failed",
+  "provider": {
+    "provider": "anthropic",
+    "model": "MiniMax-M3.1-Flash",
+    "base_url": "https://api.minimax.cn/anthropic",
+    "api_key_env": "MINIMAX_CN_API_KEY",
+    "model_options": {"max_tokens": 16384, "reasoning_effort": "low", "thinking": {"type": "adaptive"}},
+    "max_retries": 0
+  },
+  "command": "/tmp/skill-to-graph-acceptance-20261022/bin/python small_scenarios.py --live --record results/small-live.json",
+  "application": "tests/acceptance/round2/generated/mixed-retrieval-graph",
+  "scenario_reached": "mixed-retrieval/sufficient",
+  "error": {
+    "type": "AnthropicTimeoutError",
+    "underlying": "anthropic.APITimeoutError: Request timed out; httpx2.ConnectTimeout [Errno 110] Connection timed out",
+    "elapsed_seconds_approx": 90
+  },
+  "file_side_effect": "none; mixed output directory was not created before the model call failed",
+  "retry": "none; no automatic or manual retry was made",
+  "not_reached": ["mixed-retrieval/reject", "mixed-retrieval/insufficient", "wait-what"],
+  "semantic_conclusion": "not evaluated; provider timeout is an environment failure, not a semantic pass"
+}
+

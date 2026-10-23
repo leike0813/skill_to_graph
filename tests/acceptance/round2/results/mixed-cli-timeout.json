@@ -1,0 +1,18 @@
+{
+  "evidence_kind": "live-model",
+  "outcome": "blocked",
+  "observations": [
+    {
+      "thread_id": "01a166f8-77fa-77b8-874f-3d82a9b44b31",
+      "run_id": "01a166f8-77fd-7147-a685-753e1ce63670",
+      "status": "error",
+      "metadata": {
+        "created_by": "system",
+        "graph_id": "mixed-retrieval",
+        "assistant_id": "263f0a4d-33f4-542d-9899-0290c0504cb8"
+      },
+      "error": "AnthropicTimeoutError (confirmed in local server trace)"
+    }
+  ],
+  "model_result_received": false
+}

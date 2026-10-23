@@ -1,0 +1,1044 @@
+{
+  "meta": {
+    "language": "zh-CN",
+    "scope": {
+      "section_title": "1 Introduction + 2 Background",
+      "line_start": 25,
+      "line_end": 43
+    },
+    "scope_source": "agent",
+    "scope_decision": {
+      "selection_reason": "承担综述职责的是连续的第 1 章 Introduction（第 25-33 行）与第 2 章 Background（第 35-43 行）：Introduction 回顾 RNN/LSTM/GRU、因子分解技巧、条件计算与既有注意力机制的研究脉络，Background 回顾 Extended Neural GPU、ByteNet、ConvS2S 等并行卷积模型、自注意力与端到端记忆网络，并明确本文与 [17, 18, 9] 的关系。两节均为顶层章节且没有子章节，因此完整覆盖 25-43 行（含两节全部段落）即可，无需向下扩展子节；Abstract（第 21-23 行）为作者自述的贡献总结而非文献综述，第 3 章之后为方法、训练与实验章节中的常规引用，不纳入综述范围。",
+      "covered_sections": [
+        "1 Introduction",
+        "2 Background"
+      ],
+      "fallback_from": null,
+      "fallback_reason": ""
+    },
+    "mapping_reliability": "normal",
+    "reference_extraction": {
+      "status": "completed"
+    }
+  },
+  "summary": "源文在“1 Introduction + 2 Background”范围内按三步组织引用：先以 LSTM、门控循环网络与序列到序列等文献确立循环网络作为序列建模与转导的最先进基线，并列举注意力机制与循环网络结合的既有范式及其“少数例外”；再以端到端记忆网络说明注意力可以替代序列对齐的循环，并以自注意力在阅读理解、摘要、蕴含与句子表示上的成功说明其通用性；最后以因子分解技巧、条件计算与基于卷积的并行化模型（Extended Neural GPU、ByteNet、ConvS2S）作为缓解顺序计算但仍受距离复杂度约束的近期路线，配合梯度流分析给出的理论解释，把 Transformer 的全自注意力结构与恒定路径长度确立为对上述基线的结构性回应。整体上，引用充当的是对照与动机工具，而非被逐一评述的独立工作。",
+  "timeline": {
+    "early": {
+      "ref_indexes": [
+        12,
+        11,
+        1,
+        4,
+        6,
+        34,
+        23
+      ],
+      "summary": "最早的一批引用给出循环路线的起点与困难的两面：LSTM（1997）确立了用门控单元处理长程依赖的循环方案，梯度流分析（2001）则解释了这类结构为何难以学习远距离依赖；随后 2014 年前后涌现的序列到序列、RNN 编码器-解码器与注意力式神经机器翻译文献，把循环网络连同注意力一起确立为序列建模与转导任务上的最先进方法，注意力式神经机器翻译文献同时提供了“依赖关系可不受位置距离限制”的经验依据。"
+    },
+    "mid": {
+      "ref_indexes": [
+        33,
+        3,
+        14,
+        15,
+        16,
+        26,
+        37
+      ],
+      "summary": "随后的引用把注意力与自注意力从循环结构中部分剥离出来，并展示其任务适用面：端到端记忆网络说明注意力可以承担原本属于序列对齐循环的记忆与对齐职责，基于注意力的神经机器翻译、机器阅读与可分解注意力模型等文献分别对应注意力在转导、阅读理解与文本蕴含上的成功，可分解注意力模型还是“注意力不与循环网络结合”的少数例外；2016 年的极限语言建模与大规模神经机器翻译系统则被用来概括循环语言模型与编码器-解码器架构仍在持续演进的脉络，Extended Neural GPU 与 Neural GPU 出现在减少顺序计算的模型族列举中。"
+    },
+    "recent": {
+      "ref_indexes": [
+        8,
+        17,
+        18,
+        20,
+        21,
+        27,
+        31
+      ],
+      "summary": "最新一批引用围绕计算效率与并行化展开：因子分解技巧与稀疏门控条件计算试图缓解循环模型的顺序瓶颈却未解除根本约束，ConvS2S（操作数随距离线性增长）与 ByteNet（对数增长）等卷积并行化模型仍受距离复杂度限制，结构化自注意力句向量与深度强化学习摘要则显示自注意力本身已具备独立的表示与生成能力，结构化注意力网络延续了注意力在跨距离依赖建模上的经验。源文以这些工作作为直接对照，凸显全自注意力把路径长度降为常数的结构性优势。"
+    }
+  },
+  "items": [
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "注意力机制",
+        "机器翻译",
+        "编码器-解码器",
+        "距离无关的依赖",
+        "既有先例"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-1",
+        "key_reference_reason": "",
+        "role_in_context": "“注意力 + 循环网络”范式的标志性先例，既是注意力地位的经验依据，也是源文宣称 Transformer 结构性新颖性的对照前提"
+      },
+      "topic": "注意力式神经机器翻译（联合学习对齐与翻译）",
+      "usage": "源文两处引用该文献：一是作为 [35, 2, 5] 组中机器翻译方向的最先进方法之一；二是与 [19] 一起支撑“注意力机制已成为序列建模与转导模型中不可或缺的组成部分，使依赖关系不再受输入/输出序列中位置距离的限制”这一论断。",
+      "ref_index": 1,
+      "function": "uncategorized",
+      "summary": "源文用该文献既确立注意力在机器翻译上已成为主流组件，也用于说明这类注意力几乎总是与循环网络搭配使用，从而界定 Transformer 完全不同于此的技术定位。",
+      "confidence": 0.85,
+      "ref_number": 2,
+      "reference": {
+        "author": [
+          "Dzmitry Bahdanau",
+          "Kyunghyun Cho",
+          "Yoshua Bengio"
+        ],
+        "title": "Neural machine translation by jointly learning to align and translate",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[2]",
+          "mention_id": "m00004",
+          "ref_number_hint": 2,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        },
+        {
+          "line_end": 31,
+          "line_start": 31,
+          "marker": "[2]",
+          "mention_id": "m00011",
+          "ref_number_hint": 2,
+          "snippet": "Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[2]",
+      "author_year_label": "Dzmitry Bahdanau, 2014"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "自注意力",
+        "机器阅读",
+        "阅读理解",
+        "任务先例"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-3",
+        "key_reference_reason": "",
+        "role_in_context": "证明自注意力已扩展到机器翻译之外的序列理解任务，构成注意力作为通用组件的先例证据"
+      },
+      "topic": "机器阅读任务中的自注意力应用",
+      "usage": "源文在列举自注意力已被成功用于阅读理解、抽象式摘要、文本蕴含以及学习任务无关句子表示时，以 [4, 27, 28, 22] 共同引证，该文献对应其中的阅读理解方向。",
+      "ref_index": 3,
+      "function": "component",
+      "summary": "源文引用该文献说明自注意力机制已被成功应用于阅读理解任务，把注意力作为通用序列建模组件的论断从机器翻译扩展到其他自然语言处理任务。",
+      "confidence": 0.85,
+      "ref_number": 4,
+      "reference": {
+        "author": [
+          "Jianpeng Cheng",
+          "Li Dong",
+          "Mirella Lapata"
+        ],
+        "title": "Long short-term memory-networks for machine reading",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[4]",
+          "mention_id": "m00018",
+          "ref_number_hint": 4,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[4]",
+      "author_year_label": "Jianpeng Cheng, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "RNN",
+        "编码器-解码器",
+        "短语表示",
+        "机器翻译",
+        "技术先例"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-4",
+        "key_reference_reason": "",
+        "role_in_context": "循环编码器-解码器在机器翻译上的开创性先例，构成 Transformer 出发时的循环基线之一"
+      },
+      "topic": "RNN 编码器-解码器短语表示学习",
+      "usage": "该文献以 [5] 出现在“循环神经网络、LSTM 与门控循环网络已成为序列建模与转导问题（如语言建模与机器翻译 [35, 2, 5]）的最先进方法”这一并列列举中。",
+      "ref_index": 4,
+      "function": "baseline",
+      "summary": "源文引用该文献代表循环网络编码器-解码器在机器翻译方向的开创性成果，作为 RNN 类模型达到最先进水平的例证，用于界定 Transformer 需要超越的循环路线。",
+      "confidence": 0.85,
+      "ref_number": 5,
+      "reference": {
+        "author": [
+          "Kyunghyun Cho",
+          "Bart van Merrienboer",
+          "Caglar Gulcehre",
+          "Fethi Bougares",
+          "Holger Schwenk",
+          "Yoshua Bengio"
+        ],
+        "title": "Learning phrase representations using rnn encoder-decoder for statistical machine translation",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[5]",
+          "mention_id": "m00005",
+          "ref_number_hint": 5,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[5]",
+      "author_year_label": "Kyunghyun Cho, 2014"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "门控循环网络",
+        "序列建模",
+        "RNN 变体",
+        "基线模型",
+        "状态判定"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-6",
+        "key_reference_reason": "",
+        "role_in_context": "门控循环网络模型族的代表性文献，构成 Transformer 之前 RNN 路线的强基线"
+      },
+      "topic": "门控循环神经网络的实证评估",
+      "usage": "源文以“gated recurrent [7] neural networks”与“long short-term memory [13]”并列，指代门控循环神经网络这一模型族，并与 LSTM 一起被描述为序列建模与转导问题上的最先进方法。",
+      "ref_index": 6,
+      "function": "baseline",
+      "summary": "源文引用该文献作为门控循环神经网络的代表工作，说明在 Transformer 出现之前 RNN 的 LSTM 与门控单元变体已确立为序列建模与转导任务的最先进方法。",
+      "confidence": 0.85,
+      "ref_number": 7,
+      "reference": {
+        "author": [
+          "Junyoung Chung",
+          "Çaglar Gülçehre",
+          "Kyunghyun Cho",
+          "Yoshua Bengio"
+        ],
+        "title": "Empirical evaluation of gated recurrent neural networks on sequence modeling",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[7]",
+          "mention_id": "m00002",
+          "ref_number_hint": 7,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[7]",
+      "author_year_label": "Junyoung Chung, 2014"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "ConvS2S",
+        "卷积神经网络",
+        "并行计算",
+        "序列到序列",
+        "线性复杂度"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-8",
+        "key_reference_reason": "该引用同时出现在复杂度对比段与“相对 [17, 18] 和 [9] 的优势”段，是论证 Transformer 结构与复杂度新颖性的承重对照。",
+        "role_in_context": "并行化卷积转导路线的直接前作与主要对比基线，复杂度论证中的关键对照项"
+      },
+      "topic": "ConvS2S：以卷积并行计算的序列到序列模型",
+      "usage": "源文两处引用该文献：其一在减少顺序计算的路线中与 Extended Neural GPU [16]、ByteNet [18] 并列，共享并行计算所有位置隐藏表示的描述，并指出其关联两个任意位置所需操作数随距离线性增长；其二在“首个完全依赖自注意力的转导模型”之后，作为 [17, 18] 与 [9] 中被讨论优势对比的模型之一。",
+      "ref_index": 8,
+      "function": "baseline",
+      "summary": "源文用该文献代表卷积式序列到序列方案：一方面借其线性距离复杂度说明这类模型难以学习远距离依赖，另一方面把它列为 Transformer 优势讨论所对照的既有转导模型，从而凸显自注意力恒定路径长度与无循环/卷积结构的新颖性。",
+      "confidence": 0.85,
+      "ref_number": 9,
+      "reference": {
+        "author": [
+          "Jonas Gehring",
+          "Michael Auli",
+          "David Grangier",
+          "Denis Yarats",
+          "Yann N. Dauphin"
+        ],
+        "title": "Convolutional sequence to sequence learning",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[9]",
+          "mention_id": "m00016",
+          "ref_number_hint": 9,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        },
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "marker": "[9]",
+          "mention_id": "m00025",
+          "ref_number_hint": 9,
+          "snippet": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[9]",
+      "author_year_label": "Jonas Gehring, 2017"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "梯度流",
+        "长程依赖",
+        "循环网络",
+        "理论支撑"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-11",
+        "key_reference_reason": "它是源文关于远距离依赖学习困难论断的唯一显式理论来源，是复杂度对比论证的支撑点。",
+        "role_in_context": "“远距离依赖难以学习”这一论断的理论依据，用于解释既有并行/卷积模型与循环模型的固有局限"
+      },
+      "topic": "循环网络中梯度流受阻与长程依赖学习困难",
+      "usage": "源文在 ConvS2S/ByteNet 复杂度分析句末以 [12] 引证，支撑“这使学习远距离位置之间的依赖变得更加困难”这一判断。",
+      "ref_index": 11,
+      "function": "uncategorized",
+      "summary": "源文引用该文献作为循环网络梯度流问题导致长程依赖难以学习的理论依据，用以解释并行化与卷积式模型在远距离依赖上的困难，从而论证 Transformer 将路径长度降为常数的优势来源。",
+      "confidence": 0.85,
+      "ref_number": 12,
+      "reference": {
+        "author": [
+          "Sepp Hochreiter",
+          "Yoshua Bengio",
+          "Paolo Frasconi",
+          "Jürgen Schmidhuber"
+        ],
+        "title": "Gradient flow in recurrent nets: the difficulty of learning long-term dependencies",
+        "year": 2001
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[12]",
+          "mention_id": "m00017",
+          "ref_number_hint": 12,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[12]",
+      "author_year_label": "Sepp Hochreiter, 2001"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "LSTM",
+        "循环神经网络",
+        "长程依赖",
+        "序列建模",
+        "对比基线"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-12",
+        "key_reference_reason": "该引用与 [7] 一起支撑源文“循环网络已成为最先进方法”的基础性断言，是全文论证起点的关键依据。",
+        "role_in_context": "循环路线最具代表性的模型族出处，构成 Transformer 所对照、取代的循环架构基线"
+      },
+      "topic": "长短期记忆（LSTM）循环网络模型",
+      "usage": "源文以“long short-term memory [13]”的形式与“gated recurrent [7]”并列，指代 LSTM 这一模型族，并与循环网络一起被断言为语言建模与机器翻译等序列建模与转导问题上的“最先进方法”。",
+      "ref_index": 12,
+      "function": "baseline",
+      "summary": "源文用该文献确立 LSTM 在序列建模与转导任务上的既成地位，作为论述起点的循环网络技术基线，说明 Transformer 是在何种既有模型之上提出替代方案。",
+      "confidence": 0.85,
+      "ref_number": 13,
+      "reference": {
+        "author": [
+          "Sepp Hochreiter",
+          "Jürgen Schmidhuber"
+        ],
+        "title": "Long short-term memory",
+        "year": 1997
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[13]",
+          "mention_id": "m00001",
+          "ref_number_hint": 13,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[13]",
+      "author_year_label": "Sepp Hochreiter, 1997"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "语言建模",
+        "循环语言模型",
+        "规模扩展",
+        "边界探索"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-14",
+        "key_reference_reason": "",
+        "role_in_context": "标示循环语言模型路线的最新进展水平，说明 Transformer 出现前该路线仍处于活跃改进状态"
+      },
+      "topic": "语言模型能力边界的探索与规模扩展",
+      "usage": "该文献以 [15] 出现在“此后大量工作继续推进循环语言模型与编码器-解码器架构的边界 [38, 24, 15]”一句中，作为后续改进循环语言模型的代表性工作之一。",
+      "ref_index": 14,
+      "function": "uncategorized",
+      "summary": "源文引用该文献代表在循环语言模型与编码器-解码器架构方向继续推升性能上限的后续努力，用于说明以新架构取而代之的必要性。",
+      "confidence": 0.85,
+      "ref_number": 15,
+      "reference": {
+        "author": [
+          "Rafal Jozefowicz",
+          "Oriol Vinyals",
+          "Mike Schuster",
+          "Noam Shazeer",
+          "Yonghui Wu"
+        ],
+        "title": "Exploring the limits of language modeling",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[15]",
+          "mention_id": "m00008",
+          "ref_number_hint": 15,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[15]",
+      "author_year_label": "Rafal Jozefowicz, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "Extended Neural GPU",
+        "卷积",
+        "顺序计算",
+        "并行化",
+        "前作"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-15",
+        "key_reference_reason": "",
+        "role_in_context": "减少顺序计算的卷积路线前作，作为与 Transformer 路径长度/复杂度对比的直接前作"
+      },
+      "topic": "Extended Neural GPU（以卷积替代循环的模型）",
+      "usage": "源文在“减少顺序计算这一目标构成了 Extended Neural GPU [16]、ByteNet [18] 与 ConvS2S [9] 的基础”一句中引用该文献，并共享“均以卷积神经网络为基本构件、为所有输入与输出位置并行计算隐藏表示”的统一描述。",
+      "ref_index": 15,
+      "function": "baseline",
+      "summary": "源文把该文献与 ByteNet、ConvS2S 一并归入以卷积并行计算、从而减少顺序计算的模型族，作为对比 Transformer 恒定操作数优势时的直接前作与复杂度参照。",
+      "confidence": 0.85,
+      "ref_number": 16,
+      "reference": {
+        "author": [
+          "Łukasz Kaiser",
+          "Samy Bengio"
+        ],
+        "title": "Can active memory replace attention?",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[16]",
+          "mention_id": "m00014",
+          "ref_number_hint": 16,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[16]",
+      "author_year_label": "Łukasz Kaiser, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "Neural GPU",
+        "外部记忆",
+        "卷积",
+        "转导模型",
+        "对比对象"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-16",
+        "key_reference_reason": "",
+        "role_in_context": "Transformer 之前基于神经外部记忆/卷积的转导模型之一，作为新架构优势的对比对象"
+      },
+      "topic": "神经 GPU 学习算法（以外部记忆形式的神经计算模型）",
+      "usage": "源文在断言 Transformer 是首个完全依赖自注意力、不使用序列对齐 RNN 或卷积的转导模型之后，把 [17, 18] 与 [9] 作为随后将讨论 Transformer 优势的对比模型列出，该文献对应其中的 Neural GPU。",
+      "ref_index": 16,
+      "function": "baseline",
+      "summary": "源文把该文献列为 Transformer 之前转导模型路线的代表之一，用于界定“完全依赖自注意力”这一结构新颖性的边界。",
+      "confidence": 0.85,
+      "ref_number": 17,
+      "reference": {
+        "author": [
+          "Łukasz Kaiser",
+          "Ilya Sutskever"
+        ],
+        "title": "Neural GPUs learn algorithms",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "marker": "[17]",
+          "mention_id": "m00023",
+          "ref_number_hint": 17,
+          "snippet": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[17]",
+      "author_year_label": "Łukasz Kaiser, 2016"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "ByteNet",
+        "卷积序列模型",
+        "对数复杂度",
+        "并行计算",
+        "机器翻译"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-17",
+        "key_reference_reason": "该引用既支撑距离复杂度论证又出现在与 Transformer 的直接对比中，是对比论证链上的关键节点。",
+        "role_in_context": "卷积并行化路线中距离复杂度最优的对照模型，用于凸显自注意力把操作数降为常数的差异"
+      },
+      "topic": "ByteNet：线性时间神经机器翻译的对数距离复杂度模型",
+      "usage": "源文两处引用该文献：其一与 Extended Neural GPU [16]、ConvS2S [9] 并列作为减少顺序计算的卷积模型，其中 ByteNet 关联两位置所需操作数随距离呈对数增长，使远距离依赖更难学习 [12]；其二作为 [17, 18] 与 [9] 中被讨论 Transformer 优势的对比模型。",
+      "ref_index": 17,
+      "function": "uncategorized",
+      "summary": "源文以该文献作为 ByteNet 的出处，用其对数增长的距离复杂度说明卷积式并行化仍受远距离依赖困扰，从而作为 Transformer 恒定操作数优势的直接对照。",
+      "confidence": 0.85,
+      "ref_number": 18,
+      "reference": {
+        "author": [
+          "Nal Kalchbrenner",
+          "Lasse Espeholt",
+          "Karen Simonyan",
+          "Aaron van den Oord",
+          "Alex Graves",
+          "Koray Kavukcuoglu"
+        ],
+        "title": "Neural machine translation in linear time",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 37,
+          "line_start": 37,
+          "marker": "[18]",
+          "mention_id": "m00015",
+          "ref_number_hint": 18,
+          "snippet": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]. In the Transformer this is reduced to a constant number of operations, albeit at the cost of reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as described in section 3.2.",
+          "style": "numeric"
+        },
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "marker": "[18]",
+          "mention_id": "m00024",
+          "ref_number_hint": 18,
+          "snippet": "To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[18]",
+      "author_year_label": "Nal Kalchbrenner, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "注意力机制",
+        "跨距离依赖",
+        "序列建模",
+        "转导模型"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-18",
+        "key_reference_reason": "",
+        "role_in_context": "为“注意力可跨距离建模依赖”这一论点提供文献支撑，构成源文引入自注意力的动机依据"
+      },
+      "topic": "结构化注意力网络中的注意力机制",
+      "usage": "源文以 [19] 与 [2] 并列引证，用于支撑注意力机制已成为序列建模与转导模型不可或缺的组成部分，并使依赖关系可以不受输入/输出序列中距离的限制。",
+      "ref_index": 18,
+      "function": "background",
+      "summary": "源文用该文献证明注意力机制在多种序列建模与转导任务上已取得成功并能无视位置距离建模依赖，是源文把注意力提升为通用建模原语的旁证。",
+      "confidence": 0.85,
+      "ref_number": 19,
+      "reference": {
+        "author": [
+          "Yoon Kim",
+          "Carl Denton",
+          "Luong Hoang",
+          "Alexander M. Rush"
+        ],
+        "title": "Structured attention networks",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 31,
+          "line_start": 31,
+          "marker": "[19]",
+          "mention_id": "m00012",
+          "ref_number_hint": 19,
+          "snippet": "Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[19]",
+      "author_year_label": "Yoon Kim, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "因子分解技巧",
+        "LSTM",
+        "计算效率",
+        "顺序计算约束",
+        "并行化"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-20",
+        "key_reference_reason": "",
+        "role_in_context": "缓解顺序计算约束但未根本解决的既有改进路线，用以衬托自注意力彻底摆脱顺序依赖的必要性"
+      },
+      "topic": "LSTM 的因子分解计算技巧",
+      "usage": "源文在说明循环模型沿符号位置顺序计算、无法在样本内并行之后，指出近期工作已通过因子分解技巧 [21] 和条件计算 [32] 显著提升计算效率，其中条件计算还同时提升了模型性能，但顺序计算的根本约束依然存在；该文献对应其中的因子分解技巧一路。",
+      "ref_index": 20,
+      "function": "uncategorized",
+      "summary": "源文用该引用说明循环网络内部已有的效率优化手段虽提升了计算效率，却仍无法摆脱逐时间步展开这一根本限制，从而过渡到自注意力可全并行计算的主张。",
+      "confidence": 0.85,
+      "ref_number": 21,
+      "reference": {
+        "author": [
+          "Oleksii Kuchaiev",
+          "Boris Ginsburg"
+        ],
+        "title": "Factorization tricks for LSTM networks",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 29,
+          "line_start": 29,
+          "marker": "[21]",
+          "mention_id": "m00009",
+          "ref_number_hint": 21,
+          "snippet": "Recurrent models typically factor computation along the symbol positions of the input and output sequences. Aligning the positions to steps in computation time, they generate a sequence of hidden states $h _ { t } ,$ as a function of the previous hidden state $h _ { t - 1 }$ and the input for position t. This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples. Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter. The fundamental constraint of sequential computation, however, remains.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[21]",
+      "author_year_label": "Oleksii Kuchaiev, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "自注意力",
+        "句子表示",
+        "句嵌入",
+        "任务无关表示"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-21",
+        "key_reference_reason": "",
+        "role_in_context": "证明自注意力不仅用于序列内编码，也能独立承担句子级表示学习，支撑其把自注意力视为通用表示机制"
+      },
+      "topic": "结构化自注意力句向量与任务无关句子表示",
+      "usage": "源文在定义自注意力（intra-attention）之后列举其成功应用的任务，该文献对应其中的“学习任务无关的句子表示”一项。",
+      "ref_index": 21,
+      "function": "uncategorized",
+      "summary": "源文用该引用说明自注意力能够单独完成表示学习任务，是其将自注意力确立为独立建模原语的重要旁证。",
+      "confidence": 0.85,
+      "ref_number": 22,
+      "reference": {
+        "author": [
+          "Zhouhan Lin",
+          "Minwei Feng",
+          "Cicero Nogueira dos Santos",
+          "Mo Yu",
+          "Bing Xiang",
+          "Bowen Zhou",
+          "Yoshua Bengio"
+        ],
+        "title": "A structured self-attentive sentence embedding",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[22]",
+          "mention_id": "m00021",
+          "ref_number_hint": 22,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[22]",
+      "author_year_label": "Zhouhan Lin, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "注意力",
+        "神经机器翻译",
+        "编码器-解码器",
+        "循环语言模型",
+        "研究脉络"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-23",
+        "key_reference_reason": "",
+        "role_in_context": "标示循环/注意力式编码器-解码器路线的后续进展水平，说明 Transformer 之前该路线仍在持续推进"
+      },
+      "topic": "基于注意力的神经机器翻译的有效方法",
+      "usage": "源文在“此后大量工作继续推进循环语言模型与编码器-解码器架构的边界 [38, 24, 15]”一句中引用该文献，作为该方向后续改进的代表性工作之一。",
+      "ref_index": 23,
+      "function": "uncategorized",
+      "summary": "源文把该文献归入“继续推动循环语言模型与编码器-解码器架构边界”的努力之列，用于说明 Transformer 出现之前该路线已取得的进展与饱和状态。",
+      "confidence": 0.85,
+      "ref_number": 24,
+      "reference": {
+        "author": [
+          "Minh-Thang Luong",
+          "Hieu Pham",
+          "Christopher D Manning"
+        ],
+        "title": "Effective approaches to attentionbased neural machine translation",
+        "year": 2015
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[24]",
+          "mention_id": "m00007",
+          "ref_number_hint": 24,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[24]",
+      "author_year_label": "Minh-Thang Luong, 2015"
+    },
+    {
+      "is_key_reference": true,
+      "keywords": [
+        "可分解注意力",
+        "无循环网络",
+        "文本蕴含",
+        "少数例外"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-26",
+        "key_reference_reason": "两处引用都围绕“注意力是否必须依附循环网络”展开，是支撑 Transformer 首创性论断的核心对照文献。",
+        "role_in_context": "“注意力可不依赖循环网络”的少数先例，直接对照源文“首个完全依靠自注意力的转导模型”的首创性主张"
+      },
+      "topic": "可分解注意力模型（不与循环网络结合的注意力应用）",
+      "usage": "源文两处提及：一是作为“除少数情况 [27] 之外，注意力机制都与循环网络结合使用”中的少数例外；二是自注意力成功应用任务清单 [4, 27, 28, 22] 中对应文本蕴含一项的工作。",
+      "ref_index": 26,
+      "function": "uncategorized",
+      "summary": "源文以该引用标明注意力可以脱离循环网络单独使用，并展示其在文本蕴含等任务上的成功，既构成自注意力应用谱系的证据，也界定出 Transformer 结构新颖性的边界。",
+      "confidence": 0.85,
+      "ref_number": 27,
+      "reference": {
+        "author": [
+          "Ankur Parikh",
+          "Oscar Täckström",
+          "Dipanjan Das",
+          "Jakob Uszkoreit"
+        ],
+        "title": "A decomposable attention model",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 31,
+          "line_start": 31,
+          "marker": "[27]",
+          "mention_id": "m00013",
+          "ref_number_hint": 27,
+          "snippet": "Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.",
+          "style": "numeric"
+        },
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[27]",
+          "mention_id": "m00019",
+          "ref_number_hint": 27,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[27]",
+      "author_year_label": "Ankur Parikh, 2016"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "抽象摘要",
+        "强化学习",
+        "自注意力应用",
+        "生成任务"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-27",
+        "key_reference_reason": "",
+        "role_in_context": "提供自注意力在摘要类生成任务上成功应用的任务谱系证据"
+      },
+      "topic": "面向抽象摘要的深度强化学习模型",
+      "usage": "源文在列举自注意力已被成功应用的任务时，将该工作对应到 abstractive summarization 一项，作为自注意力在生成式摘要任务中有效性的实例。",
+      "ref_index": 27,
+      "function": "uncategorized",
+      "summary": "源文以该引用证明自注意力已被有效用于抽象摘要这一生成式任务，支撑其关于自注意力适用面广的论述。",
+      "confidence": 0.85,
+      "ref_number": 28,
+      "reference": {
+        "author": [
+          "Romain Paulus",
+          "Caiming Xiong",
+          "Richard Socher"
+        ],
+        "title": "A deep reinforced model for abstractive summarization",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 39,
+          "line_start": 39,
+          "marker": "[28]",
+          "mention_id": "m00020",
+          "ref_number_hint": 28,
+          "snippet": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence. Self-attention has been used successfully in a variety of tasks including reading comprehension, abstractive summarization, textual entailment and learning task-independent sentence representations [4, 27, 28, 22].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[28]",
+      "author_year_label": "Romain Paulus, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "条件计算",
+        "混合专家",
+        "稀疏门控",
+        "计算效率",
+        "模型容量"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-31",
+        "key_reference_reason": "",
+        "role_in_context": "另一条缓解计算瓶颈但仍保留顺序计算的路线，与自注意力路线形成对照"
+      },
+      "topic": "稀疏门控混合专家层与条件计算",
+      "usage": "源文在论述循环模型的顺序性限制后指出，近期工作通过因子分解技巧和条件计算显著提升计算效率，其中条件计算这一路还同时提升了模型性能；该文献对应“条件计算 [32]”一路，代表以稀疏专家层扩大模型容量而不线性增加计算量的思路。",
+      "ref_index": 31,
+      "function": "uncategorized",
+      "summary": "源文用该引用说明条件计算在提升计算效率的同时还能改善性能，但这种做法仍是在顺序框架内扩展容量，未消除逐步展开的计算约束。",
+      "confidence": 0.85,
+      "ref_number": 32,
+      "reference": {
+        "author": [
+          "Noam Shazeer",
+          "Azalia Mirhoseini",
+          "Krzysztof Maziarz",
+          "Andy Davis",
+          "Quoc Le",
+          "Geoffrey Hinton",
+          "Jeff Dean"
+        ],
+        "title": "Outrageously large neural networks: The sparsely-gated mixture-of-experts layer",
+        "year": 2017
+      },
+      "mentions": [
+        {
+          "line_end": 29,
+          "line_start": 29,
+          "marker": "[32]",
+          "mention_id": "m00010",
+          "ref_number_hint": 32,
+          "snippet": "Recurrent models typically factor computation along the symbol positions of the input and output sequences. Aligning the positions to steps in computation time, they generate a sequence of hidden states $h _ { t } ,$ as a function of the previous hidden state $h _ { t - 1 }$ and the input for position t. This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples. Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter. The fundamental constraint of sequential computation, however, remains.",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[32]",
+      "author_year_label": "Noam Shazeer, 2017"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "记忆网络",
+        "循环注意力",
+        "问答",
+        "语言建模",
+        "替代循环"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-33",
+        "key_reference_reason": "",
+        "role_in_context": "以注意力机制替代序列对齐循环的前例模型，为源文主张自注意力可以彻底替换循环结构作铺垫"
+      },
+      "topic": "端到端记忆网络中的循环注意力机制",
+      "usage": "源文指出端到端记忆网络建立在“循环注意力机制”而非序列对齐的循环之上，并已被证明在简单语言的问答与语言建模任务上表现良好，[34] 是其唯一出处。",
+      "ref_index": 33,
+      "function": "uncategorized",
+      "summary": "源文用该引用说明注意力可以承担原本属于循环网络的记忆与对齐职责，并在简单问答与语言建模上验证了这一做法，是其“用自注意力替换循环”论证的直接前例。",
+      "confidence": 0.85,
+      "ref_number": 34,
+      "reference": {
+        "author": [
+          "Sainbayar Sukhbaatar",
+          "Arthur Szlam",
+          "Jason Weston",
+          "Rob Fergus"
+        ],
+        "title": "End-to-end memory networks",
+        "year": 2015
+      },
+      "mentions": [
+        {
+          "line_end": 41,
+          "line_start": 41,
+          "marker": "[34]",
+          "mention_id": "m00022",
+          "ref_number_hint": 34,
+          "snippet": "End-to-end memory networks are based on a recurrent attention mechanism instead of sequencealigned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[34]",
+      "author_year_label": "Sainbayar Sukhbaatar, 2015"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "序列到序列",
+        "编码器-解码器",
+        "神经机器翻译",
+        "基线范式"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-34",
+        "key_reference_reason": "",
+        "role_in_context": "循环式序列到序列方法的奠基性工作，界定源文所对照的主流基线"
+      },
+      "topic": "序列到序列神经机器翻译与编码器-解码器范式",
+      "usage": "该文献以 [35] 出现在“循环神经网络、LSTM 与门控循环网络已成为序列建模与转导问题（如语言建模与机器翻译 [35, 2, 5]）的最先进方法”这一列举中，代表其中的循环序列到序列范式。",
+      "ref_index": 34,
+      "function": "baseline",
+      "summary": "源文把该文献用作循环序列到序列方法在机器翻译上既成地位的代表之一，从而确立 Transformer 出发时的循环式转导基线水平。",
+      "confidence": 0.85,
+      "ref_number": 35,
+      "reference": {
+        "author": [
+          "Ilya Sutskever",
+          "Oriol Vinyals",
+          "Quoc VV Le"
+        ],
+        "title": "Sequence to sequence learning with neural networks",
+        "year": 2014
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[35]",
+          "mention_id": "m00003",
+          "ref_number_hint": 35,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[35]",
+      "author_year_label": "Ilya Sutskever, 2014"
+    },
+    {
+      "is_key_reference": false,
+      "keywords": [
+        "神经机器翻译",
+        "编码器-解码器架构",
+        "循环语言模型",
+        "后续工作举例"
+      ],
+      "metadata": {
+        "citation_work_key": "citation-work-37",
+        "key_reference_reason": "",
+        "role_in_context": "脉络性并列引用，支持关于循环语言模型与编码器-解码器架构后续发展状况的概括性论断"
+      },
+      "topic": "大规模循环/编码器-解码器神经机器翻译系统的持续改进",
+      "usage": "源文在综述句中与 [24]、[15] 并列引用该文献，用以支撑“此后大量工作继续推进循环语言模型与编码器-解码器架构的边界”这一总体性论断；引用为集合式举例，源文未展开其具体方法细节。",
+      "ref_index": 37,
+      "function": "uncategorized",
+      "summary": "源文把该文献作为“循环语言模型与编码器-解码器架构仍在持续演进”这一陈述的实例之一，作用是脉络性背景说明，而非对具体方法或实验结果的直接对比。",
+      "confidence": 0.85,
+      "ref_number": 38,
+      "reference": {
+        "author": [
+          "Yonghui Wu",
+          "Mike Schuster",
+          "Zhifeng Chen",
+          "Quoc V Le",
+          "Mohammad Norouzi",
+          "Wolfgang Macherey",
+          "Maxim Krikun",
+          "Yuan Cao",
+          "Qin Gao",
+          "Klaus Macherey"
+        ],
+        "title": "Google’s neural machine translation system: Bridging the gap between human and machine translation",
+        "year": 2016
+      },
+      "mentions": [
+        {
+          "line_end": 27,
+          "line_start": 27,
+          "marker": "[38]",
+          "mention_id": "m00006",
+          "ref_number_hint": 38,
+          "snippet": "Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks in particular, have been firmly established as state of the art approaches in sequence modeling and transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous efforts have since continued to push the boundaries of recurrent language models and encoder-decoder architectures [38, 24, 15].",
+          "style": "numeric"
+        }
+      ],
+      "citation_label": "[38]",
+      "author_year_label": "Yonghui Wu, 2016"
+    }
+  ],
+  "unmapped_mentions": [],
+  "report_md": "## 文献综述章节引文线索\n\n### 总体总结\n源文在“1 Introduction + 2 Background”范围内按三步组织引用：先以 LSTM、门控循环网络与序列到序列等文献确立循环网络作为序列建模与转导的最先进基线，并列举注意力机制与循环网络结合的既有范式及其“少数例外”；再以端到端记忆网络说明注意力可以替代序列对齐的循环，并以自注意力在阅读理解、摘要、蕴含与句子表示上的成功说明其通用性；最后以因子分解技巧、条件计算与基于卷积的并行化模型（Extended Neural GPU、ByteNet、ConvS2S）作为缓解顺序计算但仍受距离复杂度约束的近期路线，配合梯度流分析给出的理论解释，把 Transformer 的全自注意力结构与恒定路径长度确立为对上述基线的结构性回应。整体上，引用充当的是对照与动机工具，而非被逐一评述的独立工作。\n\n\n### 关键文献\n\n- [13] Sepp Hochreiter, 1997: Long short-term memory (Baseline)\n\n- [12] Sepp Hochreiter, 2001: Gradient flow in recurrent nets: the difficulty of learning long-term dependencies (Uncategorized)\n\n- [27] Ankur Parikh, 2016: A decomposable attention model (Uncategorized)\n\n- [9] Jonas Gehring, 2017: Convolutional sequence to sequence learning (Baseline)\n\n- [18] Nal Kalchbrenner, 2017: Neural machine translation in linear time (Uncategorized)\n\n\n\n### 范围\n- 章节: 1 Introduction + 2 Background\n- 行号: 25-43\n\n### 按功能归类\n\n\n#### Uncategorized\n\n- [2] Dzmitry Bahdanau, 2014\n  - 标题: Neural machine translation by jointly learning to align and translate\n  - 关键词: 注意力机制, 机器翻译, 编码器-解码器, 距离无关的依赖, 既有先例\n  - 总结: 源文用该文献既确立注意力在机器翻译上已成为主流组件，也用于说明这类注意力几乎总是与循环网络搭配使用，从而界定 Transformer 完全不同于此的技术定位。\n\n- [12] Sepp Hochreiter, 2001\n  - 标题: Gradient flow in recurrent nets: the difficulty of learning long-term dependencies\n  - 关键词: 梯度流, 长程依赖, 循环网络, 理论支撑\n  - 总结: 源文引用该文献作为循环网络梯度流问题导致长程依赖难以学习的理论依据，用以解释并行化与卷积式模型在远距离依赖上的困难，从而论证 Transformer 将路径长度降为常数的优势来源。\n\n- [15] Rafal Jozefowicz, 2016\n  - 标题: Exploring the limits of language modeling\n  - 关键词: 语言建模, 循环语言模型, 规模扩展, 边界探索\n  - 总结: 源文引用该文献代表在循环语言模型与编码器-解码器架构方向继续推升性能上限的后续努力，用于说明以新架构取而代之的必要性。\n\n- [18] Nal Kalchbrenner, 2017\n  - 标题: Neural machine translation in linear time\n  - 关键词: ByteNet, 卷积序列模型, 对数复杂度, 并行计算, 机器翻译\n  - 总结: 源文以该文献作为 ByteNet 的出处，用其对数增长的距离复杂度说明卷积式并行化仍受远距离依赖困扰，从而作为 Transformer 恒定操作数优势的直接对照。\n\n- [21] Oleksii Kuchaiev, 2017\n  - 标题: Factorization tricks for LSTM networks\n  - 关键词: 因子分解技巧, LSTM, 计算效率, 顺序计算约束, 并行化\n  - 总结: 源文用该引用说明循环网络内部已有的效率优化手段虽提升了计算效率，却仍无法摆脱逐时间步展开这一根本限制，从而过渡到自注意力可全并行计算的主张。\n\n- [22] Zhouhan Lin, 2017\n  - 标题: A structured self-attentive sentence embedding\n  - 关键词: 自注意力, 句子表示, 句嵌入, 任务无关表示\n  - 总结: 源文用该引用说明自注意力能够单独完成表示学习任务，是其将自注意力确立为独立建模原语的重要旁证。\n\n- [24] Minh-Thang Luong, 2015\n  - 标题: Effective approaches to attentionbased neural machine translation\n  - 关键词: 注意力, 神经机器翻译, 编码器-解码器, 循环语言模型, 研究脉络\n  - 总结: 源文把该文献归入“继续推动循环语言模型与编码器-解码器架构边界”的努力之列，用于说明 Transformer 出现之前该路线已取得的进展与饱和状态。\n\n- [27] Ankur Parikh, 2016\n  - 标题: A decomposable attention model\n  - 关键词: 可分解注意力, 无循环网络, 文本蕴含, 少数例外\n  - 总结: 源文以该引用标明注意力可以脱离循环网络单独使用，并展示其在文本蕴含等任务上的成功，既构成自注意力应用谱系的证据，也界定出 Transformer 结构新颖性的边界。\n\n- [28] Romain Paulus, 2017\n  - 标题: A deep reinforced model for abstractive summarization\n  - 关键词: 抽象摘要, 强化学习, 自注意力应用, 生成任务\n  - 总结: 源文以该引用证明自注意力已被有效用于抽象摘要这一生成式任务，支撑其关于自注意力适用面广的论述。\n\n- [32] Noam Shazeer, 2017\n  - 标题: Outrageously large neural networks: The sparsely-gated mixture-of-experts layer\n  - 关键词: 条件计算, 混合专家, 稀疏门控, 计算效率, 模型容量\n  - 总结: 源文用该引用说明条件计算在提升计算效率的同时还能改善性能，但这种做法仍是在顺序框架内扩展容量，未消除逐步展开的计算约束。\n\n- [34] Sainbayar Sukhbaatar, 2015\n  - 标题: End-to-end memory networks\n  - 关键词: 记忆网络, 循环注意力, 问答, 语言建模, 替代循环\n  - 总结: 源文用该引用说明注意力可以承担原本属于循环网络的记忆与对齐职责，并在简单问答与语言建模上验证了这一做法，是其“用自注意力替换循环”论证的直接前例。\n\n- [38] Yonghui Wu, 2016\n  - 标题: Google’s neural machine translation system: Bridging the gap between human and machine translation\n  - 关键词: 神经机器翻译, 编码器-解码器架构, 循环语言模型, 后续工作举例\n  - 总结: 源文把该文献作为“循环语言模型与编码器-解码器架构仍在持续演进”这一陈述的实例之一，作用是脉络性背景说明，而非对具体方法或实验结果的直接对比。\n\n\n\n#### Component\n\n- [4] Jianpeng Cheng, 2016\n  - 标题: Long short-term memory-networks for machine reading\n  - 关键词: 自注意力, 机器阅读, 阅读理解, 任务先例\n  - 总结: 源文引用该文献说明自注意力机制已被成功应用于阅读理解任务，把注意力作为通用序列建模组件的论断从机器翻译扩展到其他自然语言处理任务。\n\n\n\n#### Baseline\n\n- [5] Kyunghyun Cho, 2014\n  - 标题: Learning phrase representations using rnn encoder-decoder for statistical machine translation\n  - 关键词: RNN, 编码器-解码器, 短语表示, 机器翻译, 技术先例\n  - 总结: 源文引用该文献代表循环网络编码器-解码器在机器翻译方向的开创性成果，作为 RNN 类模型达到最先进水平的例证，用于界定 Transformer 需要超越的循环路线。\n\n- [7] Junyoung Chung, 2014\n  - 标题: Empirical evaluation of gated recurrent neural networks on sequence modeling\n  - 关键词: 门控循环网络, 序列建模, RNN 变体, 基线模型, 状态判定\n  - 总结: 源文引用该文献作为门控循环神经网络的代表工作，说明在 Transformer 出现之前 RNN 的 LSTM 与门控单元变体已确立为序列建模与转导任务的最先进方法。\n\n- [9] Jonas Gehring, 2017\n  - 标题: Convolutional sequence to sequence learning\n  - 关键词: ConvS2S, 卷积神经网络, 并行计算, 序列到序列, 线性复杂度\n  - 总结: 源文用该文献代表卷积式序列到序列方案：一方面借其线性距离复杂度说明这类模型难以学习远距离依赖，另一方面把它列为 Transformer 优势讨论所对照的既有转导模型，从而凸显自注意力恒定路径长度与无循环/卷积结构的新颖性。\n\n- [13] Sepp Hochreiter, 1997\n  - 标题: Long short-term memory\n  - 关键词: LSTM, 循环神经网络, 长程依赖, 序列建模, 对比基线\n  - 总结: 源文用该文献确立 LSTM 在序列建模与转导任务上的既成地位，作为论述起点的循环网络技术基线，说明 Transformer 是在何种既有模型之上提出替代方案。\n\n- [16] Łukasz Kaiser, 2016\n  - 标题: Can active memory replace attention?\n  - 关键词: Extended Neural GPU, 卷积, 顺序计算, 并行化, 前作\n  - 总结: 源文把该文献与 ByteNet、ConvS2S 一并归入以卷积并行计算、从而减少顺序计算的模型族，作为对比 Transformer 恒定操作数优势时的直接前作与复杂度参照。\n\n- [17] Łukasz Kaiser, 2016\n  - 标题: Neural GPUs learn algorithms\n  - 关键词: Neural GPU, 外部记忆, 卷积, 转导模型, 对比对象\n  - 总结: 源文把该文献列为 Transformer 之前转导模型路线的代表之一，用于界定“完全依赖自注意力”这一结构新颖性的边界。\n\n- [35] Ilya Sutskever, 2014\n  - 标题: Sequence to sequence learning with neural networks\n  - 关键词: 序列到序列, 编码器-解码器, 神经机器翻译, 基线范式\n  - 总结: 源文把该文献用作循环序列到序列方法在机器翻译上既成地位的代表之一，从而确立 Transformer 出发时的循环式转导基线水平。\n\n\n\n#### Background\n\n- [19] Yoon Kim, 2017\n  - 标题: Structured attention networks\n  - 关键词: 注意力机制, 跨距离依赖, 序列建模, 转导模型\n  - 总结: 源文用该文献证明注意力机制在多种序列建模与转导任务上已取得成功并能无视位置距离建模依赖，是源文把注意力提升为通用建模原语的旁证。\n\n\n\n\n\n### 时间线分析\n\n#### 早期\n最早的一批引用给出循环路线的起点与困难的两面：LSTM（1997）确立了用门控单元处理长程依赖的循环方案，梯度流分析（2001）则解释了这类结构为何难以学习远距离依赖；随后 2014 年前后涌现的序列到序列、RNN 编码器-解码器与注意力式神经机器翻译文献，把循环网络连同注意力一起确立为序列建模与转导任务上的最先进方法，注意力式神经机器翻译文献同时提供了“依赖关系可不受位置距离限制”的经验依据。\n\n\n- [13] Sepp Hochreiter, 1997: Long short-term memory\n\n- [12] Sepp Hochreiter, 2001: Gradient flow in recurrent nets: the difficulty of learning long-term dependencies\n\n- [2] Dzmitry Bahdanau, 2014: Neural machine translation by jointly learning to align and translate\n\n- [5] Kyunghyun Cho, 2014: Learning phrase representations using rnn encoder-decoder for statistical machine translation\n\n- [7] Junyoung Chung, 2014: Empirical evaluation of gated recurrent neural networks on sequence modeling\n\n- [35] Ilya Sutskever, 2014: Sequence to sequence learning with neural networks\n\n- [24] Minh-Thang Luong, 2015: Effective approaches to attentionbased neural machine translation\n\n\n\n\n#### 中期\n随后的引用把注意力与自注意力从循环结构中部分剥离出来，并展示其任务适用面：端到端记忆网络说明注意力可以承担原本属于序列对齐循环的记忆与对齐职责，基于注意力的神经机器翻译、机器阅读与可分解注意力模型等文献分别对应注意力在转导、阅读理解与文本蕴含上的成功，可分解注意力模型还是“注意力不与循环网络结合”的少数例外；2016 年的极限语言建模与大规模神经机器翻译系统则被用来概括循环语言模型与编码器-解码器架构仍在持续演进的脉络，Extended Neural GPU 与 Neural GPU 出现在减少顺序计算的模型族列举中。\n\n\n- [34] Sainbayar Sukhbaatar, 2015: End-to-end memory networks\n\n- [4] Jianpeng Cheng, 2016: Long short-term memory-networks for machine reading\n\n- [15] Rafal Jozefowicz, 2016: Exploring the limits of language modeling\n\n- [16] Łukasz Kaiser, 2016: Can active memory replace attention?\n\n- [17] Łukasz Kaiser, 2016: Neural GPUs learn algorithms\n\n- [27] Ankur Parikh, 2016: A decomposable attention model\n\n- [38] Yonghui Wu, 2016: Google’s neural machine translation system: Bridging the gap between human and machine translation\n\n\n\n\n#### 近期\n最新一批引用围绕计算效率与并行化展开：因子分解技巧与稀疏门控条件计算试图缓解循环模型的顺序瓶颈却未解除根本约束，ConvS2S（操作数随距离线性增长）与 ByteNet（对数增长）等卷积并行化模型仍受距离复杂度限制，结构化自注意力句向量与深度强化学习摘要则显示自注意力本身已具备独立的表示与生成能力，结构化注意力网络延续了注意力在跨距离依赖建模上的经验。源文以这些工作作为直接对照，凸显全自注意力把路径长度降为常数的结构性优势。\n\n\n- [9] Jonas Gehring, 2017: Convolutional sequence to sequence learning\n\n- [18] Nal Kalchbrenner, 2017: Neural machine translation in linear time\n\n- [19] Yoon Kim, 2017: Structured attention networks\n\n- [21] Oleksii Kuchaiev, 2017: Factorization tricks for LSTM networks\n\n- [22] Zhouhan Lin, 2017: A structured self-attentive sentence embedding\n\n- [28] Romain Paulus, 2017: A deep reinforced model for abstractive summarization\n\n- [32] Noam Shazeer, 2017: Outrageously large neural networks: The sparsely-gated mixture-of-experts layer\n\n\n\n\n\n"
+}
