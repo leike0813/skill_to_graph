@@ -1,0 +1,111 @@
+{
+  "entry": "generated-graph",
+  "repetition": 3,
+  "model": "combo/deepseek-v4.1-flash",
+  "reasoning_effort": "high",
+  "input": [
+    {
+      "role": "user",
+      "content": "How will this task continue after I approve it?"
+    },
+    {
+      "role": "assistant",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "user",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "certificate_verification": "existing NODE_EXTRA_CA_CERTS bundle",
+  "reply": "Here is the context and the re-pitch.\n\n**Context.** You asked how this task will continue after you approve it. I answered too briefly and used terms you did not know. The repository has one glossary, `GLOSSARY.md`. It has three terms: **Graph**, **Node**, and **Checkpoint**. I use those terms below.\n\n**What happens after you approve.**\n\n1. The Graph stops at a point where it needs your confirmation. It can stop because the Graph saves its state, not because it holds a live process.\n2. The system saves a Checkpoint. The Checkpoint records the state of the Graph. It also records your reply and links that reply to the stopped task. So the reply belongs to that one task, and a later continue uses that same state.\n3. The task starts again. The next Node then does its work.\n4. That next Node writes the report. The report comes out after the task starts again, not at the moment you approve.\n\n**One limit.** The Checkpoint keeps the state of the Graph. It does not make an external file write safe against a crash. Assume the system crashes after the file write, before the Graph records that the write is done. In that case the file can hold the write twice after a restart. So you do not get an exactly-once result for an external file write after a crash. Read the result as \"the Graph continues from the saved state\" and not as \"the external write happens only once\".\n\n**Uncertainty:** This re-pitch keeps the same limits as my first answer. It does not add a stronger promise about the file write.",
+  "tool_results": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/tmp/skill-smith-graph-wt_pepb4/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "response_metadata": {
+    "id": "resp_dd7c5ab2b530459783c45f799dedccae",
+    "created_at": 1792755949.0,
+    "model": "deepseek/deepseek-v4.1-flash",
+    "object": "response",
+    "status": "completed",
+    "model_provider": "openai",
+    "model_name": "deepseek/deepseek-v4.1-flash"
+  },
+  "execution": "executed",
+  "elapsed_seconds": 16.258710861206055,
+  "requests": [
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "combo/deepseek-v4.1-flash",
+      "reasoning": {
+        "effort": "high"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "combo/deepseek-v4.1-flash",
+      "reasoning": {
+        "effort": "high"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "combo/deepseek-v4.1-flash",
+      "reasoning": {
+        "effort": "high"
+      },
+      "store": false,
+      "status_code": 200
+    }
+  ],
+  "first_request": [
+    {
+      "role": "system",
+      "content": "Wait, I don't understand where you've got to here. Re-pitch that: give me a little bit of context, talk in ASD-STE100 Simplified Technical English, and use the ubiquitous language from `GLOSSARY.md` (follow `GLOSSARY-MAP.md` to the right one if the repo has more than one).\n\nThis is an explicit invocation. Re-pitch the assistant passage below, using the conversation for context. Read the applicable task glossary with the supplied tools. Preserve the passage's claims, timing and uncertainty.\nAssistant passage:\n\"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\""
+    },
+    {
+      "role": "human",
+      "content": "How will this task continue after I approve it?"
+    },
+    {
+      "role": "ai",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "human",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY-MAP.md'}"
+    },
+    {
+      "name": "list_files",
+      "input": "{'path': '.'}"
+    },
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY.md'}"
+    }
+  ]
+}

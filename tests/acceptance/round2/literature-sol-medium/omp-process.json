@@ -1,0 +1,7 @@
+{
+  "raw_log": "/tmp/literature-sol-medium-omp-tx44fyz9.jsonl",
+  "stderr_log": "/tmp/literature-sol-medium-omp-tx44fyz9.stderr",
+  "sessions": "/tmp/literature-sol-medium-sessions-7i1j9vp3",
+  "model": "opencodex-hub/gpt-6.1-sol",
+  "thinking": "medium"
+}

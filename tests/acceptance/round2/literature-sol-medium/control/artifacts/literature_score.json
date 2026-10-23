@@ -1,0 +1,458 @@
+{
+  "confidence": 0.92,
+  "confidence_adjusted_score": 77.3,
+  "dimensions": [
+    {
+      "applicable_max_score": 25,
+      "confidence": 0.94,
+      "configured_weight": 0.25,
+      "criteria": [
+        {
+          "criterion_key": "research_question_clarity",
+          "evidence": [
+            {
+              "line_end": 29,
+              "line_start": 29,
+              "quote": "The fundamental constraint of sequential computation, however, remains."
+            }
+          ],
+          "max_score": 5,
+          "name": "Research Question Clarity",
+          "reason": "目标明确：去除循环以提高并行性并保留翻译质量。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "method_description_sufficiency",
+          "evidence": [
+            {
+              "line_end": 97,
+              "line_start": 97,
+              "quote": "The Transformer uses multi-head attention in three different ways:"
+            }
+          ],
+          "max_score": 5,
+          "name": "Method Description Sufficiency",
+          "reason": "给出注意力公式、投影、多头、掩码、前馈及位置机制，可理解完整核心。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "analysis_process_completeness",
+          "evidence": [
+            {
+              "line_end": 193,
+              "line_start": 193,
+              "quote": "These hyperparameters were chosen after experimentation on the development set."
+            }
+          ],
+          "max_score": 5,
+          "name": "Experiment Or Analysis Process Completeness",
+          "reason": "数据、训练、开发集调参和测试闭合；缺乏重复试验及完整搜索记录。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "baseline_or_control_adequacy",
+          "evidence": [
+            {
+              "line_end": 195,
+              "line_start": 195,
+              "quote": "Table 2 summarizes our results and compares our translation quality and training costs to other model architectures from the literature."
+            }
+          ],
+          "max_score": 5,
+          "name": "Baseline Or Control Adequacy",
+          "reason": "包含强循环、卷积和集成基线以及组件变体，但主要比较取自文献，预算未完全统一。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "parameter_transparency",
+          "evidence": [
+            {
+              "line_end": 193,
+              "line_start": 193,
+              "quote": "We used beam search with a beam size of 4"
+            }
+          ],
+          "max_score": 5,
+          "name": "Parameter Transparency",
+          "reason": "关键维度、优化器、步数、解码参数透明，调参搜索与随机种子未说明。",
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "methodological_rigor",
+      "effective_weight": 0.25,
+      "name": "Methodological Rigor",
+      "raw_score": 22,
+      "score": 88.0,
+      "summary": "方法定义完整、主要实验闭合且基线丰富；缺预算完全匹配和重复种子。"
+    },
+    {
+      "applicable_max_score": 20,
+      "confidence": 0.9,
+      "configured_weight": 0.2,
+      "criteria": [
+        {
+          "criterion_key": "experiment_coverage",
+          "evidence": [
+            {
+              "line_end": 199,
+              "line_start": 199,
+              "quote": "To evaluate the importance of different components of the Transformer, we varied our base model in different ways"
+            }
+          ],
+          "max_score": 5,
+          "name": "Experiment Coverage",
+          "reason": "两种翻译、句法迁移与组件变体覆盖主要主张；长序列和实际推理效率缺实测。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "data_scale_adequacy",
+          "evidence": [
+            {
+              "line_end": 157,
+              "line_start": 157,
+              "quote": "WMT 2014 English-German dataset consisting of about 4.5 million sentence pairs."
+            }
+          ],
+          "max_score": 5,
+          "name": "Data Scale Adequacy",
+          "reason": "百万级翻译及大小数据句法分析足以检验所选任务的主张，不外推到任意模态。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "statistical_analysis",
+          "evidence": [],
+          "max_score": 5,
+          "name": "Statistical Analysis",
+          "reason": "报告单值指标但未报告重复种子、误差条、置信区间或显著性；检查点平均不能替代不确定性评估。",
+          "score": 1,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "claim_evidence_alignment",
+          "evidence": [
+            {
+              "line_end": 191,
+              "line_start": 191,
+              "quote": "our big model achieves a BLEU score of 41.0"
+            }
+          ],
+          "max_score": 5,
+          "name": "Claim Evidence Alignment",
+          "reason": "英德主张有直接支持，英法41.0与表2/摘要41.8矛盾；句法分析与泛化结论需按设置限制。",
+          "score": 3,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "evidence_completeness",
+      "effective_weight": 0.2,
+      "name": "Evidence Completeness",
+      "raw_score": 13,
+      "score": 65.0,
+      "summary": "两种翻译和句法实验覆盖主张，统计不确定性缺失，英法结果内部冲突。"
+    },
+    {
+      "applicable_max_score": 15,
+      "confidence": 0.93,
+      "configured_weight": 0.15,
+      "criteria": [
+        {
+          "criterion_key": "data_source_clarity",
+          "evidence": [
+            {
+              "line_end": 213,
+              "line_start": 213,
+              "quote": "Wall Street Journal (WSJ) portion of the Penn Treebank"
+            }
+          ],
+          "max_score": 3,
+          "name": "Data Source Clarity",
+          "reason": "明确命名翻译语料及Penn Treebank WSJ并说明训练规模。",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "code_availability",
+          "evidence": [
+            {
+              "line_end": 233,
+              "line_start": 233,
+              "quote": "The code we used to train and evaluate our models is available"
+            }
+          ],
+          "max_score": 3,
+          "name": "Code Availability",
+          "reason": "给出训练与评价代码的公开地址；仅依据文本声明，未联网验证链接。",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "parameter_availability",
+          "evidence": [
+            {
+              "line_end": 215,
+              "line_start": 215,
+              "quote": "We used a beam size of 21 and α = 0.3"
+            }
+          ],
+          "max_score": 3,
+          "name": "Parameter Availability",
+          "reason": "表3列基本和big配置，正文列优化器与解码设置。",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "procedure_detail",
+          "evidence": [
+            {
+              "line_end": 193,
+              "line_start": 193,
+              "quote": "For the big models, we averaged the last 20 checkpoints."
+            }
+          ],
+          "max_score": 3,
+          "name": "Procedure Detail",
+          "reason": "流程较详细，但缺种子、完整预处理命令与代码版本，尚不能逐位重建。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "environment_description",
+          "evidence": [
+            {
+              "line_end": 161,
+              "line_start": 161,
+              "quote": "We trained our models on one machine with 8 NVIDIA P100 GPUs."
+            }
+          ],
+          "max_score": 3,
+          "name": "Environment Description",
+          "reason": "说明八张P100及速度，缺框架、软件依赖和版本。",
+          "score": 2,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "reproducibility",
+      "effective_weight": 0.15,
+      "name": "Reproducibility",
+      "raw_score": 13,
+      "score": 86.7,
+      "summary": "公开代码入口、数据与主要配置充分；无固定版本、种子或完整环境。"
+    },
+    {
+      "applicable_max_score": 15,
+      "confidence": 0.93,
+      "configured_weight": 0.15,
+      "criteria": [
+        {
+          "criterion_key": "new_method_or_framework",
+          "evidence": [
+            {
+              "line_end": 227,
+              "line_start": 227,
+              "quote": "replacing the recurrent layers most commonly used in encoder-decoder architectures with multi-headed self-attention."
+            }
+          ],
+          "max_score": 5,
+          "name": "New Method Or Framework",
+          "reason": "新意为完全去循环卷积的序列转换组合，且明确区别已有自注意力应用，不凭外部声望判断。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "addresses_known_limitations",
+          "evidence": [
+            {
+              "line_end": 161,
+              "line_start": 161,
+              "quote": "We trained the base models for a total of 100,000 steps or 12 hours."
+            }
+          ],
+          "max_score": 5,
+          "name": "Addresses Known Limitations",
+          "reason": "对准循环顺序瓶颈，给出并行路径比较与训练效率结果，验证集中于句子级任务。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "new_theoretical_explanation",
+          "evidence": [
+            {
+              "line_end": 85,
+              "line_start": 85,
+              "quote": "Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions."
+            }
+          ],
+          "max_score": 5,
+          "name": "New Theoretical Explanation",
+          "reason": "给出路径长度、缩放梯度和多子空间机制解释；部分为假设而非严格理论验证。",
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "innovation_signals",
+      "effective_weight": 0.15,
+      "name": "Innovation Signals",
+      "raw_score": 14,
+      "score": 93.3,
+      "summary": "纯注意力序列转换组合与顺序瓶颈直接对应，机制解释较充分但非全部被独立验证。"
+    },
+    {
+      "applicable_max_score": 15,
+      "confidence": 0.91,
+      "configured_weight": 0.15,
+      "criteria": [
+        {
+          "criterion_key": "problem_importance",
+          "evidence": [
+            {
+              "line_end": 29,
+              "line_start": 29,
+              "quote": "This inherently sequential nature precludes parallelization within training examples"
+            }
+          ],
+          "max_score": 5,
+          "name": "Problem Importance",
+          "reason": "序列转换训练成本与远距依赖对应明确应用需求。",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "method_transferability",
+          "evidence": [
+            {
+              "line_end": 211,
+              "line_start": 211,
+              "quote": "To evaluate if the Transformer can generalize to other tasks we performed experiments on English constituency parsing."
+            }
+          ],
+          "max_score": 5,
+          "name": "Method Transferability",
+          "reason": "英语句法分析提供跨任务验证；未证明向非文本或任意长序列迁移。",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "application_breadth",
+          "evidence": [
+            {
+              "line_end": 213,
+              "line_start": 213,
+              "quote": "We also trained it in a semi-supervised setting"
+            }
+          ],
+          "max_score": 5,
+          "name": "Application Breadth",
+          "reason": "两种语言对与句法任务超出单点案例，但模态均为文本。",
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "research_impact_potential",
+      "effective_weight": 0.15,
+      "name": "Research Impact Potential",
+      "raw_score": 13,
+      "score": 86.7,
+      "summary": "任务需求和跨任务验证明确，潜力依据结构与文本实验而非外界影响。"
+    },
+    {
+      "applicable_max_score": 10,
+      "confidence": 0.9,
+      "configured_weight": 0.1,
+      "criteria": [
+        {
+          "criterion_key": "structural_clarity",
+          "evidence": [
+            {
+              "line_end": 153,
+              "line_start": 153,
+              "quote": "This section describes the training regime for our models."
+            }
+          ],
+          "max_score": 2,
+          "name": "Structural Clarity",
+          "reason": "问题—架构—训练—结果—结论层次清楚。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "terminology_consistency",
+          "evidence": [
+            {
+              "line_end": 62,
+              "line_start": 62,
+              "quote": "An attention function can be described as mapping a query and a set of key-value pairs to an output"
+            }
+          ],
+          "max_score": 2,
+          "name": "Terminology Consistency",
+          "reason": "查询键值及多头术语定义一致；转换造成的公式空格不当作作者概念混乱。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "logical_coherence",
+          "evidence": [
+            {
+              "line_end": 191,
+              "line_start": 191,
+              "quote": "our big model achieves a BLEU score of 41.0"
+            }
+          ],
+          "max_score": 2,
+          "name": "Logical Coherence",
+          "reason": "整体推导连贯，但英法结果不一致及概括性句法优越表述削弱精确性。",
+          "score": 1,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "figure_table_effectiveness",
+          "evidence": [
+            {
+              "line_end": 201,
+              "line_start": 201,
+              "quote": "Table 3: Variations on the Transformer architecture."
+            }
+          ],
+          "max_score": 2,
+          "name": "Figure And Table Effectiveness",
+          "reason": "架构图图注、复杂度表、主结果和变体表各承担具体信息；判断仅依据文本与表格未看图像。",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "criterion_key": "language_quality",
+          "evidence": [
+            {
+              "line_end": 227,
+              "line_start": 227,
+              "quote": "In this work, we presented the Transformer"
+            }
+          ],
+          "max_score": 2,
+          "name": "Language Quality",
+          "reason": "正文总体可读、概念具体；个别拼写和转换噪声不妨碍主要理解。",
+          "score": 2,
+          "status": "scored"
+        }
+      ],
+      "dimension_key": "writing_quality",
+      "effective_weight": 0.1,
+      "name": "Writing Quality",
+      "raw_score": 9,
+      "score": 90.0,
+      "summary": "章节和术语清楚、图表文本有效；结果矛盾影响论证精确性，未查看图像。"
+    }
+  ],
+  "overall_score": 84.0,
+  "paper_type": "empirical",
+  "paper_type_reason": "主要论证通过翻译基准、组件变体和句法分析的量化实验检验新架构。",
+  "rubric_id": "literature-score.v1",
+  "schema": "literature_score.v1"
+}

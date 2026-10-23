@@ -1,4 +1,5 @@
 """Statically check a generated LangGraph application without importing it."""
+from argparse import RawDescriptionHelpFormatter
 import ast
 import json
 import os
@@ -167,10 +168,27 @@ def check(directory):
 
 def main():
     parser = Parser(
-        description="Statically check generated Python syntax, langgraph.json structure, "
-                    "local graph entries and explicit resource paths. External module entries "
-                    "are reported as statically unresolvable; modules, graphs and models are "
-                    "never imported or run."
+        description="""Statically check generated Python syntax, langgraph.json structure,
+local graph entries and explicit resource paths. External module entries are
+reported as statically unresolvable; modules, graphs and models are
+never imported or run.""",
+        epilog="""The directory positional is the generated LangGraph application directory.
+This operation is read-only. It checks Python syntax and configuration, explicit
+local entries, and resource paths without importing modules or running graphs.
+
+Except --help, output is one JSON object on stdout:
+  {"ok": true, "operation": "check", "data": {"checked_files": [...],
+   "graph_entries": {...}, "unresolved_entries": {...}}, "issues": []}
+On failure, ok is false, data is {}, and issues lists code, path, and detail.
+
+Exit codes: 0 success; 2 invalid argument; 5 I/O error (including a missing
+directory); 6 invalid artifact.
+
+Example:
+  python check_graph.py path/to/generated-app
+
+--help prints text and exits 0 without checking files.""",
+        formatter_class=RawDescriptionHelpFormatter,
     )
     parser.add_argument("directory", help="Generated LangGraph application directory")
     args = parser.parse_args()

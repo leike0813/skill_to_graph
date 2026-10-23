@@ -1,0 +1,56 @@
+{
+  "workflow_state": {
+    "id": 1,
+    "current_stage": "stage_3_digest",
+    "current_substep": "persist_digest",
+    "stage_gate": "ready",
+    "next_action": "persist_digest",
+    "active_batch_kind": null,
+    "active_batch_index": null,
+    "status_summary": "outline and scopes persisted",
+    "last_error_code": null,
+    "updated_at": "2026-10-23T12:00:51Z"
+  },
+  "receipts": [
+    {
+      "action_name": "confirm_runtime_paths",
+      "stage": "stage_0_bootstrap",
+      "status": "succeeded",
+      "metadata_json": "{\"db_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/literature_analysis.db\", \"output_dir\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts\", \"result_json_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/literature-analysis.result.json\", \"tmp_dir\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp\", \"working_dir\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run\"}",
+      "updated_at": "2026-10-23T11:59:39Z"
+    },
+    {
+      "action_name": "bootstrap_runtime_db",
+      "stage": "stage_0_bootstrap",
+      "status": "succeeded",
+      "metadata_json": "{}",
+      "updated_at": "2026-10-23T11:59:39Z"
+    },
+    {
+      "action_name": "persist_render_templates",
+      "stage": "stage_1_normalize_source",
+      "status": "succeeded",
+      "metadata_json": "{\"citation_analysis_template_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/templates/citation_analysis.runtime.md.j2\", \"digest_template_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/templates/digest.runtime.md.j2\", \"literature_score_template_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/templates/literature_score.runtime.json.j2\", \"scoring_rubric_path\": \"/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/templates/scoring_rubric.runtime.json\", \"target_language\": \"zh-CN\"}",
+      "updated_at": "2026-10-23T11:59:39Z"
+    },
+    {
+      "action_name": "normalize_source",
+      "stage": "stage_1_normalize_source",
+      "status": "succeeded",
+      "metadata_json": "{}",
+      "updated_at": "2026-10-23T11:59:39Z"
+    },
+    {
+      "action_name": "persist_outline_and_scopes",
+      "stage": "stage_2_outline_and_scopes",
+      "status": "succeeded",
+      "metadata_json": "{}",
+      "updated_at": "2026-10-23T12:00:51Z"
+    }
+  ],
+  "runtime_inputs": {
+    "model": "gpt-6.1-sol",
+    "language": "zh-CN",
+    "input_hash": "sha256:84a6c55073f13d094b43394a293aa7994feef2cb594135d051017a2eb3eaed1d"
+  }
+}

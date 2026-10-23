@@ -1,0 +1,29 @@
+{
+  "datasets": [
+    "WMT 2014 English-German",
+    "WMT 2014 English-French",
+    "Penn Treebank WSJ"
+  ],
+  "exclude_terms": [],
+  "key_terms": [
+    "Transformer",
+    "self-attention",
+    "neural machine translation",
+    "sequence transduction",
+    "multi-head attention",
+    "positional encoding"
+  ],
+  "methods": [
+    "scaled dot-product attention",
+    "multi-head self-attention",
+    "encoder-decoder attention",
+    "sinusoidal positional encoding"
+  ],
+  "problems": [
+    "sequential computation bottleneck",
+    "long-range dependencies",
+    "machine translation",
+    "English constituency parsing"
+  ],
+  "schema": "literature_matching_metadata.v1"
+}

@@ -1,0 +1,326 @@
+{
+  "outline_nodes": [
+    {
+      "node_id": "paper",
+      "heading_level": 1,
+      "title": "Attention Is All You Need",
+      "line_start": 3,
+      "line_end": 327,
+      "parent_node_id": null,
+      "metadata": {
+        "hierarchy_reason": "以论文题名为根节点；编号章节按语义层级组织，原 Markdown 将编号子章节也标为二级标题。"
+      }
+    },
+    {
+      "node_id": "abstract",
+      "heading_level": 2,
+      "title": "Abstract",
+      "line_start": 21,
+      "line_end": 24,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "s1",
+      "heading_level": 2,
+      "title": "1 Introduction",
+      "line_start": 25,
+      "line_end": 34,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "s2",
+      "heading_level": 2,
+      "title": "2 Background",
+      "line_start": 35,
+      "line_end": 44,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3",
+      "heading_level": 2,
+      "title": "3 Model Architecture",
+      "line_start": 45,
+      "line_end": 136,
+      "parent_node_id": "paper",
+      "metadata": {
+        "representative_figure_candidate": {
+          "line_start": 49,
+          "line_end": 50,
+          "caption": "Figure 1: The Transformer - model architecture."
+        }
+      }
+    },
+    {
+      "node_id": "s3_1",
+      "heading_level": 3,
+      "title": "3.1 Encoder and Decoder Stacks",
+      "line_start": 54,
+      "line_end": 59,
+      "parent_node_id": "s3",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3_2",
+      "heading_level": 3,
+      "title": "3.2 Attention",
+      "line_start": 60,
+      "line_end": 104,
+      "parent_node_id": "s3",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3_2_1",
+      "heading_level": 4,
+      "title": "3.2.1 Scaled Dot-Product Attention",
+      "line_start": 67,
+      "line_end": 80,
+      "parent_node_id": "s3_2",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3_2_2",
+      "heading_level": 4,
+      "title": "3.2.2 Multi-Head Attention",
+      "line_start": 81,
+      "line_end": 94,
+      "parent_node_id": "s3_2",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3_2_3",
+      "heading_level": 4,
+      "title": "3.2.3 Applications of Attention in our Model",
+      "line_start": 95,
+      "line_end": 104,
+      "parent_node_id": "s3_2",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3_3",
+      "heading_level": 3,
+      "title": "3.3 Position-wise Feed-Forward Networks",
+      "line_start": 105,
+      "line_end": 114,
+      "parent_node_id": "s3",
+      "metadata": {}
+    },
+    {
+      "node_id": "s3_4",
+      "heading_level": 3,
+      "title": "3.4 Embeddings and Softmax",
+      "line_start": 115,
+      "line_end": 122,
+      "parent_node_id": "s3",
+      "metadata": {
+        "layout_note": "表 1 在归一化原文中位于本节末尾，保持原始行位置。"
+      }
+    },
+    {
+      "node_id": "s3_5",
+      "heading_level": 3,
+      "title": "3.5 Positional Encoding",
+      "line_start": 123,
+      "line_end": 136,
+      "parent_node_id": "s3",
+      "metadata": {}
+    },
+    {
+      "node_id": "s4",
+      "heading_level": 2,
+      "title": "4 Why Self-Attention",
+      "line_start": 137,
+      "line_end": 150,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "s5",
+      "heading_level": 2,
+      "title": "5 Training",
+      "line_start": 151,
+      "line_end": 184,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "s5_1",
+      "heading_level": 3,
+      "title": "5.1 Training Data and Batching",
+      "line_start": 155,
+      "line_end": 158,
+      "parent_node_id": "s5",
+      "metadata": {}
+    },
+    {
+      "node_id": "s5_2",
+      "heading_level": 3,
+      "title": "5.2 Hardware and Schedule",
+      "line_start": 159,
+      "line_end": 162,
+      "parent_node_id": "s5",
+      "metadata": {}
+    },
+    {
+      "node_id": "s5_3",
+      "heading_level": 3,
+      "title": "5.3 Optimizer",
+      "line_start": 163,
+      "line_end": 172,
+      "parent_node_id": "s5",
+      "metadata": {}
+    },
+    {
+      "node_id": "s5_4",
+      "heading_level": 3,
+      "title": "5.4 Regularization",
+      "line_start": 173,
+      "line_end": 184,
+      "parent_node_id": "s5",
+      "metadata": {
+        "layout_note": "表 2 在归一化原文中插入本节，保持原始行位置。"
+      }
+    },
+    {
+      "node_id": "s6",
+      "heading_level": 2,
+      "title": "6 Results",
+      "line_start": 185,
+      "line_end": 224,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "s6_1",
+      "heading_level": 3,
+      "title": "6.1 Machine Translation",
+      "line_start": 187,
+      "line_end": 196,
+      "parent_node_id": "s6",
+      "metadata": {}
+    },
+    {
+      "node_id": "s6_2",
+      "heading_level": 3,
+      "title": "6.2 Model Variations",
+      "line_start": 197,
+      "line_end": 208,
+      "parent_node_id": "s6",
+      "metadata": {}
+    },
+    {
+      "node_id": "s6_3",
+      "heading_level": 3,
+      "title": "6.3 English Constituency Parsing",
+      "line_start": 209,
+      "line_end": 224,
+      "parent_node_id": "s6",
+      "metadata": {}
+    },
+    {
+      "node_id": "s7",
+      "heading_level": 2,
+      "title": "7 Conclusion",
+      "line_start": 225,
+      "line_end": 234,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "ack",
+      "heading_level": 2,
+      "title": "Acknowledgements",
+      "line_start": 235,
+      "line_end": 236,
+      "parent_node_id": "paper",
+      "metadata": {
+        "heading_reason": "原文为行内标题，与后续致谢句同处一行。"
+      }
+    },
+    {
+      "node_id": "refs",
+      "heading_level": 2,
+      "title": "References",
+      "line_start": 237,
+      "line_end": 318,
+      "parent_node_id": "paper",
+      "metadata": {}
+    },
+    {
+      "node_id": "attention_visualizations",
+      "heading_level": 2,
+      "title": "Attention Visualizations",
+      "line_start": 319,
+      "line_end": 327,
+      "parent_node_id": "paper",
+      "metadata": {
+        "heading_reason": "无 Markdown 标记的附录标题；包含图 3 至图 5 及解释，不属于参考文献。"
+      }
+    }
+  ],
+  "references_scope": {
+    "section_title": "References",
+    "line_start": 237,
+    "line_end": 317,
+    "metadata": {
+      "selection_reason": "显式 References 标题后的真实文献列表，共 [1] 至 [40]；止于最后一条文献，排除第 319 行起的注意力可视化附录。"
+    }
+  },
+  "citation_scope": {
+    "section_title": "1 Introduction + 2 Background",
+    "line_start": 25,
+    "line_end": 44,
+    "metadata": {
+      "selection_reason": "连续覆盖完整引言与背景两节：引言回顾循环序列模型、计算效率改进与注意力，背景继续比较卷积路线、自注意力应用及记忆网络，并据此限定本文的创新主张。两节共同承担相关工作综述职责，不能只截取引言开头；本范围包含两节全部段落，止于模型架构节之前。后续技术比较与实验引文不作为独立背景综述范围。",
+      "covered_sections": [
+        "1 Introduction",
+        "2 Background"
+      ]
+    }
+  },
+  "source_identity": null,
+  "literature_matching_metadata": {
+    "schema": "literature_matching_metadata.v1",
+    "key_terms": [
+      "Transformer",
+      "自注意力",
+      "多头注意力",
+      "序列转导",
+      "神经机器翻译",
+      "编码器—解码器",
+      "位置编码",
+      "长距离依赖",
+      "并行训练",
+      "英语成分句法分析"
+    ],
+    "methods": [
+      "Transformer",
+      "缩放点积注意力",
+      "多头自注意力",
+      "掩码解码器自注意力",
+      "编码器—解码器注意力",
+      "逐位置前馈网络",
+      "正弦位置编码",
+      "标签平滑"
+    ],
+    "problems": [
+      "英德机器翻译",
+      "英法机器翻译",
+      "英语成分句法分析",
+      "序列模型训练并行化",
+      "长距离依赖建模",
+      "降低序列转导训练成本"
+    ],
+    "datasets": [
+      "WMT 2014 English-German",
+      "WMT 2014 English-French",
+      "newstest2013",
+      "newstest2014",
+      "Penn Treebank Wall Street Journal",
+      "high-confidence and BerkleyParser corpora"
+    ],
+    "exclude_terms": []
+  }
+}

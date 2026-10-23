@@ -1,0 +1,434 @@
+{
+  "entry": "graph-resume",
+  "resumed_from_stage": "stage_3_digest",
+  "working_dir": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run",
+  "input": {
+    "source_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/input/mineru/attention-is-all-you-need.md",
+    "language": "zh-CN",
+    "score_only": false,
+    "identifier": "arXiv:1706.03762"
+  },
+  "started_at_epoch": 1792758624.3019338,
+  "elapsed_seconds": 708.8382556438446,
+  "result": {
+    "digest_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts/digest.md",
+    "references_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts/references.json",
+    "citation_analysis_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts/citation_analysis.json",
+    "literature_matching_metadata_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts/literature_matching_metadata.json",
+    "literature_score_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts/literature_score.json",
+    "provenance": {
+      "generated_at": "2026-10-23T11:59:39Z",
+      "input_hash": "sha256:84a6c55073f13d094b43394a293aa7994feef2cb594135d051017a2eb3eaed1d",
+      "model": "gpt-6.1-sol"
+    },
+    "warnings": [
+      "reference_pattern_ambiguous: 40 entries"
+    ],
+    "error": {},
+    "citation_analysis_report_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/artifacts/citation_analysis.md",
+    "representative_image": {
+      "caption_quote": "Figure 1: The Transformer - model architecture.",
+      "confidence": "high",
+      "label": "Figure 1",
+      "markdown_src_hint": "images/f05ba6a0a2e484dbd8bf2a4a4fa2597a69a3a076f5b03cf4e818b176b4049244.jpg",
+      "section_hint": "3 Model Architecture",
+      "selection_reason": "图注明确标识 Transformer 模型架构，邻近正文说明其左右分别展示编码器与解码器的自注意力和逐位置前馈堆叠，因此最能代表论文核心结构贡献。",
+      "source_kind": "markdown_image_ref",
+      "status": "selected"
+    }
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "gpt-6.1-sol",
+      "reasoning": {
+        "effort": "medium"
+      },
+      "store": false,
+      "status_code": 200
+    }
+  ],
+  "requested_transport_verified": true,
+  "execution": "executed"
+}

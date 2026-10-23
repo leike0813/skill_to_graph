@@ -1,4 +1,5 @@
 """Inspect and snapshot an Agent Skill package without interpreting its workflow."""
+from argparse import RawDescriptionHelpFormatter
 import os
 from pathlib import Path
 import shutil
@@ -114,10 +115,80 @@ def copy(source, output=None):
 
 
 def main():
-    parser = Parser(description="Inspect a Skill read-only, or create a new application containing its complete snapshot. Existing targets are never overwritten.")
+    parser = Parser(
+        description="""Inspect a Skill package read-only, or copy its complete snapshot into a new
+application directory. Existing output directories are never overwritten.""",
+        epilog="""The source positional is a Skill package directory containing SKILL.md.
+inspect is read-only. copy requires a new output directory that does not overlap
+the source; --output defaults to ./<skill-name>-graph.
+
+Except --help, output is one JSON object on stdout:
+  {"ok": true, "operation": "inspect", "data": {...}, "issues": []}
+Success data contains source_root, metadata, and files for inspect, or output_dir
+and source_dir for copy. On failure, ok is false, data is {}, and issues lists
+code, path, and detail.
+
+Exit codes: 0 success; 2 invalid argument (including missing PyYAML); 3 invalid
+source; 4 output conflict; 5 I/O error. copy may leave a partial new directory
+after an I/O failure.
+
+Examples:
+  python skill_package.py inspect path/to/skill
+  python skill_package.py copy path/to/skill --output path/to/new-app
+
+--help prints text and exits 0 without an operation.""",
+        formatter_class=RawDescriptionHelpFormatter,
+    )
     commands = parser.add_subparsers(dest="operation", required=True, parser_class=Parser)
     for command in ("inspect", "copy"):
-        sub = commands.add_parser(command, help="Read metadata and inventory" if command == "inspect" else "Create a fresh application with source snapshot")
+        sub = commands.add_parser(
+            command,
+            help="Read metadata and inventory" if command == "inspect" else "Create a fresh application with source snapshot",
+            description=(
+                "Validate one Skill package and inventory it without writing."
+                if command == "inspect"
+                else """Validate a Skill package and copy its complete snapshot into a new
+application directory. The destination is never overwritten."""
+            ),
+            epilog=(
+                """The source positional is the Skill package directory containing SKILL.md.
+This operation is read-only.
+
+Output is one JSON object on stdout:
+  {"ok": true, "operation": "inspect", "data": {"source_root": "...",
+   "metadata": {...}, "files": [{"path": "...", "type": "file"}]},
+   "issues": []}
+On failure, ok is false, data is {}, and issues lists code, path, and detail.
+
+Exit codes: 0 success; 2 invalid argument (including missing PyYAML); 3 invalid
+source; 5 I/O error.
+
+Example:
+  python skill_package.py inspect path/to/skill
+
+--help prints text and exits 0 without inspecting files."""
+                if command == "inspect"
+                else """The source positional is the Skill package directory containing SKILL.md.
+--output names a new application directory and defaults to
+./<skill-name>-graph. It must not exist or overlap the source. The snapshot is
+placed under <output>/source/<skill-name>/ and links are materialized.
+
+Output is one JSON object on stdout:
+  {"ok": true, "operation": "copy", "data": {"output_dir": "...",
+   "source_dir": "..."}, "issues": []}
+On failure, ok is false, data is {}, and issues lists code, path, and detail.
+
+Exit codes: 0 success; 2 invalid argument (including missing PyYAML); 3 invalid
+source; 4 output conflict; 5 I/O error. An I/O failure can leave a partial new
+directory.
+
+Example:
+  python skill_package.py copy path/to/skill --output path/to/new-app
+
+--help prints text and exits 0 without creating files."""
+            ),
+            formatter_class=RawDescriptionHelpFormatter,
+        )
         sub.add_argument("source", help="Skill package directory containing SKILL.md")
         if command == "copy":
             sub.add_argument("--output", help="New application directory; default: CWD/<skill-name>-graph")

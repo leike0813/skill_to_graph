@@ -1,0 +1,63 @@
+{
+  "snapshot_files_equal": [
+    ".mattpack-owner.json",
+    "SKILL.md",
+    "agents/openai.yaml"
+  ],
+  "static_check": {
+    "ok": true,
+    "operation": "check",
+    "data": {
+      "checked_files": [
+        "langgraph.json",
+        "skill_graph/__init__.py",
+        "skill_graph/graph.py"
+      ],
+      "graph_entries": {
+        "wait-what": "./skill_graph/graph.py:make_graph"
+      },
+      "unresolved_entries": {}
+    },
+    "issues": []
+  },
+  "execution_records": [
+    {
+      "record": "graph-1.json",
+      "execution": "executed",
+      "elapsed_seconds": 13.680797100067139
+    },
+    {
+      "record": "graph-2.json",
+      "execution": "executed",
+      "elapsed_seconds": 15.344372987747192
+    },
+    {
+      "record": "graph-3.json",
+      "execution": "executed",
+      "elapsed_seconds": 16.258710861206055
+    },
+    {
+      "record": "omp-1.json",
+      "execution": "executed",
+      "elapsed_seconds": 32.502280950546265
+    },
+    {
+      "record": "omp-2.json",
+      "execution": "executed",
+      "elapsed_seconds": 30.899120330810547
+    },
+    {
+      "record": "omp-3.json",
+      "execution": "executed",
+      "elapsed_seconds": 43.13461422920227
+    }
+  ],
+  "semantic_judgment": "separate manual review in REPORT.md",
+  "uncovered": [
+    "CLI execution",
+    "relocation",
+    "multiple glossaries",
+    "dictionary-level ASD-STE100",
+    "other source Skills"
+  ]
+}

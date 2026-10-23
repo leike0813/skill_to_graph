@@ -1,0 +1,23 @@
+{
+  "entry": "omp",
+  "input": {
+    "source_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/literature-analysis-attention/input/mineru/attention-is-all-you-need.md",
+    "language": "zh-CN",
+    "score_only": false,
+    "identifier": "arXiv:1706.03762"
+  },
+  "working_dir": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/control",
+  "started_at_epoch": 1792756779.3359673,
+  "elapsed_seconds": 943.9114348888397,
+  "raw_log": "/tmp/literature-sol-medium-omp-tx44fyz9.jsonl",
+  "stderr_log": "/tmp/literature-sol-medium-omp-tx44fyz9.stderr",
+  "sessions": "/tmp/literature-sol-medium-sessions-7i1j9vp3",
+  "model": "opencodex-hub/gpt-6.1-sol",
+  "thinking": "medium",
+  "exit_code": 0,
+  "error": {
+    "type": "AttributeError",
+    "detail": "'str' object has no attribute 'get'"
+  },
+  "execution": "failed"
+}

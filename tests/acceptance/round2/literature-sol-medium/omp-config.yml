@@ -1,0 +1,15 @@
+modelRoles:
+  default: opencodex-hub/gpt-6.1-sol
+  task: opencodex-hub/gpt-6.1-sol:medium
+  smol: opencodex-hub/gpt-6.1-sol:medium
+  slow: opencodex-hub/gpt-6.1-sol:medium
+  plan: opencodex-hub/gpt-6.1-sol:medium
+task:
+  agentModelOverrides:
+    task: opencodex-hub/gpt-6.1-sol:medium
+    scout: opencodex-hub/gpt-6.1-sol:medium
+    sonic: opencodex-hub/gpt-6.1-sol:medium
+    reviewer: opencodex-hub/gpt-6.1-sol:medium
+  prewalk: false
+retry:
+  modelFallback: false

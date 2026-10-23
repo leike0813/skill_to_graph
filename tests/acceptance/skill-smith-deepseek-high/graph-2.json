@@ -1,0 +1,111 @@
+{
+  "entry": "generated-graph",
+  "repetition": 2,
+  "model": "combo/deepseek-v4.1-flash",
+  "reasoning_effort": "high",
+  "input": [
+    {
+      "role": "user",
+      "content": "How will this task continue after I approve it?"
+    },
+    {
+      "role": "assistant",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "user",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "certificate_verification": "existing NODE_EXTRA_CA_CERTS bundle",
+  "reply": "Here is the same answer with context.\n\n**Where this fits.** You asked how the task continues after you approve it. The task runs as a Graph. The Graph has Nodes and paths. A Node is one step. A Checkpoint is a saved record of the Graph state that can help it continue.\n\n**What happens at your approval.**\n1. The Graph stops at the confirmation boundary. It does not continue until you approve.\n2. At that point the task saves a Checkpoint. This Checkpoint ties your reply to the execution that is suspended.\n3. After the Graph starts again (re-entry), the next Node makes the report.\n\n**The limit.** The Checkpoint does not guarantee that an external file write happens only once. If a crash occurs, the external file write can occur more than one time. This answer gives no exactly-once guarantee for that write.\n\nNote: the repository has only `GLOSSARY.md`, so I used that file. It has no `GLOSSARY-MAP.md`.",
+  "tool_results": [
+    {
+      "name": "list_files",
+      "content": "[\"GLOSSARY.md\"]"
+    },
+    {
+      "name": "read_file",
+      "content": "{\"error\": \"FileNotFoundError\", \"detail\": \"[Errno 2] No such file or directory: '/tmp/skill-smith-graph-_xggdujo/GLOSSARY-MAP.md'\"}"
+    },
+    {
+      "name": "read_file",
+      "content": "# Graph task terms\n\n| Term | Meaning |\n| --- | --- |\n| Graph | A set of Nodes and paths that controls a task. |\n| Node | One step in the Graph. |\n| Checkpoint | A saved record of the Graph state that can help it continue. |\n\nUse these names when explaining this task. A Checkpoint does not guarantee that an external action happens only once.\n"
+    }
+  ],
+  "response_metadata": {
+    "id": "resp_d7a931cfa5f14a87b6a88f1c473688cb",
+    "created_at": 1792755933.0,
+    "model": "deepseek/deepseek-v4.1-flash",
+    "object": "response",
+    "status": "completed",
+    "model_provider": "openai",
+    "model_name": "deepseek/deepseek-v4.1-flash"
+  },
+  "execution": "executed",
+  "elapsed_seconds": 15.344372987747192,
+  "requests": [
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "combo/deepseek-v4.1-flash",
+      "reasoning": {
+        "effort": "high"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "combo/deepseek-v4.1-flash",
+      "reasoning": {
+        "effort": "high"
+      },
+      "store": false,
+      "status_code": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://192.168.13.111:10100/v1/responses",
+      "model": "combo/deepseek-v4.1-flash",
+      "reasoning": {
+        "effort": "high"
+      },
+      "store": false,
+      "status_code": 200
+    }
+  ],
+  "first_request": [
+    {
+      "role": "system",
+      "content": "Wait, I don't understand where you've got to here. Re-pitch that: give me a little bit of context, talk in ASD-STE100 Simplified Technical English, and use the ubiquitous language from `GLOSSARY.md` (follow `GLOSSARY-MAP.md` to the right one if the repo has more than one).\n\nThis is an explicit invocation. Re-pitch the assistant passage below, using the conversation for context. Read the applicable task glossary with the supplied tools. Preserve the passage's claims, timing and uncertainty.\nAssistant passage:\n\"The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash.\""
+    },
+    {
+      "role": "human",
+      "content": "How will this task continue after I approve it?"
+    },
+    {
+      "role": "ai",
+      "content": "The graph parks at a confirmation boundary; a persisted checkpoint binds the reply to the suspended execution, and the downstream node emits the report after re-entry. This does not provide an exactly-once guarantee for an external file write after a crash."
+    },
+    {
+      "role": "human",
+      "content": "Wait, I do not understand. Re-pitch that with a little context."
+    }
+  ],
+  "tool_calls": [
+    {
+      "name": "list_files",
+      "input": "{'path': '.'}"
+    },
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY-MAP.md'}"
+    },
+    {
+      "name": "read_file",
+      "input": "{'path': 'GLOSSARY.md'}"
+    }
+  ]
+}

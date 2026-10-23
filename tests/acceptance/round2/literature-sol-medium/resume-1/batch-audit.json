@@ -1,0 +1,42 @@
+[
+  {
+    "batch_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/agent_work/reference_core/reference-core-batch-0.json",
+    "kind": "reference_core_review",
+    "count": 5,
+    "scope_matches": true,
+    "model": "gpt-6.1-sol",
+    "language": "zh-CN"
+  },
+  {
+    "batch_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/agent_work/reference_metadata_evidence/reference-metadata-evidence-batch-0.json",
+    "kind": "reference_metadata_evidence_review",
+    "count": 5,
+    "scope_matches": true,
+    "model": "gpt-6.1-sol",
+    "language": "zh-CN"
+  },
+  {
+    "batch_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-2.json",
+    "kind": "citation_semantic_review",
+    "count": 1,
+    "scope_matches": true,
+    "model": "gpt-6.1-sol",
+    "language": "zh-CN"
+  },
+  {
+    "batch_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-1.json",
+    "kind": "citation_semantic_review",
+    "count": 10,
+    "scope_matches": true,
+    "model": "gpt-6.1-sol",
+    "language": "zh-CN"
+  },
+  {
+    "batch_path": "/home/joshua/Workspace/Code/Skill/skill_to_graph/tests/acceptance/round2/literature-sol-medium/graph-run/.literature_analysis_tmp/agent_work/citation_semantic/citation-semantic-batch-0.json",
+    "kind": "citation_semantic_review",
+    "count": 10,
+    "scope_matches": true,
+    "model": "gpt-6.1-sol",
+    "language": "zh-CN"
+  }
+]

@@ -1,6 +1,6 @@
 # 运行 API 速查
 
-生成具体代码前读取；版本基线为 langgraph 1.2.16、langchain 1.4.7、langchain-core 1.6.13、langgraph-cli 0.4.37。实际环境使用其他版本时核对对应官方 API。
+生成具体代码前按所选结构阅读对应示例，执行约束以主文件为准。以下 API 示例的版本基线为 langgraph 1.2.16、langchain 1.4.7、langchain-core 1.6.13、langgraph-cli 0.4.37。
 
 ## 固定图
 
@@ -22,8 +22,8 @@ graph = builder.compile()
 result = graph.invoke({"value": " example "})
 ```
 
-节点返回局部更新。默认更新覆盖通道；仅在业务需要聚合时用 `Annotated[类型, reducer]`。消息通道可用 `add_messages`，不要求其他图也保存消息。
-`add_conditional_edges(节点, 路由函数, 路由映射)` 表达条件；`Command(update=..., goto=...)` 可合并更新和跳转，不要再加导致同一跳转重复执行的静态边。`Send(节点名, 子任务输入)` 适用于已获源许可的动态任务分发。
+例中 `process` 只更新 `value`。聚合通道的写法为 `Annotated[类型, reducer]`，消息聚合常用 `add_messages`。
+条件路由可用 `add_conditional_edges(节点, 路由函数, 路由映射)`；`Command(update=..., goto=...)` 合并更新和跳转，和同目标静态边并用会产生重复调度。`Send(节点名, 子任务输入)` 可表示源许可的动态任务分发。
 
 ## agent 与混合流程
 
@@ -36,7 +36,8 @@ def make_agent(model_id: str, provider: str, tools, instructions: str):
     return create_agent(model=model, tools=tools, system_prompt=instructions)
 ```
 
-模型标识及 provider 是运行配置；模型供应商集成包需另行声明。模型的技术重试设置与源失败策略一起核对，不额外添加图级重试。agent 输入通常为 `{"messages": [...]}`，结果从返回状态提取；这只是框架封装。固定图可用节点调用 agent 的 `invoke`，传递正确的 config，并只映射所需状态。需要子图恢复时核对检查点传播及调用命名空间。
+例中模型标识及 provider 由调用方传入，对应集成包是应用运行依赖。agent 输入通常为 `{"messages": [...]}`，业务结果从返回状态提取。
+固定图的节点可调用 `agent.invoke(agent_input, config=config)`，再将所需结果映射回外层状态。这里的 config 连接当前调用与嵌套运行；子图恢复还涉及检查点传播及调用命名空间。
 
 ## 暂停与存储
 
@@ -55,7 +56,8 @@ paused = graph.invoke(input_state, config)
 resumed = graph.invoke(Command(resume=True), config)
 ```
 
-`interrupt()` 恢复时从节点开头重跑，不能将写操作置于暂停之前并假定只运行一次。`InMemorySaver` 仅适用于同一进程的演示或受控验收。生产持久化由环境提供所选后端。`store` 与 checkpointer 用途不同：前者跨会话数据，后者图执行恢复。
+例中两次调用共用图实例和 `thread_id`；`InMemorySaver` 的恢复记录仅在该进程存活期间存在。
+`interrupt()` 恢复会从节点开头重跑，因此 `confirm` 只提问并记录回复，写入安排在批准后的节点。checkpointer 保存执行恢复记录，store 提供跨会话数据；二者不是同一设施。
 
 ## 应用入口
 
@@ -66,9 +68,17 @@ resumed = graph.invoke(Command(resume=True), config)
 }
 ```
 
-入口值支持模块或文件的 `:对象名`，对象可为编译图，也可为服务可加载的工厂。使用服务工厂时以实际 CLI 支持的签名接收配置及服务设施，不直接使用服务内部 API。Python 可直接导入同一装配逻辑并注入所需设施。CLI 在应用目录执行 `langgraph dev`，会启动服务；遵守当前环境的启动和安装权限。
+入口值支持模块或文件的 `:对象名`，对象可为编译图，也可为服务可加载的工厂。上例导出 `graph`；工厂入口可写为 `./skill_graph/graph.py:cli_graph`。在应用目录执行 `langgraph dev` 会启动服务，启动与依赖安装均受调用环境授权约束。
 
-基线服务会按完整签名统计工厂参数，额外的可选 keyword-only 参数也计入。需要 Python 注入 checkpointer/store 时，可保留一个装配函数，再用 `def cli_graph(config): return make_graph(config)` 暴露服务入口；不要将带三个参数的装配函数直接配置为服务工厂。两入口仍共享构图逻辑，服务包装不自行绑定存储。
+基线服务按完整签名统计工厂参数，可选 keyword-only 参数也计入。例如 `make_graph(config, *, checkpointer=None, store=None)` 有三个参数，不能直接作为该服务的单参数工厂。下面的薄入口与 Python 调用共享装配逻辑：
+
+```python
+def cli_graph(config):
+    return make_graph(config)
+
+# Python 调用可用 make_graph(config, checkpointer=调用方提供的检查点)。
+# CLI 运行使用服务设施，cli_graph 不绑定具体存储后端。
+```
 
 已配置 Agent Server 的基本调用：
 
@@ -77,9 +87,9 @@ POST /runs/wait
 {"assistant_id":"source-name","input":{...}}
 ```
 
-需要跨调用恢复时先 `POST /threads` 取得 thread_id，再调用 `/threads/{thread_id}/runs/wait`；恢复通过 `command.resume` 提交回复。Python 恢复用 `Command`，HTTP 用相应 JSON，业务含义保持一致。
+有会话恢复需求时，`POST /threads` 返回的 thread_id 用于 `/threads/{thread_id}/runs/wait`。恢复请求中的 `{"command":{"resume":true}}` 对应 Python 的 `Command(resume=True)`，两者提交同一业务回复。
 
-`langgraph.json` 的 `env` 可指定 dotenv 文件或环境变量映射，密钥保持在环境中。配置中的本地文件须随应用携带。资源可相对 `Path(__file__).resolve()` 定位；若 wheel 不包含应用根的 source，就不能宣称安装后仍能读取这些资源。
+`langgraph.json` 的 `env` 可指定 dotenv 文件或环境变量映射。应用目录中的资源可相对 `Path(__file__).resolve()` 定位；wheel 是否仍有同样资源，取决于实际打包内容，应用目录运行成功不能提供 wheel 安装后的证据。
 
 来源：
 

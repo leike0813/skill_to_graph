@@ -1,0 +1,42 @@
+{
+  "datasets": [
+    "WMT 2014 English-German",
+    "WMT 2014 English-French",
+    "newstest2013",
+    "newstest2014",
+    "Penn Treebank Wall Street Journal",
+    "high-confidence and BerkleyParser corpora"
+  ],
+  "exclude_terms": [],
+  "key_terms": [
+    "Transformer",
+    "自注意力",
+    "多头注意力",
+    "序列转导",
+    "神经机器翻译",
+    "编码器—解码器",
+    "位置编码",
+    "长距离依赖",
+    "并行训练",
+    "英语成分句法分析"
+  ],
+  "methods": [
+    "Transformer",
+    "缩放点积注意力",
+    "多头自注意力",
+    "掩码解码器自注意力",
+    "编码器—解码器注意力",
+    "逐位置前馈网络",
+    "正弦位置编码",
+    "标签平滑"
+  ],
+  "problems": [
+    "英德机器翻译",
+    "英法机器翻译",
+    "英语成分句法分析",
+    "序列模型训练并行化",
+    "长距离依赖建模",
+    "降低序列转导训练成本"
+  ],
+  "schema": "literature_matching_metadata.v1"
+}
